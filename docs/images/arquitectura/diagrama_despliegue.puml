@@ -1,0 +1,34 @@
+@startuml
+top to bottom direction
+skinparam nodeStyle rectangle
+
+node "Dispositivo Móvil\n(Android)" {
+  component "App ULima++\n(Flutter)"
+}
+
+node "Servicio de Autenticación\n(Externo)" {
+  component "Autenticación\n(OAuth 2.0 / JWT)"
+}
+
+node "Servidor Backend" {
+  component "Load Balancer/\nReverse Proxy" as LB
+  component "API REST\n(Ruby Sinatra)" as API
+  component "Servicio de\nNotificaciones" as NOTIF
+  component "Cache\n(Redis)" as CACHE
+  database "MySQL"
+  component "Almacenamiento\nde Archivos" as STORAGE
+}
+
+' Relaciones
+"App ULima++\n(Flutter)" --> "Autenticación\n(OAuth 2.0 / JWT)" : Credenciales
+"Autenticación\n(OAuth 2.0 / JWT)" --> LB : Token válido
+"App ULima++\n(Flutter)" --> LB : HTTPS / JSON + Token
+LB --> API : Balanceo de carga
+API --> CACHE : Datos frecuentes
+API --> MYSQL : Acceso exclusivo
+API --> STORAGE : Gestión de Sílabos
+API --> NOTIF : Emisión de alertas
+NOTIF --> API : Lectura de datos
+CACHE --> API : Invalidación de caché
+
+@enduml
