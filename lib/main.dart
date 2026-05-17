@@ -1,3 +1,5 @@
+// TERMINAL - flutter pub get
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'pages/calculadora/calculadora_page.dart';
@@ -15,6 +17,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
   @override
