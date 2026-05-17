@@ -1,0 +1,181 @@
+{
+  "cursos": [
+    {
+      "cursoId": "1",
+      "cursoNombre": "INGENIERÍA DE SOFTWARE II",
+      "evaluaciones": [
+        {
+          "id": "eval_1_01",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_1_02",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_1_03",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 30.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_1_04",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 40.0,
+          "tipo": "examen"
+        }
+      ]
+    },
+    {
+      "cursoId": "2",
+      "cursoNombre": "APRENDIZAJE DE MÁQUINA/MACHINE LEARNING",
+      "evaluaciones": [
+        {
+          "id": "eval_2_01",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_2_02",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_2_03",
+          "nombre": "Trabajo Final",
+          "sigla": "TF",
+          "peso": 30.0,
+          "tipo": "trabajo"
+        },
+        {
+          "id": "eval_2_04",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 40.0,
+          "tipo": "examen"
+        }
+      ]
+    },
+    {
+      "cursoId": "3",
+      "cursoNombre": "GESTIÓN DE OPERACIONES",
+      "evaluaciones": [
+        {
+          "id": "eval_3_01",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_3_02",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_3_03",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 30.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_3_04",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 40.0,
+          "tipo": "examen"
+        }
+      ]
+    },
+    {
+      "cursoId": "4",
+      "cursoNombre": "PROGRAMACIÓN MÓVIL",
+      "evaluaciones": [
+        {
+          "id": "eval_4_01",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_4_02",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_4_03",
+          "nombre": "Trabajo Final",
+          "sigla": "TF",
+          "peso": 40.0,
+          "tipo": "trabajo"
+        },
+        {
+          "id": "eval_4_04",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 30.0,
+          "tipo": "examen"
+        }
+      ]
+    },
+    {
+      "cursoId": "5",
+      "cursoNombre": "SISTEMAS DE INTELIGENCIA EMPRESARIAL",
+      "evaluaciones": [
+        {
+          "id": "eval_5_01",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 10.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_5_02",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 10.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_5_03",
+          "nombre": "Práctica Calificada 3",
+          "sigla": "PC3",
+          "peso": 10.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_5_04",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 30.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_5_05",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 40.0,
+          "tipo": "examen"
+        }
+      ]
+    }
+  ]
+}
