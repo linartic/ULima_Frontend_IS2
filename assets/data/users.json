@@ -1,0 +1,136 @@
+{
+  "users": [
+    {
+      "code": "20235218",
+      "password": "ulima123",
+      "firstName": "Jeff",
+      "lastName": "Angelo",
+      "email": "20235218@aloe.ulima.edu.pe",
+      "role": "delegado",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20232548",
+      "password": "ulima123",
+      "firstName": "Samantha",
+      "lastName": "Rodríguez",
+      "email": "20232548@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20232907",
+      "password": "ulima123",
+      "firstName": "Martín",
+      "lastName": "Tejada",
+      "email": "20232907@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20232637",
+      "password": "ulima123",
+      "firstName": "Melissa",
+      "lastName": "Ruiz",
+      "email": "20232637@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20232685",
+      "password": "ulima123",
+      "firstName": "Julio",
+      "lastName": "Salazar",
+      "email": "20232685@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20231098",
+      "password": "ulima123",
+      "firstName": "Nehemias",
+      "lastName": "Falcon",
+      "email": "20231098@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20231483",
+      "password": "ulima123",
+      "firstName": "Melissa",
+      "lastName": "Ruiz",
+      "email": "20231483@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20221234",
+      "password": "ulima123",
+      "firstName": "María",
+      "lastName": "Quispe",
+      "email": "20221234@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Ciberseguridad"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20245100",
+      "password": "ulima123",
+      "firstName": "Carlos",
+      "lastName": "Mendoza",
+      "email": "20245100@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    },
+    {
+      "code": "20255678",
+      "password": "ulima123",
+      "firstName": "Lucía",
+      "lastName": "Torres",
+      "email": "20255678@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": null,
+      "especialidades": [],
+      "currentCycle": "2026-1",
+      "setupComplete": false
+    },
+    {
+      "code": "20215555",
+      "password": "ulima123",
+      "firstName": "Diego",
+      "lastName": "Salinas",
+      "email": "20215555@aloe.ulima.edu.pe",
+      "role": "subdelegado",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Ciencia de Datos"],
+      "currentCycle": "2026-1",
+      "setupComplete": true
+    }
+  ]
+}

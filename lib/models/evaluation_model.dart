@@ -1,9 +1,9 @@
 class EvaluationComponent {
   final String id;
-  final String nombre; // Ej: "Práctica Calificada 1"
-  final String sigla;  // Ej: "PC1"
-  final double peso;   // Ej: 15.0 (en porcentaje)
-  final String tipo;   // Ej: "practica", "examen", "trabajo", "participacion"
+  final String nombre; 
+  final String sigla;  
+  final double peso;   
+  final String tipo;  
 
   EvaluationComponent({
     required this.id,
@@ -24,7 +24,6 @@ class EvaluationComponent {
     );
   }
 
-  /// Convertir a Map para manipulación reactiva
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -36,7 +35,6 @@ class EvaluationComponent {
   }
 }
 
-/// Modelo para el plan de evaluación de un curso (del sílabo)
 class CourseSyllabus {
   final String cursoId;
   final String cursoNombre;
@@ -48,7 +46,6 @@ class CourseSyllabus {
     required this.evaluaciones,
   });
 
-  /// Obtener peso total de evaluaciones
   double get pesoTotal => evaluaciones.fold(0, (sum, eval) => sum + eval.peso);
 
   /// Convertir desde JSON
