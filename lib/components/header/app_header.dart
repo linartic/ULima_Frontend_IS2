@@ -10,8 +10,16 @@ class AppHeader extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return Container(
-      color: MaterialTheme.headerColor(Theme.brightnessOf(context)),
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 15),
+      padding: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 20),
+      decoration: BoxDecoration(
+        color: MaterialTheme.headerColor(Theme.brightnessOf(context)),
+        border: Border(
+          bottom: BorderSide(
+            color: colors.primaryContainer,
+            width: 2.0,
+          ),
+        ),
+      ),
       child: Column(
         children: [
           Row(
@@ -43,5 +51,3 @@ class AppHeader extends StatelessWidget {
     );
   }
 }
-
-              

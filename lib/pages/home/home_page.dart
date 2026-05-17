@@ -44,13 +44,6 @@ class _HomePageState extends State<HomePage> {
         children: [
           const AppHeader(),
 
-          SizedBox(height: 0.5),
-          
-          Divider(
-            color: colors.primaryContainer,
-            thickness: 2.0,
-          ),
-
           //CUERPO
           Expanded(child: _buildBody()),
           
