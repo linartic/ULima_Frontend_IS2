@@ -1,13 +1,20 @@
 // TERMINAL - flutter pub get
 
 import 'package:flutter/material.dart';
-import 'package:ulima_plus/pages/home/home_page.dart';
+import 'package:get/get.dart';
+import 'pages/calculadora/calculadora_page.dart';
+import '/configs/themes.dart';
+import '/services/evaluation_syllabus_service.dart';
+import '/services/courses_service.dart';
 
-import 'configs/theme.dart';
-
-import 'pages/anuncios/anuncios_page.dart';
-
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.wait([
+    EvaluationSyllabusService().loadEvaluationData(),
+    CoursesService().loadCoursesData(),
+  ]);
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
 
@@ -15,33 +22,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final TextTheme baseTextTheme =
-        Typography.material2021().englishLike;
-
-    final MaterialTheme materialTheme =
-        MaterialTheme(baseTextTheme);
-
-    return MaterialApp(
-
-      debugShowCheckedModeBanner: false,
-
+    final materialTheme = MaterialTheme(Theme.of(context).textTheme);
+    return GetMaterialApp(
       title: 'ULIMA++',
-
       theme: materialTheme.light(),
-
       darkTheme: materialTheme.dark(),
-
       themeMode: ThemeMode.system,
-
-      initialRoute: '/home',
-
-      routes: {
-
-        '/home': (context) => HomePage(),
-      },
-
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: CalculadoraPage(),
+      
     );
   }
 }

@@ -1,0 +1,39 @@
+{
+  "cursos": [
+    {
+      "id": "1",
+      "nombre": "INGENIERÍA DE SOFTWARE II",
+      "seccion": "856",
+      "ciclo": "2026-1",
+      "notas": []
+    },
+    {
+      "id": "2",
+      "nombre": "APRENDIZAJE DE MÁQUINA/MACHINE LEARNING",
+      "seccion": "753",
+      "ciclo": "2026-1",
+      "notas": []
+    },
+    {
+      "id": "3",
+      "nombre": "GESTIÓN DE OPERACIONES",
+      "seccion": "754",
+      "ciclo": "2026-1",
+      "notas": []
+    },
+    {
+      "id": "4",
+      "nombre": "PROGRAMACIÓN MÓVIL",
+      "seccion": "854",
+      "ciclo": "2026-1",
+      "notas": []
+    },
+    {
+      "id": "5",
+      "nombre": "SISTEMAS DE INTELIGENCIA EMPRESARIAL",
+      "seccion": "754",
+      "ciclo": "2026-1",
+      "notas": []
+    }
+  ]
+}
