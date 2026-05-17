@@ -5,24 +5,23 @@ class Curso {
   final String nombre;
   final String ciclo;
   final List<Map<String, dynamic>> notas;
-  final String seccion; // Agregamos la sección al modelo
+  final String seccion; 
 
   Curso({
     required this.id,
     required this.nombre,
     required this.ciclo,
     required this.notas,
-    required this.seccion, // Agregamos la sección al modelo
+    required this.seccion, 
   });
 
-  // Convertir a Map para facilitar la manipulación reactiva
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'nombre': nombre,
       'ciclo': ciclo,
       'notas': notas,
-      'seccion': seccion, // Agregamos la sección al mapa
+      'seccion': seccion, 
 
     };
   }

@@ -21,7 +21,7 @@ class SeccionService {
 
     try {
       final jsonString = await rootBundle.loadString(
-        'assets/jsons/seccion.json',
+        'assets/data/seccion.json',
       );
 
       final Map<String, dynamic> jsonData = jsonDecode(jsonString);
