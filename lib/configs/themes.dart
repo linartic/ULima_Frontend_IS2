@@ -3,38 +3,62 @@
 import 'package:flutter/material.dart';
 
 class MaterialTheme {
-
   final TextTheme textTheme;
 
   const MaterialTheme(this.textTheme);
 
-  static const Color primaryColor =
-      Color(0xFFFF6600);
+  static const Color primaryColor = Color(0xFFFF6600);
 
-  static const Color primaryDark =
-      Color(0xFFD45500);
+  static const Color primaryDark = Color(0xFFD45500);
 
-  static const Color blackColor =
-      Color(0xFF1A1A1A);
+  static const Color blackColor = Color(0xFF1A1A1A);
 
-  static const Color greyColor =
-      Color.fromARGB(255, 32, 32, 32);
+  static const Color greyColor = Color.fromARGB(255, 32, 32, 32);
 
-  static const Color whiteColor =
-      Color(0xFFFFFFFF);
+  static const Color whiteColor = Color(0xFFFFFFFF);
+
+  //FONDO HEADER
+  static Color headerColor(Brightness brightness) {
+    return brightness == Brightness.light
+        ? primaryColor
+        : const Color(0xFF1F1F1F);
+  }
+
+  //INFO CURSOS
+  static Color bloqueCurso(Brightness brightness) {
+    return brightness == Brightness.light
+        ? const Color(0xFFFF7A1A)
+        : primaryColor;
+  }
+
+  static Color bloqueSeccion(Brightness brightness) {
+    return brightness == Brightness.light
+        ? const Color(0xFFFFD8C2)
+        : const Color(0xFF4A332B);
+  }
+
+  static Color bloqueAsistencia(Brightness brightness) {
+    return brightness == Brightness.light
+        ? const Color(0xFFFFE8DC)
+        : const Color(0xFF342B2F);
+  }
+
+  static Color bloqueAsistenciaLinea(Brightness brightness) {
+    return brightness == Brightness.light
+        ? const Color(0xFFE3B08C)
+        : const Color(0xFFFFB088);
+  }
 
   // LIGHT SCHEME
   static ColorScheme lightScheme() {
-
     return const ColorScheme(
-
       brightness: Brightness.light,
 
       primary: primaryColor,
 
       onPrimary: whiteColor,
 
-      primaryContainer: Color(0xFFFFE0CC),
+      primaryContainer: primaryColor,
 
       onPrimaryContainer: blackColor,
 
@@ -75,15 +99,12 @@ class MaterialTheme {
   }
 
   ThemeData light() {
-
     return theme(lightScheme());
   }
 
   // DARK SCHEME
   static ColorScheme darkScheme() {
-
     return const ColorScheme(
-
       brightness: Brightness.dark,
 
       primary: primaryColor,
@@ -131,22 +152,18 @@ class MaterialTheme {
   }
 
   ThemeData dark() {
-
     return theme(darkScheme());
   }
 
   ThemeData theme(ColorScheme colorScheme) {
-
     return ThemeData(
-
       useMaterial3: true,
 
       brightness: colorScheme.brightness,
 
       colorScheme: colorScheme,
 
-      scaffoldBackgroundColor:
-          colorScheme.surface,
+      scaffoldBackgroundColor: colorScheme.surface,
 
       canvasColor: colorScheme.surface,
 
@@ -156,24 +173,16 @@ class MaterialTheme {
         elevation: 0,
       ),
 
-      elevatedButtonTheme:
-          ElevatedButtonThemeData(
-
+      elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
 
-          backgroundColor:
-              colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
 
-          foregroundColor:
-              colorScheme.onPrimary,
-
-          padding: const EdgeInsets.symmetric(
-            vertical: 16,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 16),
 
           shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(14),
           ),
         ),
       ),
@@ -183,10 +192,7 @@ class MaterialTheme {
 
         elevation: 2,
 
-        shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(18),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       ),
 
       textTheme: textTheme.apply(

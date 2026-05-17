@@ -19,6 +19,6 @@ class AnunciosPage extends StatelessWidget {
 
     control.context = context;
 
-    return DescripCursos();
+    return DescripCursosPage();
   }
 }

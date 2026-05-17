@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../configs/themes.dart';
 import '../../models/seccion_model.dart';
 
 import 'anuncios_tab.dart';
@@ -11,48 +12,66 @@ import 'contactos_tab.dart';
 
 import 'descrip_cursos_controller.dart';
 
-class DescripCursos extends StatelessWidget {
-  DescripCursos({super.key});
+class DescripCursosPage extends StatelessWidget {
+  DescripCursosPage({super.key, this.initialSeccion});
 
   final DescripCursosController control = Get.put(DescripCursosController());
+  final Seccion? initialSeccion;
+
+  Color _courseBackground(ColorScheme colors) {
+    return MaterialTheme.bloqueCurso(colors.brightness);
+  }
+
+  Color _sectionBackground(ColorScheme colors) {
+    return MaterialTheme.bloqueSeccion(colors.brightness);
+  }
+
+  Color _attendanceBackground(ColorScheme colors) {
+    return MaterialTheme.bloqueAsistencia(colors.brightness);
+  }
+
+  Color _attendanceDivider(ColorScheme colors) {
+    return MaterialTheme.bloqueAsistenciaLinea(colors.brightness);
+  }
 
   Widget _courseTitle(BuildContext context, Seccion seccion) {
     ColorScheme colors = Theme.of(context).colorScheme;
 
-    return Container(
-      width: double.infinity,
-      color: colors.primary,
-
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-
-      child: Stack(
-        alignment: Alignment.center,
-
-        children: [
-          Center(
-            child: Text(
-              seccion.curso,
-
-              style: TextStyle(
-                color: colors.onPrimary,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+    return Material(
+      color: _courseBackground(colors),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.fromLTRB(
+          20,
+          MediaQuery.paddingOf(context).top + 10,
+          20,
+          18,
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Center(
+              child: Text(
+                seccion.curso,
+                style: TextStyle(
+                  color: colors.onPrimary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
-          ),
 
-          Align(
-            alignment: Alignment.centerLeft,
-
-            child: InkWell(
-              onTap: () {
-                Get.back();
-              },
-
-              child: Icon(Icons.arrow_back, color: colors.onPrimary),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: Icon(Icons.arrow_back, color: colors.onPrimary),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -63,11 +82,19 @@ class DescripCursos extends StatelessWidget {
     return Container(
       width: double.infinity,
 
-      color: colors.primaryContainer,
+      color: _sectionBackground(colors),
 
       padding: const EdgeInsets.symmetric(vertical: 10),
 
-      child: Center(child: Text('Sección: ${seccion.codigo}')),
+      child: Center(
+        child: Text(
+          'Sección: ${seccion.codigo}',
+          style: TextStyle(
+            color: colors.onSurface,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
     );
   }
 
@@ -85,7 +112,7 @@ class DescripCursos extends StatelessWidget {
     return Container(
       width: double.infinity,
 
-      color: colors.secondaryContainer,
+      color: _attendanceBackground(colors),
 
       padding: const EdgeInsets.all(20),
 
@@ -145,7 +172,7 @@ class DescripCursos extends StatelessWidget {
 
                     const SizedBox(height: 14),
 
-                    Container(height: 1, color: Colors.black26),
+                    Container(height: 1, color: _attendanceDivider(colors)),
 
                     const SizedBox(height: 14),
 
@@ -192,7 +219,7 @@ class DescripCursos extends StatelessWidget {
                       height: 48,
 
                       decoration: BoxDecoration(
-                        color: colors.secondaryContainer,
+                        color: _attendanceBackground(colors),
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -321,24 +348,27 @@ class DescripCursos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (control.secciones.isEmpty) {
+      if (initialSeccion == null && control.secciones.isEmpty) {
         return const SizedBox();
       }
 
-      final seccion = control.secciones.first;
+      final seccion = initialSeccion ?? control.secciones.first;
 
-      return Column(
-        children: [
-          _courseTitle(context, seccion),
+      return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        body: Column(
+          children: [
+            _courseTitle(context, seccion),
 
-          _section(context, seccion),
+            _section(context, seccion),
 
-          _asistencia(context, seccion),
+            _asistencia(context, seccion),
 
-          _tabs(context),
+            _tabs(context),
 
-          Expanded(child: _selectedPage(seccion)),
-        ],
+            Expanded(child: _selectedPage(seccion)),
+          ],
+        ),
       );
     });
   }

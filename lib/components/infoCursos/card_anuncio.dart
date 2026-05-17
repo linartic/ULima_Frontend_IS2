@@ -21,8 +21,14 @@ class CardAnuncio extends StatelessWidget {
     ColorScheme colors =
         Theme.of(context).colorScheme;
 
-    return Card(
-
+    return Container(
+      
+      decoration: BoxDecoration(
+        color: colors.tertiaryContainer, 
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: colors.outline.withOpacity(0.2)),
+      ),
+      
       margin: const EdgeInsets.only(
         bottom: 12,
       ),

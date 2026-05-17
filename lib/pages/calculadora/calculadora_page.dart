@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import '../../components/calculadora/curso_card.dart';
 import '../../components/calculadora/add_nota_with_syllabus_modal.dart';
 import 'calculadora_controller.dart';
-import '../../components/header/app_header.dart';
-import '../../components/footer/app_footer.dart';
 
 // Usamos GetView para evitar el Get.put manual si ya está en los bindings,
 // o simplemente para tener acceso directo a 'controller'.
@@ -22,21 +20,12 @@ class CalculadoraPage extends GetView<CalculadoraController> {
       // En tu darkScheme pusiste surface: Color(0xFF1F1F1F)
       backgroundColor: colors.surface, 
       body: Column(
-        children: [
-          const AppHeader(),
-          
+        children: [ 
           // Header de Calculadora de Notas
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration( // Quitamos 'const' para usar variables
-              color: colors.surface, 
-              border: Border(
-                top: BorderSide(color: colors.primaryContainer, width: 2.0),
-                // Usará primaryColor (0xFFFF6600) tanto en light como dark según tu código
-                //bottom: BorderSide(color: colors.primaryContainer, width: 2.0),
-              ),
-            ),
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -160,10 +149,7 @@ class CalculadoraPage extends GetView<CalculadoraController> {
           ),
         ],
       ),
-      bottomNavigationBar: AppFooter(
-        currentIndex: 1,
-        onTap: (index) => print("Navegando al índice: $index"),
-      ),
+
     );
   }
 

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulima_plus/components/footer/app_footer.dart';
 import 'package:ulima_plus/components/header/app_header.dart';
-import 'package:ulima_plus/pages/descripCursos/descrip_cursos.dart';
+import 'package:ulima_plus/pages/calculadora/calculadora_page.dart';
+import 'package:ulima_plus/pages/horario_prueba/horario_prueba.dart';
 
 import 'home_controller.dart';
 
@@ -20,12 +21,11 @@ class _HomePageState extends State<HomePage> {
 
   int _currentIndex = 0;
 
-//aqui iran las paginas
-  final List<Widget> _pages = [ 
+  //aqui iran las paginas
+  final List<Widget> _pages = [
     Center(child: Text('Malla Curricular')),
-    Center(child: Text('Simulador de Notas')),
-    //DESCRIPCION DE CURSOS PARA PRUEBA - AL FINAL AQUI IRIA EL HORARIO
-    Center(child: DescripCursos()),
+    Center(child: CalculadoraPage()),
+    Center(child: HorarioPage()),
     Center(child: Text('Perfil')),
   ];
 
@@ -35,15 +35,30 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    //HEADER
     return Scaffold(
+      backgroundColor: colors.surface,
+      body: Column(
+        children: [
+          const AppHeader(),
 
-      appBar: AppHeader(),
+          SizedBox(height: 0.5),
+          
+          Divider(
+            color: colors.primaryContainer,
+            thickness: 2.0,
+          ),
 
-      body: _buildBody(),
-
+          //CUERPO
+          Expanded(child: _buildBody()),
+          
+        ],
+      ),
+      //FOOTER
       bottomNavigationBar: AppFooter(
         currentIndex: _currentIndex,
-
         onTap: (index) {
           setState(() {
             _currentIndex = index;

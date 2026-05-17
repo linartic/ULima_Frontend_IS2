@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ulima_plus/pages/home/home_page.dart';
 import 'pages/calculadora/calculadora_page.dart';
 import '/configs/themes.dart';
 import '/services/evaluation_syllabus_service.dart';
@@ -29,7 +30,14 @@ class MyApp extends StatelessWidget {
       darkTheme: materialTheme.dark(),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: CalculadoraPage(),
+      initialRoute: '/home',
+
+      routes: {
+
+        '/home': (context) => HomePage(),
+      },
+
+      home: HomePage(),
       
     );
   }
