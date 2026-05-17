@@ -47,10 +47,12 @@ class CalculadoraController extends GetxController {
       if (curso['notas'] != null) {
         notasRx.addAll(List<Map<String, dynamic>>.from(curso['notas']));
       }
+      
       return {
-        'id': curso['id'],
-        'nombre': curso['nombre'],
-        'ciclo': curso['ciclo'],
+        'id': curso['id']?.toString() ?? '',
+        'nombre': curso['nombre']?.toString() ?? 'Curso sin nombre',
+        'ciclo': curso['ciclo']?.toString() ?? '',
+        'seccion': curso['seccion']?.toString() ?? 'Sin sección', 
         'notas': notasRx,
       };
     }).toList();

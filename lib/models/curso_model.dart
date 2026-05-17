@@ -5,12 +5,14 @@ class Curso {
   final String nombre;
   final String ciclo;
   final List<Map<String, dynamic>> notas;
+  final String seccion; // Agregamos la sección al modelo
 
   Curso({
     required this.id,
     required this.nombre,
     required this.ciclo,
     required this.notas,
+    required this.seccion, // Agregamos la sección al modelo
   });
 
   // Convertir a Map para facilitar la manipulación reactiva
@@ -20,6 +22,8 @@ class Curso {
       'nombre': nombre,
       'ciclo': ciclo,
       'notas': notas,
+      'seccion': seccion, // Agregamos la sección al mapa
+
     };
   }
 }
