@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ulima_plus/pages/home/home_page.dart';
-import 'pages/calculadora/calculadora_page.dart';
 import '/configs/themes.dart';
 import '/services/evaluation_syllabus_service.dart';
 import '/services/courses_service.dart';
