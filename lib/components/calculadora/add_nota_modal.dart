@@ -49,8 +49,10 @@ class _AddNotaModalState extends State<AddNotaModal> {
 
   void _agregarNota() {
     if (_cursoSeleccionado == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Por favor selecciona un curso')),
+      Get.snackbar(
+        'Atención', 
+        'Por favor selecciona un curso',
+        snackPosition: SnackPosition.BOTTOM,
       );
       return;
     }
@@ -60,7 +62,13 @@ class _AddNotaModalState extends State<AddNotaModal> {
     final controller = Get.find<CalculadoraController>();
     final nota = double.parse(_notaController.text);
 
-    controller.agregarNota(_cursoSeleccionado!, 'Nueva Evaluación', 10, nota);
+    controller.agregarNota(
+      _cursoSeleccionado!,
+      'Nueva Evaluación',
+      10,
+      nota,
+      '',
+    );
     
     Navigator.pop(context);
   }
@@ -68,39 +76,44 @@ class _AddNotaModalState extends State<AddNotaModal> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CalculadoraController>();
+    final colors = Theme.of(context).colorScheme;
 
     return Container(
       padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+      decoration: BoxDecoration(
+        color: colors.surface, // Cambia automáticamente a gris oscuro o claro
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Agregar Nota",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(
+            "Agregar Nota",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: colors.onSurface),
+          ),
           const SizedBox(height: 20),
-          _buildLabel("Curso"),
+          _buildLabel("Curso", colors),
           Obx(() {
             final cursos = controller.cursos;
             return Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade300),
-                  borderRadius: BorderRadius.circular(15)),
+                border: Border.all(color: colors.outline.withOpacity(0.5)),
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(
+                  dropdownColor: colors.surface,
                   isExpanded: true,
-                  hint: const Text("Selecciona un curso"),
+                  hint: Text("Selecciona un curso", style: TextStyle(color: colors.onSurfaceVariant.withOpacity(0.6))),
                   value: _cursoSeleccionado,
+                  style: TextStyle(color: colors.onSurface),
                   items: List.generate(
                     cursos.length,
                     (index) => DropdownMenuItem(
                       value: index,
-                      child: Text(
-                          "${cursos[index]['id']} - ${cursos[index]['nombre']}"),
+                      child: Text("${cursos[index]['id']} - ${cursos[index]['nombre']}"),
                     ),
                   ),
                   onChanged: (value) {
@@ -111,52 +124,68 @@ class _AddNotaModalState extends State<AddNotaModal> {
             );
           }),
           const SizedBox(height: 15),
-          _buildLabel("Evaluación"),
-          _buildDropdown("Examen Final - 30%"),
+          _buildLabel("Evaluación", colors),
+          _buildDropdown("Examen Final - 30%", colors),
           const SizedBox(height: 15),
-          // Info Box Azul
+          
+          // Info Box Adaptable (Ya no es azul estática)
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-                color: const Color(0xFFE3F2FD),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: Colors.blue.shade100)),
+              color: colors.secondaryContainer.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: colors.secondary.withOpacity(0.3)),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Peso automático:",
-                        style: TextStyle(
-                            color: Colors.blue.shade900,
-                            fontWeight: FontWeight.bold)),
-                    const Text("Este peso se obtuvo del sílabo del curso",
-                        style: TextStyle(color: Colors.blue, fontSize: 11)),
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Peso automático:",
+                        style: TextStyle(color: colors.secondary, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Este peso se obtuvo del sílabo del curso",
+                        style: TextStyle(color: colors.onSurfaceVariant.withOpacity(0.7), fontSize: 11),
+                      ),
+                    ],
+                  ),
                 ),
-                Text("30%",
-                    style: TextStyle(
-                        color: Colors.blue.shade900,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)),
+                Text(
+                  "30%",
+                  style: TextStyle(color: colors.secondary, fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 15),
-          _buildLabel("Nota (0-20)"),
+          _buildLabel("Nota (0-20)", colors),
           TextField(
             controller: _notaController,
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            style: TextStyle(color: colors.onSurface),
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
             decoration: InputDecoration(
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide(color: colors.outline.withOpacity(0.5)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide(color: colors.primary),
+              ),
               hintText: "Ej: 18",
-              hintStyle: TextStyle(color: Colors.grey.shade400),
+              hintStyle: TextStyle(color: colors.onSurfaceVariant.withOpacity(0.4)),
               errorText: _notaError,
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(color: Colors.red),
+                borderSide: BorderSide(color: colors.error),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide(color: colors.error, width: 2.0),
               ),
             ),
             onChanged: (_) => setState(() => _notaError = null),
@@ -165,23 +194,30 @@ class _AddNotaModalState extends State<AddNotaModal> {
           Row(
             children: [
               Expanded(
-                  child: OutlinedButton(
-                      onPressed: () => Navigator.pop(context),
-                      style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.all(16),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      child: const Text("Cancelar"))),
+                child: OutlinedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: colors.primary,
+                    side: BorderSide(color: colors.primary),
+                    padding: const EdgeInsets.all(16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  ),
+                  child: const Text("Cancelar"),
+                ),
+              ),
               const SizedBox(width: 15),
               Expanded(
-                  child: ElevatedButton(
-                      onPressed: _agregarNota,
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange.shade800,
-                          padding: const EdgeInsets.all(16),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      child: const Text("Agregar"))),
+                child: ElevatedButton(
+                  onPressed: _agregarNota,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: colors.primary,
+                    foregroundColor: colors.onPrimary,
+                    padding: const EdgeInsets.all(16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  ),
+                  child: const Text("Agregar"),
+                ),
+              ),
             ],
           )
         ],
@@ -189,22 +225,29 @@ class _AddNotaModalState extends State<AddNotaModal> {
     );
   }
 
-  Widget _buildLabel(String text) => Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Text(text,
-          style: TextStyle(
-              fontWeight: FontWeight.w500, color: Colors.grey.shade700)));
+  Widget _buildLabel(String text, ColorScheme colors) => Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.w500, color: colors.onSurfaceVariant.withOpacity(0.8)),
+        ),
+      );
 
-  Widget _buildDropdown(String value) => Container(
+  Widget _buildDropdown(String value, ColorScheme colors) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
-            borderRadius: BorderRadius.circular(15)),
+          border: Border.all(color: colors.outline.withOpacity(0.5)),
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: DropdownButtonHideUnderline(
-            child: DropdownButton(
-                isExpanded: true,
-                value: value,
-                items: [DropdownMenuItem(value: value, child: Text(value))],
-                onChanged: (v) {})),
+          child: DropdownButton(
+            dropdownColor: colors.surface,
+            isExpanded: true,
+            value: value,
+            style: TextStyle(color: colors.onSurface),
+            items: [DropdownMenuItem(value: value, child: Text(value))],
+            onChanged: (v) {},
+          ),
+        ),
       );
 }

@@ -46,7 +46,7 @@ class MaterialTheme {
 
       onSecondaryContainer: blackColor,
 
-      tertiary: greyColor,
+      tertiary: Color.fromARGB(255, 58, 58, 58),
 
       onTertiary: whiteColor,
 
@@ -92,7 +92,7 @@ class MaterialTheme {
 
       primaryContainer: primaryDark,
 
-      onPrimaryContainer: whiteColor,
+      onPrimaryContainer: Color.fromARGB(255, 42, 42, 42),
 
       secondary: Color(0xFFFF8C42),
 

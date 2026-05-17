@@ -17,13 +17,16 @@ class NotaTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    
+    // Usamos tertiaryContainer como fondo intermedio para dar profundidad
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 245, 244, 244),
+        color: colors.tertiaryContainer, 
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.black.withOpacity(0.03)),
+        border: Border.all(color: colors.outline.withOpacity(0.2)),
       ),
       child: Row(
         children: [
@@ -33,22 +36,22 @@ class NotaTile extends StatelessWidget {
               children: [
                 Text(
                   titulo,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: Colors.black87,
+                    color: colors.onTertiaryContainer, // Blanco en Dark Mode
                   ),
                 ),
                 const SizedBox(height: 4),
                 RichText(
                   text: TextSpan(
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant.withOpacity(0.6)),
                     children: [
                       TextSpan(text: "Peso: $peso%  •  "),
                       TextSpan(
                         text: "Nota: ${nota.toStringAsFixed(1)}/20",
-                        style: const TextStyle(
-                          color: Color(0xFF00BFA5),
+                        style: TextStyle(
+                          color: colors.primary, // Resalta usando el naranja del tema
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -61,21 +64,24 @@ class NotaTile extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.delete_outline,
-              color: Colors.red.shade300,
+              color: colors.error, // Mapeado directamente al color de error del tema
               size: 22,
             ),
             onPressed: () {
               Get.defaultDialog(
                 title: "Eliminar Nota",
+                titleStyle: TextStyle(color: colors.onSurface),
+                middleTextStyle: TextStyle(color: colors.onSurfaceVariant),
+                backgroundColor: colors.surface,
                 middleText: "¿Estás seguro de que quieres eliminar '$titulo'?",
                 textConfirm: "Eliminar",
                 textCancel: "Cancelar",
-                confirmTextColor: Colors.white,
-                buttonColor: Colors.red.shade400,
+                confirmTextColor: colors.onError,
+                buttonColor: colors.error,
                 onConfirm: () {
                   onDelete();
-                  print("✅ ÉXITO: Se eliminó la nota '$titulo' correctamente."); // Ejecuta la eliminación real
-                  Get.back(); // Cierra el diálogo
+                  print("✅ ÉXITO: Se eliminó la nota '$titulo' correctamente.");
+                  Get.back();
                 },
               );
             },

@@ -1,0 +1,81 @@
+{
+  "cursos": [
+    {
+      "id": "650006",
+      "nombre": "CÁLCULO III",
+      "ciclo": "2026-0",
+      "notas": [
+        {
+          "titulo": "Práctica Calificada 1",
+          "peso": 15,
+          "valor": 20.0
+        },
+        {
+          "titulo": "Práctica Calificada 2",
+          "peso": 15,
+          "valor": 15.0
+        }
+      ]
+    },
+    {
+      "id": "650026",
+      "nombre": "INGENIERÍA DE SOFTWARE I",
+      "ciclo": "2026-0",
+      "notas": [
+        {
+          "titulo": "Práctica Calificada 2",
+          "peso": 15,
+          "valor": 20.0
+        }
+      ]
+    },
+    {
+      "id": "650015",
+      "nombre": "PROGRAMACIÓN ORIENTADA A OBJETOS",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650008",
+      "nombre": "FÍSICA II",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650010",
+      "nombre": "QUÍMICA GENERAL",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650012",
+      "nombre": "ÁLGEBRA LINEAL",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650020",
+      "nombre": "BASE DE DATOS I",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650025",
+      "nombre": "SISTEMAS OPERATIVOS",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650030",
+      "nombre": "REDES DE COMPUTADORAS",
+      "ciclo": "2026-0",
+      "notas": []
+    },
+    {
+      "id": "650035",
+      "nombre": "CÁLCULO I",
+      "ciclo": "2026-0",
+      "notas": []
+    }
+  ]
+}

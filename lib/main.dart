@@ -2,11 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'pages/calculadora/calculadora_page.dart';
-import 'pages/anuncios/anuncios_page.dart';
-import '/configs/themes.dart'; 
+import '/configs/themes.dart';
+import '/services/evaluation_syllabus_service.dart';
+import '/services/courses_service.dart';
 
-
-void main() {
+void main() async {
+  // Inicializar servicios antes de ejecutar la app
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.wait([
+    EvaluationSyllabusService().loadEvaluationData(),
+    CoursesService().loadCoursesData(),
+  ]);
   runApp(const MyApp());
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'nota_tile.dart';
 
 class CursoCard extends StatelessWidget {
@@ -8,37 +9,40 @@ class CursoCard extends StatelessWidget {
   final int cursoIndex;
   final Function(int, int) onDeleteNota;
 
-  const CursoCard(
-      {super.key, 
-      required this.curso,
-      required this.promedio,
-      required this.sumaPesos,
-      required this.cursoIndex,
-      required this.onDeleteNota});
+  const CursoCard({
+    super.key, 
+    required this.curso,
+    required this.promedio,
+    required this.sumaPesos,
+    required this.cursoIndex,
+    required this.onDeleteNota,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF), // Fondo gris muy claro para el cuerpo
+        color:  colors.onSecondary, // Quitamos el fondo forzado para evitar bloques negros
         borderRadius: BorderRadius.circular(30),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          )
-        ],
       ),
       child: Column(
         children: [
           // Header Naranja - Parte Superior
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: const Color(0xFFE65100), // Naranja Ulima
+              color: colors.primaryContainer, // Usamos primaryColor (0xFFFF6600) directo del theme
               borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                  color: colors.shadow.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                )
+              ],
             ),
             child: Column(
               children: [
@@ -49,60 +53,75 @@ class CursoCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(curso['id'],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13)),
-                          Text(curso['nombre'],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600)),
-                          Text("Ciclo: ${curso['ciclo']}",
-                              style: TextStyle(
-                                  color: Colors.white.withOpacity(0.8),
-                                  fontSize: 11)),
+                          Text(
+                            curso['id'],
+                            style: TextStyle(
+                              color: colors.onPrimary, // Blanco dinámico
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                          Text(
+                            curso['nombre'],
+                            style: TextStyle(
+                              color: colors.onPrimary,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            "Ciclo: ${curso['ciclo']}",
+                            style: TextStyle(
+                              color: colors.onPrimary.withOpacity(0.8),
+                              fontSize: 11,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(promedio.toStringAsFixed(2),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold)),
-                        const Row(
-                          children: [
-                            Icon(Icons.error_outline,
-                                color: Colors.white, size: 14),
-                            Text(" Desaprobado",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 11)),
-                          ],
-                        )
+                        Text(
+                          promedio.toStringAsFixed(2),
+                          style: TextStyle(
+                            color: colors.onPrimary,
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        // Estado dinámico: Si el promedio es < 10.5 (o la regla de la U), muestra desaprobado
+                        if (promedio < 11.0)
+                          Row(
+                            children: [
+                              Icon(Icons.error_outline, color: colors.onPrimary, size: 14),
+                              Text(
+                                " Desaprobado",
+                                style: TextStyle(color: colors.onPrimary, fontSize: 11),
+                              ),
+                            ],
+                          ),
                       ],
                     )
                   ],
                 ),
                 const SizedBox(height: 15),
+                
                 // Barra de pesos estilizada
                 Container(
                   height: 38,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.15),
+                    color: colors.shadow.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Stack(
                     children: [
-                      // El progreso real
                       FractionallySizedBox(
                         widthFactor: (sumaPesos / 100).clamp(0.0, 1.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.orangeAccent.withOpacity(0.7),
+                            // Usamos el color complementario del tema (secondary) para el relleno
+                            color: colors.secondary.withOpacity(0.6),
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
@@ -110,10 +129,11 @@ class CursoCard extends StatelessWidget {
                       Center(
                         child: Text(
                           "Suma de pesos: ${sumaPesos.toStringAsFixed(1)}% / 100%",
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13),
+                          style: TextStyle(
+                            color: colors.onPrimary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                          ),
                         ),
                       )
                     ],
@@ -123,20 +143,23 @@ class CursoCard extends StatelessWidget {
             ),
           ),
 
-          // Cuerpo con las Notas (NotaTile)
+          // Cuerpo con las Notas reactivo gracias a Obx
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Column(
-              children: List.generate(curso['notas'].length, (index) {
-                var nota = curso['notas'][index];
-                return NotaTile(
-                  titulo: nota['titulo'],
-                  peso: nota['peso'],
-                  nota: nota['valor'],
-                  onDelete: () => onDeleteNota(cursoIndex, index),
-                );
-              }),
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: Obx(() {
+              final listasNotas = curso['notas'] as List;
+              return Column(
+                children: List.generate(listasNotas.length, (index) {
+                  final nota = listasNotas[index];
+                  return NotaTile(
+                    titulo: nota['titulo'],
+                    peso: nota['peso'],
+                    nota: nota['valor'],
+                    onDelete: () => onDeleteNota(cursoIndex, index),
+                  );
+                }),
+              );
+            }),
           ),
         ],
       ),

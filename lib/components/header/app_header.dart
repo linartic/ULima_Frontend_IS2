@@ -18,10 +18,11 @@ class AppHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     // Ya no dependemos del colorScheme por defecto para el fondo
     return Container(
       // 1. CAMBIA EL COLOR A NARANJA (o Colors.white si lo quieres blanco)
-      color: const Color(0xFFE65100), 
+      color: colors.surface, // Naranja Ulima
 
       padding: const EdgeInsets.only(
         top: 50,
@@ -35,11 +36,11 @@ class AppHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+               Text(
                 'ULIMA++',
                 style: TextStyle(
                   // 2. TEXTO EN BLANCO PARA QUE RESALTE SOBRE EL NARANJA
-                  color: Colors.white, 
+                  color: colors.onPrimary,   // Blanco para texto sobre naranja
                   fontSize: 20,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.bold,
@@ -47,12 +48,12 @@ class AppHeader extends StatelessWidget {
               ),
 
               // NOTIFICACIONES
-              const Stack(
+              Stack(
                 children: [
                   Icon(
                     Icons.notifications_none,
                     // 3. ICONO EN BLANCO
-                    color: Colors.white, 
+                    color: colors.onPrimary,   // Blanco para texto sobre naranja
                     size: 30,
                   ),
                 ],

@@ -1,0 +1,134 @@
+{
+  "cursos": [
+    {
+      "cursoId": "650006",
+      "cursoNombre": "CÁLCULO III",
+      "evaluaciones": [
+        {
+          "id": "eval_001",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_002",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 15.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_003",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 30.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_004",
+          "nombre": "Trabajo Final",
+          "sigla": "TF",
+          "peso": 25.0,
+          "tipo": "trabajo"
+        },
+        {
+          "id": "eval_005",
+          "nombre": "Participación",
+          "sigla": "PA",
+          "peso": 15.0,
+          "tipo": "participacion"
+        }
+      ]
+    },
+    {
+      "cursoId": "650026",
+      "cursoNombre": "INGENIERÍA DE SOFTWARE I",
+      "evaluaciones": [
+        {
+          "id": "eval_006",
+          "nombre": "Práctica Calificada 1",
+          "sigla": "PC1",
+          "peso": 10.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_007",
+          "nombre": "Práctica Calificada 2",
+          "sigla": "PC2",
+          "peso": 10.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_008",
+          "nombre": "Práctica Calificada 3",
+          "sigla": "PC3",
+          "peso": 10.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_009",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 35.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_010",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 35.0,
+          "tipo": "examen"
+        }
+      ]
+    },
+    {
+      "cursoId": "650015",
+      "cursoNombre": "PROGRAMACIÓN ORIENTADA A OBJETOS",
+      "evaluaciones": [
+        {
+          "id": "eval_011",
+          "nombre": "Quiz 1",
+          "sigla": "Q1",
+          "peso": 5.0,
+          "tipo": "quiz"
+        },
+        {
+          "id": "eval_012",
+          "nombre": "Quiz 2",
+          "sigla": "Q2",
+          "peso": 5.0,
+          "tipo": "quiz"
+        },
+        {
+          "id": "eval_013",
+          "nombre": "Proyecto 1",
+          "sigla": "P1",
+          "peso": 20.0,
+          "tipo": "trabajo"
+        },
+        {
+          "id": "eval_014",
+          "nombre": "Proyecto 2",
+          "sigla": "P2",
+          "peso": 20.0,
+          "tipo": "trabajo"
+        },
+        {
+          "id": "eval_015",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 25.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_016",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 25.0,
+          "tipo": "examen"
+        }
+      ]
+    }
+  ]
+}

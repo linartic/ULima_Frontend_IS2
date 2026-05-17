@@ -1,3 +1,5 @@
+import '../services/courses_service.dart';
+
 class Curso {
   final String id;
   final String nombre;
@@ -22,23 +24,12 @@ class Curso {
   }
 }
 
-// Datos de cursos actualmente cursando
-final List<Map<String, dynamic>> cursosActivos = [
-  {
-    'id': '650006',
-    'nombre': 'CÁLCULO III',
-    'ciclo': '2026-0',
-    'notas': [
-      {'titulo': 'Práctica Calificada 1', 'peso': 15, 'valor': 20.0},
-      {'titulo': 'Práctica Calificada 2', 'peso': 15, 'valor': 15.0},
-    ],
-  },
-  {
-    'id': '650026',
-    'nombre': 'INGENIERÍA DE SOFTWARE I',
-    'ciclo': '2026-0',
-    'notas': [
-      {'titulo': 'Práctica Calificada 2', 'peso': 15, 'valor': 20.0},
-    ],
-  },
-];
+// Obtiene los datos de cursos desde el JSON
+List<Map<String, dynamic>> getCursosActivos() {
+  final service = CoursesService();
+  if (!service.isLoaded) {
+    print('⚠️ Advertencia: Datos de cursos no cargados aún');
+    return [];
+  }
+  return service.allCourses;
+}
