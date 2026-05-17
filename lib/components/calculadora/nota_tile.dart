@@ -19,7 +19,6 @@ class NotaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     
-    // Usamos tertiaryContainer como fondo intermedio para dar profundidad
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -39,7 +38,7 @@ class NotaTile extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: colors.onTertiaryContainer, // Blanco en Dark Mode
+                    color: colors.onTertiaryContainer, 
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -51,7 +50,7 @@ class NotaTile extends StatelessWidget {
                       TextSpan(
                         text: "Nota: ${nota.toStringAsFixed(1)}/20",
                         style: TextStyle(
-                          color: colors.primary, // Resalta usando el naranja del tema
+                          color: colors.primary, 
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -64,7 +63,7 @@ class NotaTile extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.delete_outline,
-              color: colors.error, // Mapeado directamente al color de error del tema
+              color: colors.error, 
               size: 22,
             ),
             onPressed: () {

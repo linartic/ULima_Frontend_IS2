@@ -25,7 +25,7 @@ class CursoCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color:  colors.onSecondary, // Quitamos el fondo forzado para evitar bloques negros
+        color:  colors.onSecondary, 
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -34,7 +34,7 @@ class CursoCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: colors.primaryContainer, // Usamos primaryColor (0xFFFF6600) directo del theme
+              color: colors.primaryContainer, 
               borderRadius: BorderRadius.circular(25),
               boxShadow: [
                 BoxShadow(
@@ -54,9 +54,9 @@ class CursoCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            curso['id'],
+                            curso['seccion'] ?? 'Sin sección', 
                             style: TextStyle(
-                              color: colors.onPrimary, // Blanco dinámico
+                              color: colors.onPrimary, 
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                             ),
@@ -90,7 +90,6 @@ class CursoCard extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        // Estado dinámico: Si el promedio es < 10.5 (o la regla de la U), muestra desaprobado
                         if (promedio < 11.0)
                           Row(
                             children: [
@@ -107,7 +106,6 @@ class CursoCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
                 
-                // Barra de pesos estilizada
                 Container(
                   height: 38,
                   decoration: BoxDecoration(
@@ -120,7 +118,6 @@ class CursoCard extends StatelessWidget {
                         widthFactor: (sumaPesos / 100).clamp(0.0, 1.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            // Usamos el color complementario del tema (secondary) para el relleno
                             color: colors.secondary.withOpacity(0.6),
                             borderRadius: BorderRadius.circular(12),
                           ),
@@ -143,7 +140,6 @@ class CursoCard extends StatelessWidget {
             ),
           ),
 
-          // Cuerpo con las Notas reactivo gracias a Obx
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Obx(() {

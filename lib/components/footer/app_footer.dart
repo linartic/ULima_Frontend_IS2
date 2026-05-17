@@ -17,7 +17,7 @@ class AppFooter extends StatelessWidget {
 
       onTap: onTap,
 
-      selectedItemColor: const Color(0xFFE65100), // El naranja que estás usando
+      selectedItemColor: const Color(0xFFE65100), 
       unselectedItemColor: Colors.grey,
 
       type: BottomNavigationBarType.fixed,

@@ -1,5 +1,3 @@
-/// Modelo para representar un componente de evaluación del sílabo
-/// Por ejemplo: PC1, PC2, EP, TF, etc.
 class EvaluationComponent {
   final String id;
   final String nombre; // Ej: "Práctica Calificada 1"

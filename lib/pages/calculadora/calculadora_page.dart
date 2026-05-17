@@ -218,54 +218,61 @@ class CalculadoraPage extends GetView<CalculadoraController> {
             const SizedBox(height: 16),
             ...List.generate(
               controller.cursos.length,
-              (index) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(ctx);
-                      _mostrarModalAgregarNota(context, index, controller);
-                    },
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: colors.primaryContainer.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: colors.primaryContainer.withOpacity(0.3),
+              (index) {
+                // Extraemos los datos de forma segura aquí
+                final curso = controller.cursos[index];
+                final seccion = curso['seccion']?.toString() ?? 'Sin sección';
+                final nombre = curso['nombre']?.toString() ?? 'Curso desconocido';
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(ctx);
+                        _mostrarModalAgregarNota(context, index, controller);
+                      },
+                      borderRadius: BorderRadius.circular(12),
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: colors.primary.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: colors.primary.withOpacity(0.3),
+                          ),
                         ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            controller.cursos[index]['id'],
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: colors.primaryContainer,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Usamos las variables seguras directamente
+                            Text(
+                              "Sección: $seccion", 
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: colors.primary,
+                              ),
                             ),
-                          ),
-                          Text(
-                            controller.cursos[index]['nombre'],
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: colors.onSurface,
+                            Text(
+                              nombre,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: colors.onSurface,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),
       ),
     );
-  }
-}
+  }}
