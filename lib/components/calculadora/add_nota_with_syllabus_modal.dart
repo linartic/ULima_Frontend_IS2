@@ -28,10 +28,12 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
   void initState() {
     super.initState();
     _valorController = TextEditingController();
-    
+
     // Obtenemos las evaluaciones que NO se han registrado aún
     final controller = Get.find<CalculadoraController>();
-    _evaluacionesDisponibles = controller.getAvailableEvaluations(widget.cursoIndex);
+    _evaluacionesDisponibles = controller.getAvailableEvaluations(
+      widget.cursoIndex,
+    );
   }
 
   @override
@@ -102,15 +104,15 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final primary = colors.primary; 
+    final primary = colors.primary;
 
     return Padding(
       padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom, 
+        bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
       child: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(24), 
+          padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: colors.surface,
             borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
@@ -199,7 +201,9 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                       isExpanded: true,
                       hint: Text(
                         'Selecciona una evaluación',
-                        style: TextStyle(color: colors.onSurfaceVariant.withOpacity(0.6)),
+                        style: TextStyle(
+                          color: colors.onSurfaceVariant.withOpacity(0.6),
+                        ),
                       ),
                       value: _evaluacionSeleccionada,
                       style: TextStyle(color: colors.onSurface, fontSize: 14),
@@ -226,9 +230,8 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width - 160,
+
+                              Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -237,7 +240,7 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                                       evaluacion.nombre,
                                       style: const TextStyle(fontSize: 13),
                                       maxLines: 1,
-                                      overflow: TextOverflow.ellipsis, 
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                     Text(
                                       'Peso: ${evaluacion.peso.toStringAsFixed(1)}%',
@@ -317,20 +320,28 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                     const SizedBox(height: 8),
                     TextField(
                       controller: _valorController,
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
                       style: TextStyle(color: colors.onSurface),
                       decoration: InputDecoration(
                         hintText: 'Ej: 15.5',
-                        hintStyle: TextStyle(color: colors.onSurfaceVariant.withOpacity(0.6)),
+                        hintStyle: TextStyle(
+                          color: colors.onSurfaceVariant.withOpacity(0.6),
+                        ),
                         errorText: _valorError,
                         errorStyle: TextStyle(color: colors.error),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: colors.outline.withOpacity(0.5)),
+                          borderSide: BorderSide(
+                            color: colors.outline.withOpacity(0.5),
+                          ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide(color: colors.outline.withOpacity(0.5)),
+                          borderSide: BorderSide(
+                            color: colors.outline.withOpacity(0.5),
+                          ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -354,22 +365,33 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                     child: OutlinedButton(
                       onPressed: () => Navigator.pop(context),
                       style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: colors.outline.withOpacity(0.5)),
+                        side: BorderSide(
+                          color: colors.outline.withOpacity(0.5),
+                        ),
                         padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                      child: Text('Cancelar', style: TextStyle(color: colors.onSurface)),
+                      child: Text(
+                        'Cancelar',
+                        style: TextStyle(color: colors.onSurface),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: _evaluacionesDisponibles.isNotEmpty ? _agregarNota : null,
+                      onPressed: _evaluacionesDisponibles.isNotEmpty
+                          ? _agregarNota
+                          : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primary,
                         foregroundColor: colors.onPrimary,
                         padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                         disabledBackgroundColor: primary.withOpacity(0.3),
                       ),
                       child: const Text(

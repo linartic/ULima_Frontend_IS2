@@ -34,12 +34,7 @@ class LoginController extends GetxController {
       return;
     }
 
-    final user = _auth.currentUser!;
-    if (user.setupComplete) {
-      Get.offAllNamed('/home');
-    } else {
-      Get.offAllNamed('/setup-carrera');
-    }
+    Get.offAllNamed('/setup-carrera');
   }
 
   @override

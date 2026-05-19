@@ -6,9 +6,7 @@ import 'package:get/get.dart';
 import '../../services/auth_service.dart';
 
 class SetupCarreraController extends GetxController {
-  final carreras = const <String>[
-    'Ingeniería de Sistemas',
-  ];
+  static const carreraFija = 'Ingeniería de Sistemas';
 
   final especialidadesDisponibles = const <String>[
     'Desarrollo de Software',
@@ -17,7 +15,7 @@ class SetupCarreraController extends GetxController {
     'Tecnologías de la Información',
   ];
 
-  final selectedCarrera = RxnString();
+  final selectedCarrera = carreraFija.obs;
   final selectedEspecialidades = <String>{}.obs;
   final errorMessage = RxnString();
   final saving = false.obs;
@@ -27,11 +25,7 @@ class SetupCarreraController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Si el usuario ya tenía carrera previa (por si vuelve a setup), la pre-cargamos
     final u = _auth.currentUser;
-    if (u?.career != null && carreras.contains(u!.career)) {
-      selectedCarrera.value = u.career;
-    }
     if (u?.especialidades.isNotEmpty == true) {
       selectedEspecialidades.assignAll(u!.especialidades);
     }
@@ -46,16 +40,12 @@ class SetupCarreraController extends GetxController {
   }
 
   Future<void> finish() async {
-    if (selectedCarrera.value == null) {
-      errorMessage.value = 'Selecciona tu carrera para continuar.';
-      return;
-    }
     errorMessage.value = null;
     saving.value = true;
     // Aquí podríamos persistir contra un backend en el futuro.
     // Por ahora actualizamos el usuario en memoria.
     _auth.completeSetup(
-      career: selectedCarrera.value!,
+      career: selectedCarrera.value,
       especialidades: selectedEspecialidades.toList(),
     );
     saving.value = false;

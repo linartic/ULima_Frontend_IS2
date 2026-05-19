@@ -6,6 +6,7 @@ import 'package:ulima_plus/components/footer/app_footer.dart';
 import 'package:ulima_plus/components/header/app_header.dart';
 import 'package:ulima_plus/pages/calculadora/calculadora_page.dart';
 import 'package:ulima_plus/pages/horario_prueba/horario_prueba.dart';
+import 'package:ulima_plus/pages/malla/malla_page.dart';
 
 import 'home_controller.dart';
 
@@ -22,10 +23,10 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   //aqui iran las paginas
-  final List<Widget> _pages = [
-    Center(child: Text('Malla Curricular')),
-    Center(child: CalculadoraPage()),
-    Center(child: HorarioPage()),
+  final List<Widget> _pages = const [
+    MallaPage(),
+    CalculadoraPage(),
+    HorarioPage(),
     Center(child: Text('Perfil')),
   ];
 
