@@ -4,14 +4,14 @@ class CardAnuncio extends StatelessWidget {
 
   final String titulo;
   final String descripcion;
-  final String profesor;
+  final String autor;
   final String fecha;
 
   const CardAnuncio({
     super.key,
     required this.titulo,
     required this.descripcion,
-    required this.profesor,
+    required this.autor,
     required this.fecha,
   });
 
@@ -24,9 +24,9 @@ class CardAnuncio extends StatelessWidget {
     return Container(
       
       decoration: BoxDecoration(
-        color: colors.tertiaryContainer, 
+        color: colors.surface, 
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: colors.outline.withOpacity(0.2)),
+        border: Border.all(color: colors.outline, width: 0.5),
       ),
       
       margin: const EdgeInsets.only(
@@ -68,7 +68,7 @@ class CardAnuncio extends StatelessWidget {
 
                 Expanded(
                   child: Text(
-                    profesor,
+                    autor,
 
                     style: TextStyle(
                       color: colors.primary,

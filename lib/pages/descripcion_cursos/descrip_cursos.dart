@@ -13,14 +13,13 @@ import 'contactos_tab.dart';
 import 'descrip_cursos_controller.dart';
 
 class DescripCursosPage extends StatelessWidget {
+
+  final DescripCursosController control = Get.put(DescripCursosController()); //Controller
+  final Seccion? initialSeccion; //seccion inicial
+
   DescripCursosPage({super.key, this.initialSeccion});
 
-  final DescripCursosController control = Get.put(DescripCursosController());
-  final Seccion? initialSeccion;
 
-  Color _courseBackground(ColorScheme colors) {
-    return MaterialTheme.bloqueCurso(colors.brightness);
-  }
 
   Color _sectionBackground(ColorScheme colors) {
     return MaterialTheme.bloqueSeccion(colors.brightness);
@@ -38,12 +37,12 @@ class DescripCursosPage extends StatelessWidget {
     ColorScheme colors = Theme.of(context).colorScheme;
 
     return Material(
-      color: _courseBackground(colors),
+      color: colors.primary,
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.fromLTRB(
           20,
-          MediaQuery.paddingOf(context).top + 10,
+          MediaQuery.paddingOf(context).top + 30,
           20,
           18,
         ),
@@ -88,7 +87,7 @@ class DescripCursosPage extends StatelessWidget {
 
       child: Center(
         child: Text(
-          'Sección: ${seccion.codigo}',
+          'Sección: ${seccion.codigoSeccion}',
           style: TextStyle(
             color: colors.onSurface,
             fontWeight: FontWeight.w600,
@@ -101,13 +100,13 @@ class DescripCursosPage extends StatelessWidget {
   Widget _asistencia(BuildContext context, Seccion seccion) {
     ColorScheme colors = Theme.of(context).colorScheme;
 
-    int presentes = seccion.presentes;
+    int asistido = seccion.asistido;
 
-    int ausentes = seccion.ausentes;
+    int inasistencia = seccion.inasistencia;
 
     int total = seccion.total;
 
-    double porcentaje = presentes / total;
+    double porcentaje = asistido / total;
 
     return Container(
       width: double.infinity,
@@ -150,7 +149,7 @@ class DescripCursosPage extends StatelessWidget {
 
                         const SizedBox(width: 16),
 
-                        Text('$presentes horas'),
+                        Text('$asistido horas'),
                       ],
                     ),
 
@@ -166,7 +165,7 @@ class DescripCursosPage extends StatelessWidget {
 
                         const SizedBox(width: 16),
 
-                        Text('$ausentes horas'),
+                        Text('$inasistencia horas'),
                       ],
                     ),
 
@@ -293,8 +292,14 @@ class DescripCursosPage extends StatelessWidget {
   }
 
   Widget _tabs(BuildContext context) {
-    return Row(
+    ColorScheme colors = Theme.of(context).colorScheme;
+    return Container(
+      color: colors.surface,
+    
+    child: Row(
+
       children: [
+        
         _tabItem(
           context: context,
           icon: Icons.notifications_none,
@@ -316,47 +321,54 @@ class DescripCursosPage extends StatelessWidget {
           index: 2,
         ),
       ],
+    ),
+
     );
   }
 
-  Widget _selectedPage(Seccion seccion) {
-    return Obx(() {
+
+
+  Widget _selectedPage( BuildContext context) {
+    ColorScheme colors = Theme.of(context).colorScheme;
+
+  return Container(
+    color: colors.tertiaryContainer, 
+    child: Obx(() {
       switch (control.selectedTab.value) {
         case 0:
-          return AnunciosTab(
-            anuncios: seccion.anuncios,
-            delegadoNombre:
-                '${seccion.delegado.nombre} - ${seccion.delegado.rol}',
-          );
-
+        //ANUNCIOS
+          return AnunciosTab();
+          //ASESORIAS
         case 1:
-          return const AsesoriasTab();
-
+          return AsesoriasTab();
+          //CONTACTOS
         case 2:
           return const ContactosTab();
 
+
         default:
-          return AnunciosTab(
-            anuncios: seccion.anuncios,
-            delegadoNombre:
-                '${seccion.delegado.nombre} - ${seccion.delegado.rol}',
-          );
+          return AnunciosTab();
       }
-    });
-  }
+    }),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+
+      // Espera carga de seccion
       if (initialSeccion == null && control.secciones.isEmpty) {
         return const SizedBox();
       }
 
+      // seccion
       final seccion = initialSeccion ?? control.secciones.first;
 
       return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         body: Column(
+
           children: [
             _courseTitle(context, seccion),
 
@@ -366,7 +378,7 @@ class DescripCursosPage extends StatelessWidget {
 
             _tabs(context),
 
-            Expanded(child: _selectedPage(seccion)),
+            Expanded(child: _selectedPage(context)),
           ],
         ),
       );

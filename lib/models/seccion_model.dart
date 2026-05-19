@@ -1,45 +1,50 @@
-import 'anuncio_model.dart';
-import 'delegado_model.dart';
+import 'package:ulima_plus/models/docente_model.dart';
 
 class Seccion {
-  final String id;
 
+  final String idSeccion;
+  final String codigoSeccion;
+  final double promedioSeccion;
+  final String idCurso;
   final String curso;
-  final String codigo;
-  final String docente;
-  final Delegado delegado;
-
-  final int presentes;
-  final int ausentes;
+  final Docente docente;
+  final int asistido;
+  final int inasistencia;
   final int total;
 
-  final List<Anuncio> anuncios;
-
   Seccion({
-    required this.id,
+    required this.idSeccion,
+    required this.codigoSeccion,
+    required this.promedioSeccion,
+    required this.idCurso,
     required this.curso,
-    required this.codigo,
     required this.docente,
-    required this.delegado,
-    required this.presentes,
-    required this.ausentes,
+    required this.asistido,
+    required this.inasistencia,
     required this.total,
-    required this.anuncios,
   });
 
-  factory Seccion.fromJson(Map<String, dynamic> json) {
+  // Convierte JSON a objeto
+  factory Seccion.fromJson(Map<String,dynamic> json,) {
+
     return Seccion(
-      id: json['id'],
-      curso: json['curso'],
-      codigo: json['seccion'],
-      docente: json['docente'],
-      delegado: Delegado.fromJson(json['delegado']),
-      presentes: json['presentes'],
-      ausentes: json['ausentes'],
+
+      idSeccion:json['idSeccion'],
+
+      codigoSeccion:json['codigoSeccion'],
+
+      promedioSeccion: (json['promedioSeccion'] as num).toDouble(),
+
+      idCurso:json['idCurso'],
+      curso:json['curso'],
+
+      docente: Docente.fromJson(json['docente']),
+
+      asistido:json['asistido'],
+
+      inasistencia:json['inasistencia'],
+
       total: json['total'],
-      anuncios: (json['anuncios'] as List<dynamic>? ?? [])
-          .map((a) => Anuncio.fromJson(a))
-          .toList(),
     );
   }
 }

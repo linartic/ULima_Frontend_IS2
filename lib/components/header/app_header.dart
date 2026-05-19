@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ulima_plus/configs/themes.dart';
 class AppHeader extends StatelessWidget {
 
@@ -25,25 +26,49 @@ class AppHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'ULIMA++',
-                style: TextStyle(
-                  color: colors.onPrimary,
-                  fontSize: 20,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              
+            Text(
+            'ULIMA++',
 
-              Stack(
+            style: TextStyle(
+              color: colors.onPrimary,
+              fontSize: 20,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
+              ),
+            ),
+            
+
+          InkWell(
+                onTap: () {
+                  print('Ir a Alertas'); // Acción al tocar el ícono de notificaciones
+                  //Get.to(() => const AlertasPage()); // Acción al tocar el ícono de notificaciones
+                },
+                child: Stack(
                 children: [
+
                   Icon(
                     Icons.notifications_none,
                     color: colors.onPrimary,
                     size: 30,
                   ),
+
+                  //
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: Container(
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 29, 111, 219),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
                 ],
               ),
+            ),
             ],
           ),
         ],
@@ -51,3 +76,12 @@ class AppHeader extends StatelessWidget {
     );
   }
 }
+
+/* LOGO SVG
+SvgPicture.asset(
+                  'assets/images/logo.svg',
+                  width: 30,
+                  semanticsLabel: 'Logo',
+                  
+                ),
+*/

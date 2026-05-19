@@ -1,0 +1,20 @@
+{
+  "asesorias": [
+    {
+      "id": "1",
+      "cursoId": "IS2-856",
+      "curso": "Ingeniería de Software II",
+
+      "docente": {
+        "code": "D01",
+        "firstName": "Hernan",
+        "lastName": "Quintana"
+      },
+      "dia": "Lunes",
+      "inicio": "10:00",
+      "fin": "12:00",
+      "aula": "I2 piso 2 ITLAB",
+      "zoom": "https://www.figma.com/make/lhEnbMNLzpo7c57QibfDW2/ULIMA-Mobile-App-Design?p=f&t=bCsJTKQTX9Ifce6z-0"
+    }
+  ]
+}

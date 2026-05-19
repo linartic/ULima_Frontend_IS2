@@ -1,0 +1,21 @@
+{
+  "secciones": [
+    {
+      "idSeccion": "1",
+      "codigoSeccion": "856",
+      "promedioSeccion": 15.8,
+      "idCurso": "IS2-856",
+      "curso": "Ingeniería de Software II",
+
+      "docente": {
+        "code": "D01",
+        "firstName": "Hernan",
+        "lastName": "Quintana"
+      },
+
+      "asistido": 28,
+      "inasistencia": 4,
+      "total": 32
+    }
+  ]
+}

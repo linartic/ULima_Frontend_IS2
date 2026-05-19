@@ -73,18 +73,6 @@
       "setupComplete": true
     },
     {
-      "code": "20231483",
-      "password": "ulima123",
-      "firstName": "Melissa",
-      "lastName": "Ruiz",
-      "email": "20231483@aloe.ulima.edu.pe",
-      "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
-      "currentCycle": "2026-1",
-      "setupComplete": true
-    },
-    {
       "code": "20221234",
       "password": "ulima123",
       "firstName": "María",

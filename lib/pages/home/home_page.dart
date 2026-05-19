@@ -6,6 +6,7 @@ import 'package:ulima_plus/components/footer/app_footer.dart';
 import 'package:ulima_plus/components/header/app_header.dart';
 import 'package:ulima_plus/pages/calculadora/calculadora_page.dart';
 import 'package:ulima_plus/pages/horario_prueba/horario_prueba.dart';
+import 'package:ulima_plus/services/auth_service.dart';
 
 import 'home_controller.dart';
 
@@ -18,15 +19,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomeController control = Get.put(HomeController());
+  final user = AuthService.to.currentUser;
 
   int _currentIndex = 0;
 
   //aqui iran las paginas
-  final List<Widget> _pages = [
-    Center(child: Text('Malla Curricular')),
-    Center(child: CalculadoraPage()),
-    Center(child: HorarioPage()),
-    Center(child: Text('Perfil')),
+  late final List<Widget> _pages = [
+    const Center(child: Text('Malla Curricular')),
+    CalculadoraPage(),
+    HorarioPage(),
+
+    // MODULO EXTRA A LOS ALUMNOS CON ROL 'Delegado'
+    if(user?.isDelegate ?? false)
+    const Center(child: Text('Delegado')),
+
+    const Center(child: Text('Perfil')),
   ];
 
   Widget _buildBody() {
