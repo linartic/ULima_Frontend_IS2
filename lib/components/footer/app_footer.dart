@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:ulima_plus/services/auth_service.dart';
 
 
 class AppFooter extends StatelessWidget {
@@ -18,6 +19,8 @@ class AppFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     ColorScheme colors = Theme.of(context).colorScheme;
 
+    final user = AuthService.to.currentUser;
+
     return BottomNavigationBar(
       currentIndex: currentIndex,
 
@@ -32,31 +35,31 @@ class AppFooter extends StatelessWidget {
 
       type: BottomNavigationBarType.fixed,
 
-      items: const [
-        BottomNavigationBarItem(
+      items: [
+        const BottomNavigationBarItem(
           icon: Icon(LucideIcons.network),
           label: 'Malla',
         ),
 
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(LucideIcons.calculator),
           label: 'Notas',
         ),
 
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(LucideIcons.calendar),
 
           label: 'Horario',
         ),
 
-        /*
-        BottomNavigationBarItem(
+        // MODULO EXTRA A LOS ALUMNOS CON ROL 'Delegado'
+        if (user?.isDelegate ?? false)
+        const BottomNavigationBarItem(
           icon: Icon(LucideIcons.shield),
           label: 'Delegado',
         ),
-        */
 
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(LucideIcons.user),
           label: 'Perfil',
         ),

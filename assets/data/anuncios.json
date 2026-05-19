@@ -1,0 +1,45 @@
+{
+  "anuncios": [
+    {
+      "id": "1",
+      "cursoId": "IS2-854",
+      "titulo": "Nueva tarea",
+      "mensaje": "Se habilitó el laboratorio 4.",
+      "fecha": "16-05-2026",
+      "autor": {
+          "code": "20235218",
+          "password": "ulima123",
+          "firstName": "Jeff",
+          "lastName": "Angelo",
+          "email": "20235218@aloe.ulima.edu.pe",
+          "role": "delegado",
+          "career": "Ingeniería de Sistemas",
+          "especialidades": ["Desarrollo de Software"],
+          "currentCycle": "2026-1",
+          "setupComplete": true
+      }
+    },
+
+    {
+      "id": "2",
+      "cursoId": "IS2-854",
+      "titulo": "Cambio de Aula",
+      "mensaje": "La clase del miércoles será en el aula I2-204.",
+      "fecha": "14-05-2026",
+      "autor": {
+          "code": "20235218",
+          "password": "ulima123",
+          "firstName": "Jeff",
+          "lastName": "Angelo",
+          "email": "20235218@aloe.ulima.edu.pe",
+          "role": "delegado",
+          "career": "Ingeniería de Sistemas",
+          "especialidades": ["Desarrollo de Software"],
+          "currentCycle": "2026-1",
+          "setupComplete": true
+      }
+    }
+  ]
+}
+
+

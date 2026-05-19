@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../descripCursos/descrip_cursos.dart';
+import '../descripcion_cursos/descrip_cursos.dart';
 
 class HorarioPage extends StatelessWidget {
   const HorarioPage({super.key});

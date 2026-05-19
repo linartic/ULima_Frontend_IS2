@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  url_launcher: ^6.3.2
   flutter:
     sdk: flutter
   
@@ -63,8 +64,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/data/seccion.json
     - assets/images/
+    - assets/data/secciones.json
+    - assets/data/anuncios.json
+    - assets/data/asesorias.json
     - assets/data/evaluation_syllabus.json
     - assets/data/courses.json
     - assets/data/users.json

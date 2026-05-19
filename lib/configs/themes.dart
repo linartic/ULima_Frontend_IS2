@@ -82,7 +82,7 @@ class MaterialTheme {
 
       onError: whiteColor,
 
-      surface: Color(0xFFF5F5F5),
+      surface: Color.fromARGB(255, 254, 253, 252),
 
       onSurface: blackColor,
 
@@ -135,7 +135,7 @@ class MaterialTheme {
 
       onError: whiteColor,
 
-      surface: Color(0xFF1F1F1F),
+      surface: Color.fromARGB(255, 30, 30, 36),
 
       onSurface: whiteColor,
 
