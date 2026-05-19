@@ -10,7 +10,19 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4, 5, 6, 7],
+        "approvedElectives": ["paradigmas_programacion", "analisis_diseno_algoritmos"],
+        "currentCourses": [
+          "propuesta_investigacion",
+          "sistemas_erp",
+          "auditoria_control_sistemas",
+          "ingenieria_software_ii",
+          "deep_learning",
+          "programacion_movil"
+        ]
+      }
     },
     {
       "code": "20232548",
@@ -22,7 +34,19 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4, 5, 6],
+        "approvedElectives": ["paradigmas_programacion"],
+        "currentCourses": [
+          "sistemas_inteligencia_empresarial",
+          "gestion_operaciones",
+          "ingenieria_software_i",
+          "machine_learning",
+          "ciberseguridad",
+          "analisis_diseno_algoritmos"
+        ]
+      }
     },
     {
       "code": "20232907",
@@ -34,7 +58,20 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4, 5],
+        "approvedElectives": [],
+        "currentCourses": [
+          "ingenieria_procesos_negocio",
+          "redes_computadoras",
+          "simulacion",
+          "estructuras_datos_ii",
+          "programacion_web",
+          "gestion_financiera",
+          "paradigmas_programacion"
+        ]
+      }
     },
     {
       "code": "20232637",
@@ -46,7 +83,19 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4],
+        "approvedElectives": [],
+        "currentCourses": [
+          "estadistica_aplicada",
+          "investigacion_operaciones_i",
+          "sistemas_operativos",
+          "desarrollo_competencias_gerenciales",
+          "estructuras_datos_i",
+          "modelamiento_base_datos"
+        ]
+      }
     },
     {
       "code": "20232685",
@@ -58,7 +107,18 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4, 5, 6, 7],
+        "approvedElectives": ["paradigmas_programacion", "programacion_movil"],
+        "currentCourses": [
+          "propuesta_investigacion",
+          "sistemas_erp",
+          "auditoria_control_sistemas",
+          "ingenieria_software_ii",
+          "analisis_diseno_algoritmos"
+        ]
+      }
     },
     {
       "code": "20231098",
@@ -70,7 +130,43 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3],
+        "approvedElectives": [],
+        "currentCourses": [
+          "estadistica_probabilidad",
+          "calculo_iii",
+          "modelacion_integracion_sistemas",
+          "costeo_operaciones",
+          "programacion_orientada_objetos",
+          "arquitectura_computadoras"
+        ]
+      }
+    },
+    {
+      "code": "20231483",
+      "password": "ulima123",
+      "firstName": "Melissa",
+      "lastName": "Ruiz",
+      "email": "20231483@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career": "Ingeniería de Sistemas",
+      "especialidades": ["Desarrollo de Software"],
+      "currentCycle": "2026-1",
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2],
+        "approvedElectives": [],
+        "currentCourses": [
+          "inteligencia_artificial_aplicada",
+          "calculo_ii",
+          "sistemas_organizacionales",
+          "fisica_sistemas",
+          "estructuras_discretas",
+          "introduccion_programacion"
+        ]
+      }
     },
     {
       "code": "20221234",
@@ -82,7 +178,22 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Ciberseguridad"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4, 5, 6, 7, 8],
+        "approvedElectives": [
+          "internet_de_las_cosas",
+          "redes_avanzadas",
+          "topicos_avanzados_ciberseguridad"
+        ],
+        "currentCourses": [
+          "planeamiento_estrategico",
+          "gestion_proyectos",
+          "seminario_investigacion_i",
+          "seguridad_sistemas",
+          "sistemas_distribuidos"
+        ]
+      }
     },
     {
       "code": "20245100",
@@ -94,7 +205,19 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Desarrollo de Software"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4],
+        "approvedElectives": [],
+        "currentCourses": [
+          "estadistica_aplicada",
+          "investigacion_operaciones_i",
+          "sistemas_operativos",
+          "desarrollo_competencias_gerenciales",
+          "estructuras_datos_i",
+          "modelamiento_base_datos"
+        ]
+      }
     },
     {
       "code": "20255678",
@@ -106,7 +229,12 @@
       "career": null,
       "especialidades": [],
       "currentCycle": "2026-1",
-      "setupComplete": false
+      "setupComplete": false,
+      "courseProgress": {
+        "approvedLevels": [],
+        "approvedElectives": [],
+        "currentCourses": []
+      }
     },
     {
       "code": "20215555",
@@ -118,7 +246,23 @@
       "career": "Ingeniería de Sistemas",
       "especialidades": ["Ciencia de Datos"],
       "currentCycle": "2026-1",
-      "setupComplete": true
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "approvedElectives": [
+          "gestion_base_de_datos",
+          "ingenieria_del_conocimiento",
+          "analitica_big_data",
+          "analitica_negocios"
+        ],
+        "currentCourses": [
+          "seminario_investigacion_ii",
+          "gestion_servicios_digitales",
+          "proyecto_integrador_sistemas",
+          "innovacion_digital",
+          "arquitectura_empresarial"
+        ]
+      }
     }
   ]
 }

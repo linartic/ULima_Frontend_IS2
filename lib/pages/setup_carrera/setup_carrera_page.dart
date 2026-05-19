@@ -32,18 +32,18 @@ class SetupCarreraPage extends StatelessWidget {
                   children: [
                     const _SectionLabel(
                       icon: LucideIcons.graduationCap,
-                      title: 'Tu carrera',
+                      title: 'Carrera',
                       subtitle:
-                          'Elige la carrera que estás cursando para cargar tu malla curricular.',
+                          'Tu carrera se asigna automáticamente según tu cuenta ULima.',
                     ),
                     const SizedBox(height: 14),
-                    _CarreraDropdown(controller: controller),
+                    _LockedCarreraCard(controller: controller),
                     const SizedBox(height: 28),
                     const _SectionLabel(
                       icon: LucideIcons.bookmark,
-                      title: 'Diplomas de especialidad',
+                      title: 'Especialización',
                       subtitle:
-                          'Opcional. Te ayudará a ver los cursos electivos que corresponden a tu mención.',
+                          'Opcional. Selecciona la mención que quieres seguir.',
                     ),
                     const SizedBox(height: 14),
                     _EspecialidadesList(controller: controller),
@@ -169,48 +169,87 @@ class _SectionLabel extends StatelessWidget {
   }
 }
 
-class _CarreraDropdown extends StatelessWidget {
-  const _CarreraDropdown({required this.controller});
+class _LockedCarreraCard extends StatelessWidget {
+  const _LockedCarreraCard({required this.controller});
   final SetupCarreraController controller;
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
+        padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: const Color(0xFFE5E5E5)),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 14),
-        child: DropdownButtonHideUnderline(
-          child: DropdownButton<String>(
-            isExpanded: true,
-            value: controller.selectedCarrera.value,
-            hint: const Text(
-              'Selecciona tu carrera',
-              style: TextStyle(
-                color: Color(0xFF9B9B9B),
-                fontWeight: FontWeight.w500,
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFE8DC),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              alignment: Alignment.center,
+              child: const Icon(
+                LucideIcons.graduationCap,
+                color: MaterialTheme.primaryDark,
+                size: 22,
               ),
             ),
-            icon: const Icon(LucideIcons.chevronDown, color: Color(0xFF8B8B8B)),
-            items: controller.carreras
-                .map(
-                  (c) => DropdownMenuItem<String>(
-                    value: c,
-                    child: Text(
-                      c,
-                      style: const TextStyle(
-                        color: Color(0xFF1A1A1A),
-                        fontWeight: FontWeight.w700,
-                      ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Carrera asignada',
+                    style: TextStyle(
+                      color: Color(0xFF777777),
+                      fontSize: 11,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
-                )
-                .toList(),
-            onChanged: (v) => controller.selectedCarrera.value = v,
-          ),
+                  const SizedBox(height: 2),
+                  Text(
+                    controller.selectedCarrera.value,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Color(0xFF1A1A1A),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF2F2F2),
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.lock_outline, size: 14, color: Color(0xFF777777)),
+                  SizedBox(width: 4),
+                  Text(
+                    'Fija',
+                    style: TextStyle(
+                      color: Color(0xFF777777),
+                      fontSize: 11,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -234,12 +273,17 @@ class _EspecialidadesList extends StatelessWidget {
               onTap: () => controller.toggleEspecialidad(esp),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 160),
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
                   color: selected ? const Color(0xFFFFF1EA) : Colors.white,
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
-                    color: selected ? MaterialTheme.primaryColor : const Color(0xFFE5E5E5),
+                    color: selected
+                        ? MaterialTheme.primaryColor
+                        : const Color(0xFFE5E5E5),
                     width: selected ? 1.6 : 1,
                   ),
                 ),
@@ -249,16 +293,24 @@ class _EspecialidadesList extends StatelessWidget {
                       width: 22,
                       height: 22,
                       decoration: BoxDecoration(
-                        color: selected ? MaterialTheme.primaryColor : Colors.transparent,
+                        color: selected
+                            ? MaterialTheme.primaryColor
+                            : Colors.transparent,
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(
-                          color: selected ? MaterialTheme.primaryColor : const Color(0xFFCCCCCC),
+                          color: selected
+                              ? MaterialTheme.primaryColor
+                              : const Color(0xFFCCCCCC),
                           width: 1.6,
                         ),
                       ),
                       alignment: Alignment.center,
                       child: selected
-                          ? const Icon(LucideIcons.check, size: 14, color: Colors.white)
+                          ? const Icon(
+                              LucideIcons.check,
+                              size: 14,
+                              color: Colors.white,
+                            )
                           : null,
                     ),
                     const SizedBox(width: 12),
@@ -266,7 +318,9 @@ class _EspecialidadesList extends StatelessWidget {
                       child: Text(
                         esp,
                         style: TextStyle(
-                          color: selected ? MaterialTheme.primaryDark : const Color(0xFF1A1A1A),
+                          color: selected
+                              ? MaterialTheme.primaryDark
+                              : const Color(0xFF1A1A1A),
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
@@ -301,7 +355,11 @@ class _ErrorBanner extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.error_outline, size: 16, color: MaterialTheme.primaryDark),
+            const Icon(
+              Icons.error_outline,
+              size: 16,
+              color: MaterialTheme.primaryDark,
+            ),
             const SizedBox(width: 8),
             Expanded(
               child: Text(
@@ -352,9 +410,13 @@ class _FinishButton extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: MaterialTheme.primaryColor,
                 foregroundColor: Colors.white,
-                disabledBackgroundColor: MaterialTheme.primaryColor.withOpacity(0.6),
+                disabledBackgroundColor: MaterialTheme.primaryColor.withValues(
+                  alpha: 0.6,
+                ),
                 elevation: 0,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
               ),
             ),
           ),

@@ -1,6 +1,8 @@
 // lib/models/user_model.dart
 // Modelo del alumno autenticado en la app.
 
+import 'malla_models.dart';
+
 class UserModel {
   final String code;
   final String firstName;
@@ -11,6 +13,7 @@ class UserModel {
   List<String> especialidades;
   final String currentCycle;
   bool setupComplete;
+  CourseProgress? courseProgress;
 
   UserModel({
     required this.code,
@@ -22,6 +25,7 @@ class UserModel {
     List<String>? especialidades,
     required this.currentCycle,
     required this.setupComplete,
+    this.courseProgress,
   }) : especialidades = especialidades ?? <String>[];
 
   String get fullName => '$firstName $lastName';
@@ -39,6 +43,9 @@ class UserModel {
       especialidades: (json['especialidades'] as List?)?.cast<String>() ?? <String>[],
       currentCycle: json['currentCycle'] as String? ?? '2026-1',
       setupComplete: json['setupComplete'] as bool? ?? false,
+      courseProgress: CourseProgress.fromJson(
+        json['courseProgress'] as Map<String, dynamic>?,
+      ),
     );
   }
 

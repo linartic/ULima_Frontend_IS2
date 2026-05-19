@@ -6,6 +6,7 @@ import 'package:ulima_plus/components/footer/app_footer.dart';
 import 'package:ulima_plus/components/header/app_header.dart';
 import 'package:ulima_plus/pages/calculadora/calculadora_page.dart';
 import 'package:ulima_plus/pages/horario_prueba/horario_prueba.dart';
+import 'package:ulima_plus/pages/malla/malla_page.dart';
 import 'package:ulima_plus/services/auth_service.dart';
 
 import 'home_controller.dart';

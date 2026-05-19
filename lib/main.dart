@@ -7,17 +7,20 @@ import '/configs/themes.dart';
 import '/services/auth_service.dart';
 import '/services/courses_service.dart';
 import '/services/evaluation_syllabus_service.dart';
+import '/services/malla_service.dart';
 import 'pages/home/home_page.dart';
 import 'pages/login/login_page.dart';
 import 'pages/setup_carrera/setup_carrera_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Servicios globales: el AuthService es permanente para todo el ciclo de vida.
+  // Servicios globales permanentes para todo el ciclo de vida de la app.
   Get.put<AuthService>(AuthService(), permanent: true);
+  Get.put<MallaService>(MallaService(), permanent: true);
   await Future.wait([
     EvaluationSyllabusService().loadEvaluationData(),
     CoursesService().loadCoursesData(),
+    MallaService.to.load(),
   ]);
   runApp(const MyApp());
 }
