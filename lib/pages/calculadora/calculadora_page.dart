@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../components/calculadora/curso_card.dart';
-import '../../components/calculadora/add_nota_with_syllabus_modal.dart';
+import '../../components/calculadora/agregar_nota.dart';
 import 'calculadora_controller.dart';
 
 // Usamos GetView para evitar el Get.put manual si ya está en los bindings,

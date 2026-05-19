@@ -226,7 +226,6 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              
                               SizedBox(
                                 width: MediaQuery.of(context).size.width - 160,
                                 child: Column(

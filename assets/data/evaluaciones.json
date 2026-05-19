@@ -1,0 +1,174 @@
+{
+  "cursos": [
+    {
+      "cursoId": "1",
+      "cursoNombre": "INGENIERIA DE SOFTWARE II",
+      "evaluaciones": [
+        {
+          "id": "eval_1_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_2_01",
+          "nombre": "Proyecto",
+          "sigla": "Proy1",
+          "peso": 25.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_3_01",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 25.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_4_01",
+          "nombre": "Proyecto",
+          "sigla": "Proy2",
+          "peso": 30.0,
+          "tipo": "practica"
+        }
+      ]
+    },
+    {
+      "cursoId": "2",
+      "cursoNombre": "APRENDIZAJE DE MÁQUINA/MACHINE LEARNING",
+      "evaluaciones": [
+        {
+          "id": "eval_2_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 10.0,
+          "tipo": "teorica"
+        },
+        {
+          "id": "eval_2_02",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 25.0,
+          "tipo": "teorica"
+        },
+        {
+          "id": "eval_2_03",
+          "nombre": "Proyecto (20% programa, 80% reporte)",
+          "sigla": "PROY",
+          "peso": 30.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_2_04",
+          "nombre": "Examen Escrito 3",
+          "sigla": "EE3",
+          "peso": 35.0,
+          "tipo": "teorica"
+        }
+      ]
+    },
+    {
+      "cursoId": "3",
+      "cursoNombre": "GESTIÓN DE OPERACIONES",
+      "evaluaciones": [
+        {
+          "id": "eval_3_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 25.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_3_02",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 25.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_3_03",
+          "nombre": "Examen Parcial",
+          "sigla": "EP",
+          "peso": 20.0,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_3_04",
+          "nombre": "Examen Final",
+          "sigla": "EF",
+          "peso": 30.0,
+          "tipo": "examen"
+        }
+      ]
+    },
+    {
+      "cursoId": "4",
+      "cursoNombre": "PROGRAMACIÓN MÓVIL",
+      "evaluaciones": [
+        {
+          "id": "eval_4_01",
+          "nombre": "Trabajo de Producción 1",
+          "sigla": "TP1",
+          "peso": 25.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_4_02",
+          "nombre": "Trabajo de Producción 2",
+          "sigla": "TP2",
+          "peso": 25.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_4_03",
+          "nombre": "Trabajo de Producción 3",
+          "sigla": "TP3",
+          "peso": 25.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_4_04",
+          "nombre": "Proyecto Final",
+          "sigla": "PF",
+          "peso": 25.0,
+          "tipo": "proyecto"
+        }
+      ]
+    },
+    {
+      "cursoId": "5",
+      "cursoNombre": "SISTEMAS DE INTELIGENCIA EMPRESARIAL",
+      "evaluaciones": [
+        {
+          "id": "eval_5_01",
+          "nombre": "Examen escrito",
+          "sigla": "EE",
+          "peso": 20.0,
+          "tipo": "teorica"
+        },
+        {
+          "id": "eval_5_02",
+          "nombre": "Laboratorio 1",
+          "sigla": "LB",
+          "peso": 25.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_5_03",
+          "nombre": "Laboratorio 2",
+          "sigla": "LB",
+          "peso": 25.0,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_5_04",
+          "nombre": "Exposición de Trabajos finales",
+          "sigla": "TI",
+          "peso": 30.0,
+          "tipo": "practica"
+        }
+      ]
+    }
+  ]
+}

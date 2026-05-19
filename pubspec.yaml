@@ -68,7 +68,7 @@ flutter:
     - assets/data/secciones.json
     - assets/data/anuncios.json
     - assets/data/asesorias.json
-    - assets/data/evaluation_syllabus.json
+    - assets/data/evaluaciones.json
     - assets/data/courses.json
     - assets/data/users.json
 

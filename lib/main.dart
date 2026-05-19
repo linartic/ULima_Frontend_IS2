@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '/configs/themes.dart';
 import '/services/auth_service.dart';
 import '/services/courses_service.dart';
-import '/services/evaluation_syllabus_service.dart';
+import 'services/evaluation_service.dart';
 import 'pages/home/home_page.dart';
 import 'pages/login/login_page.dart';
 import 'pages/setup_carrera/setup_carrera_page.dart';
