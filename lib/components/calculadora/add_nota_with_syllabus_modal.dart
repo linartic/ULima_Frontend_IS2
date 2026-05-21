@@ -208,7 +208,7 @@ class _AddNotaWithSyllabusModalState extends State<AddNotaWithSyllabusModal> {
                       value: _evaluacionSeleccionada,
                       style: TextStyle(color: colors.onSurface, fontSize: 14),
                       items: _evaluacionesDisponibles.map((evaluacion) {
-                        return DropdownMenuItem(
+                        return DropdownMenuItem<EvaluationComponent>(
                           value: evaluacion,
                           child: Row(
                             children: [

@@ -9,8 +9,8 @@ class UserModel {
   final String lastName;
   final String email;
   final String role; // estudiante | delegado | subdelegado
-  String? career;
-  List<String> especialidades;
+  int? careerId;
+  List<int> especialidades;
   final String currentCycle;
   bool setupComplete;
   CourseProgress? courseProgress;
@@ -21,12 +21,12 @@ class UserModel {
     required this.lastName,
     required this.email,
     required this.role,
-    this.career,
-    List<String>? especialidades,
+    this.careerId,
+    List<int>? especialidades,
     required this.currentCycle,
     required this.setupComplete,
     this.courseProgress,
-  }) : especialidades = especialidades ?? <String>[];
+  }) : especialidades = especialidades ?? <int>[];
 
   String get fullName => '$firstName $lastName';
 
@@ -39,8 +39,8 @@ class UserModel {
       lastName: json['lastName'] as String,
       email: json['email'] as String,
       role: json['role'] as String? ?? 'estudiante',
-      career: json['career'] as String?,
-      especialidades: (json['especialidades'] as List?)?.cast<String>() ?? <String>[],
+      careerId: json['career_id'] as int?,
+      especialidades: (json['especialidades'] as List?)?.cast<int>() ?? <int>[],
       currentCycle: json['currentCycle'] as String? ?? '2026-1',
       setupComplete: json['setupComplete'] as bool? ?? false,
       courseProgress: CourseProgress.fromJson(
@@ -55,7 +55,7 @@ class UserModel {
         'lastName': lastName,
         'email': email,
         'role': role,
-        'career': career,
+        'career_id': careerId,
         'especialidades': especialidades,
         'currentCycle': currentCycle,
         'setupComplete': setupComplete,

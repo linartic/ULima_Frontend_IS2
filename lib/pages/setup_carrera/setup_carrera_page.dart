@@ -214,7 +214,7 @@ class _LockedCarreraCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    controller.selectedCarrera.value,
+                    controller.selectedCarreraName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -265,12 +265,15 @@ class _EspecialidadesList extends StatelessWidget {
     return Obx(
       () => Column(
         children: controller.especialidadesDisponibles.map((esp) {
-          final selected = controller.selectedEspecialidades.contains(esp);
+          final espId = esp['id'] as int;
+          final espName = esp['name'] as String;
+          final espDesc = esp['description'] as String? ?? '';
+          final selected = controller.selectedEspecialidades.contains(espId);
           return Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: InkWell(
               borderRadius: BorderRadius.circular(14),
-              onTap: () => controller.toggleEspecialidad(esp),
+              onTap: () => controller.toggleEspecialidad(espId),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 160),
                 padding: const EdgeInsets.symmetric(
@@ -315,15 +318,33 @@ class _EspecialidadesList extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
-                        esp,
-                        style: TextStyle(
-                          color: selected
-                              ? MaterialTheme.primaryDark
-                              : const Color(0xFF1A1A1A),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            espName,
+                            style: TextStyle(
+                              color: selected
+                                  ? MaterialTheme.primaryDark
+                                  : const Color(0xFF1A1A1A),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          if (espDesc.isNotEmpty) ...[
+                            const SizedBox(height: 3),
+                            Text(
+                              espDesc,
+                              style: TextStyle(
+                                color: selected
+                                    ? MaterialTheme.primaryDark.withOpacity(0.8)
+                                    : const Color(0xFF666666),
+                                fontSize: 11,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                   ],

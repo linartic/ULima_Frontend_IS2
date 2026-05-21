@@ -13,20 +13,47 @@ class AuthService extends GetxService {
 
   final Rx<UserModel?> _currentUser = Rx<UserModel?>(null);
   final RxList<Map<String, dynamic>> _users = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> _carreras = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> _especialidades = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> _userEspecialidades = <Map<String, dynamic>>[].obs;
   final RxBool _loading = false.obs;
 
   UserModel? get currentUser => _currentUser.value;
   bool get isLoggedIn => _currentUser.value != null;
   bool get isLoading => _loading.value;
 
+  List<Map<String, dynamic>> get carreras => _carreras;
+  List<Map<String, dynamic>> get especialidades => _especialidades;
+
+  String getCareerName(int? id) {
+    if (id == null) return '';
+    final match = _carreras.firstWhereOrNull((c) => c['id'] == id);
+    return match != null ? match['name'] as String : '';
+  }
+
+  String getEspecialidadName(int id) {
+    final match = _especialidades.firstWhereOrNull((e) => e['id'] == id);
+    return match != null ? match['name'] as String : '';
+  }
+
   /// Carga el catálogo de usuarios mock desde assets.
   /// Se llama automáticamente la primera vez que se intenta hacer login.
   Future<void> _ensureLoaded() async {
     if (_users.isNotEmpty) return;
+    
     final raw = await rootBundle.loadString('assets/data/users.json');
     final decoded = jsonDecode(raw) as Map<String, dynamic>;
     final list = (decoded['users'] as List).cast<Map<String, dynamic>>();
     _users.assignAll(list);
+
+    final rawCarreras = await rootBundle.loadString('assets/data/carreras.json');
+    _carreras.assignAll((jsonDecode(rawCarreras) as List).cast<Map<String, dynamic>>());
+
+    final rawEspecialidades = await rootBundle.loadString('assets/data/especialidades.json');
+    _especialidades.assignAll((jsonDecode(rawEspecialidades) as List).cast<Map<String, dynamic>>());
+
+    final rawUserEspecialidades = await rootBundle.loadString('assets/data/user_especialidades.json');
+    _userEspecialidades.assignAll((jsonDecode(rawUserEspecialidades) as List).cast<Map<String, dynamic>>());
   }
 
   /// Intenta autenticar al usuario. Devuelve `null` si las credenciales
@@ -45,7 +72,16 @@ class AuthService extends GetxService {
       if ((match['password'] as String?) != password) {
         return 'La contraseña no es correcta.';
       }
-      _currentUser.value = UserModel.fromJson(match);
+
+      final uJson = Map<String, dynamic>.from(match);
+      final userCode = uJson['code'].toString();
+      final userEspIds = _userEspecialidades
+          .where((ue) => ue['user_code'].toString() == userCode)
+          .map((ue) => ue['especialidad_id'] as int)
+          .toList();
+      uJson['especialidades'] = userEspIds;
+
+      _currentUser.value = UserModel.fromJson(uJson);
       return null;
     } catch (e) {
       return 'Ocurrió un error inesperado: $e';
@@ -55,10 +91,10 @@ class AuthService extends GetxService {
   }
 
   /// Actualiza carrera/especialidades del usuario actual y marca el setup completo.
-  void completeSetup({required String career, required List<String> especialidades}) {
+  void completeSetup({required int careerId, required List<int> especialidades}) {
     final u = _currentUser.value;
     if (u == null) return;
-    u.career = career;
+    u.careerId = careerId;
     u.especialidades = List.of(especialidades);
     u.setupComplete = true;
     _currentUser.refresh();

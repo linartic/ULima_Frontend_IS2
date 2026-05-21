@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "code": "ING_SISTEMAS",
+    "name": "Ingeniería de Sistemas",
+    "faculty": "Facultad de Ingeniería",
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "code": "ING_INDUSTRIAL",
+    "name": "Ingeniería Industrial",
+    "faculty": "Facultad de Ingeniería",
+    "is_active": true
+  },
+  {
+    "id": 3,
+    "code": "ADMINISTRACION",
+    "name": "Administración",
+    "faculty": "Facultad de Ciencias Empresariales y Económicas",
+    "is_active": true
+  }
+]
