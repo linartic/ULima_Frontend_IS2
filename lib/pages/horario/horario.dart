@@ -100,26 +100,7 @@ class HorarioPage extends StatelessWidget {
     }
   }
 
-  Color _getCourseColor(String colorName) {
-    switch (colorName.toLowerCase()) {
-      case 'pink':
-        return const Color(0xFFE94560);
-      case 'blue':
-        return const Color(0xFF3F8CFF);
-      case 'orange':
-        return const Color(0xFFFF7A00);
-      case 'green':
-        return const Color(0xFF00B074);
-      case 'purple':
-        return const Color(0xFF7B2CBF);
-      case 'teal':
-        return const Color(0xFF009688);
-      case 'red':
-        return const Color(0xFFE53935);
-      default:
-        return const Color(0xFF707E94);
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -249,6 +230,16 @@ class HorarioPage extends StatelessWidget {
                         final double topPosition = (startVal - startHour) * hourHeight + 12.0;
                         final double heightVal = (endVal - startVal) * hourHeight - 8.0;
 
+                        final courseColor = {
+                          'pink': colors.secondaryContainer,
+                          'blue': colors.secondary,
+                          'orange': colors.primary,
+                          'green': colors.tertiaryContainer,
+                          'purple': colors.tertiary,
+                          'teal': colors.primaryContainer,
+                          'red': colors.error,
+                        }[colorStr.toLowerCase()] ?? colors.outline;
+
                         return Positioned(
                           top: topPosition,
                           left: 75,
@@ -262,11 +253,11 @@ class HorarioPage extends StatelessWidget {
                             child: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                               decoration: BoxDecoration(
-                                color: _getCourseColor(colorStr),
+                                color: courseColor,
                                 borderRadius: BorderRadius.circular(16),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: _getCourseColor(colorStr).withOpacity(0.35),
+                                    color: courseColor.withOpacity(0.35),
                                     blurRadius: 8,
                                     offset: const Offset(0, 4),
                                   ),
