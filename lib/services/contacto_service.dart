@@ -8,93 +8,54 @@ import 'user_service.dart';
 import 'docente_service.dart';
 
 class ContactoService {
+  final UserService _userService = UserService();
 
-  final UserService
-      _userService =
-          UserService();
-
-  final DocenteService
-      _docenteService =
-          DocenteService();
+  final DocenteService _docenteService = DocenteService();
 
   // Obtiene contactos
-  Future<Map<String,dynamic>>
-      fetchContactos(
-    String idSeccion,
-  ) async {
-
+  Future<Map<String, dynamic>> fetchContactos(String idSeccion) async {
     // Carga JSON
-    final String response =
-        await rootBundle.loadString(
+    final String response = await rootBundle.loadString(
       'assets/data/contactos.json',
     );
 
     // Convierte JSON
-    final data =
-        json.decode(response);
+    final data = json.decode(response);
 
     // Lista contactos
-    final List contactos =
-        data['contactos'];
+    final List contactos = data['contactos'];
 
     // Busca sección
-    final contacto =
-        contactos.firstWhere(
-      (c) =>
-          c['idSeccion'] ==
-          idSeccion,
-    );
+    final contacto = contactos.firstWhere((c) => c['idSeccion'] == idSeccion);
 
     // Busca docente
-    final docente =
-        await _docenteService
-            .findDocenteByCode(
+    final docente = await _docenteService.findDocenteByCode(
       contacto['docenteCode'],
     );
 
     // Lista códigos alumnos
-    final List alumnosCodes =
-        contacto['alumnos'];
+    final List alumnosCodes = contacto['alumnos'];
 
     // Lista final alumnos
     List<UserModel> alumnos = [];
 
     // Busca alumnos
-    for (
-      String code
-          in alumnosCodes
-    ) {
-
-      final user =
-          await _userService
-              .findUserByCode(
-        code,
-      );
+    for (String code in alumnosCodes) {
+      final user = await _userService.findUserByCode(code);
 
       if (user != null) {
         alumnos.add(user);
       }
     }
 
-    alumnos.sort((a,b) {
-
+    alumnos.sort((a, b) {
       // Delegado primero
-      if (
-          a.role ==
-              'delegado' &&
-          b.role !=
-              'delegado'
-      ) {
+      if (a.role == 'delegado' && b.role != 'delegado') {
         return -1;
       }
 
       // Subdelegado segundo
-      if (
-          a.role ==
-              'subdelegado' &&
-          b.role ==
-              'estudiante'
-      ) {
+      if (a.role == 'subdelegado' && b.role == 'estudiante') {
         return -1;
       }
 
@@ -103,9 +64,6 @@ class ContactoService {
     });
 
     // Resultado final
-    return {
-      'docente': docente,
-      'alumnos': alumnos,
-    };
+    return {'docente': docente, 'alumnos': alumnos};
   }
 }

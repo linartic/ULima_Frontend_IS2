@@ -207,7 +207,7 @@ class CalculadoraPage extends GetView<CalculadoraController> {
               (index) {
                 // Extraemos los datos de forma segura aquí
                 final curso = controller.cursos[index];
-                final seccion = curso['seccion']?.toString() ?? 'Sin sección';
+                final seccion = curso['codigoSeccion']?.toString() ?? 'Sin sección';
                 final nombre = curso['nombre']?.toString() ?? 'Curso desconocido';
 
                 return Padding(

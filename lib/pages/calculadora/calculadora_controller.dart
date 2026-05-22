@@ -2,35 +2,34 @@ import 'package:get/get.dart';
 import '../../models/evaluation_model.dart';
 import '../../services/evaluations_service.dart';
 import '../../services/courses_service.dart';
+import '../../services/notas_service.dart';
+import '../../services/auth_service.dart';
 
 class CalculadoraController extends GetxController {
-  // Lista reactiva de cursos obtenidos del modelo
   late var cursos = <Map<String, dynamic>>[].obs;
-  
-  // Servicio para obtener datos del sílabo
+
   late EvaluationSyllabusService _syllabusService;
   late CoursesService _coursesService;
-  
-  // Map de sílabus por curso ID para acceso rápido
+  late NotasService _notasService;
+
+  late String _idEstudianteActual;
+
   late var syllabusData = <String, CourseSyllabus>{}.obs;
 
   @override
   void onInit() {
     super.onInit();
-    // Inicializa los servicios
     _syllabusService = EvaluationSyllabusService();
     _coursesService = CoursesService();
-    // Carga datos del sílabo
+    _notasService = NotasService();
+
     _cargarDatosSyllabus();
-    // Inicializa los cursos desde el servicio
     _inicializarCursos();
   }
 
-  /// Carga los datos del sílabo de forma asincrónica
   void _cargarDatosSyllabus() async {
     try {
       await _syllabusService.loadEvaluationData();
-      // Poblar el map de sílabus
       for (var syllabus in _syllabusService.allSyllabuses) {
         syllabusData[syllabus.cursoId] = syllabus;
       }
@@ -40,22 +39,61 @@ class CalculadoraController extends GetxController {
     }
   }
 
-  void _inicializarCursos() {
-    final cursosData = _coursesService.allCourses;
-    cursos.value = cursosData.map((curso) {
-      var notasRx = <Map<String, dynamic>>[].obs;
-      if (curso['notas'] != null) {
-        notasRx.addAll(List<Map<String, dynamic>>.from(curso['notas']));
+  void _inicializarCursos() async {
+    try {
+      final user = AuthService.to.currentUser;
+
+      final List<Map<String, dynamic>> seccionesInscritas =
+          user?.courseProgress?.currentCourses ?? [];
+      _idEstudianteActual =
+          await _notasService.obtenerIdEstudianteActual() ?? 'default';
+      final cursosData = _coursesService.allCourses;
+      final notasGuardadas = await _notasService.cargarNotas(
+        _idEstudianteActual,
+      );
+
+      List<Map<String, dynamic>> cursosExpandidos = [];
+
+      for (var curso in cursosData) {
+        List<dynamic> seccionesDelCurso = curso['secciones'] ?? [];
+
+        for (var seccion in seccionesDelCurso) {
+          bool estaInscrito = seccionesInscritas.any(
+            (inscrito) => inscrito['idSeccion'] == seccion['idSeccion'],
+          );
+
+          if (!estaInscrito) continue;
+
+          var notasRx = <Map<String, dynamic>>[].obs;
+
+          Map<String, dynamic>? cursoBuscado = notasGuardadas.firstWhereOrNull(
+            (n) => n['id'] == seccion['idSeccion'],
+          );
+
+          if (cursoBuscado != null && cursoBuscado['notas'] != null) {
+            notasRx.addAll(
+              List<Map<String, dynamic>>.from(cursoBuscado['notas']),
+            );
+          }
+
+          cursosExpandidos.add({
+            'id': seccion['idSeccion'],
+            'nombre': curso['nombre']?.toString() ?? 'Curso sin nombre',
+            'ciclo': curso['ciclo']?.toString() ?? '2026-1',
+            'codigoSeccion':
+                seccion['codigoSeccion']?.toString() ?? 'Sin sección',
+            'notas': notasRx,
+          });
+        }
       }
-      
-      return {
-        'id': curso['id']?.toString() ?? '',
-        'nombre': curso['nombre']?.toString() ?? 'Curso sin nombre',
-        'ciclo': curso['ciclo']?.toString() ?? '',
-        'seccion': curso['seccion']?.toString() ?? 'Sin sección', 
-        'notas': notasRx,
-      };
-    }).toList();
+
+      cursos.value = cursosExpandidos;
+      print(
+        '✓ Cursos y secciones cargados correctamente: ${cursos.length} secciones.',
+      );
+    } catch (e) {
+      print('✗ Error al inicializar cursos: $e');
+    }
   }
 
   double calcularPromedio(List notas) {
@@ -68,10 +106,16 @@ class CalculadoraController extends GetxController {
   }
 
   double sumaPesos(List notas) {
-    return notas.fold(0, (sum, item) => sum + item['peso']);
+    return notas.fold(0, (sum, item) => sum + (item['peso'] as num));
   }
 
-  void agregarNota(int cursoIndex, String titulo, int peso, double valor, String evaluacionId) {
+  void agregarNota(
+    int cursoIndex,
+    String titulo,
+    int peso,
+    double valor,
+    String evaluacionId,
+  ) {
     if (cursoIndex >= 0 && cursoIndex < cursos.length) {
       final notas = cursos[cursoIndex]['notas'] as RxList<dynamic>;
       notas.add({
@@ -81,6 +125,7 @@ class CalculadoraController extends GetxController {
         'evaluacionId': evaluacionId,
       });
       cursos.refresh();
+      _guardarNotasLocal();
     }
   }
 
@@ -90,11 +135,19 @@ class CalculadoraController extends GetxController {
       if (notaIndex >= 0 && notaIndex < notas.length) {
         notas.removeAt(notaIndex);
         cursos.refresh();
+        _guardarNotasLocal();
       }
     }
   }
 
-  /// Obtiene el sílabo de un curso por su índice
+  void _guardarNotasLocal() async {
+    try {
+      await _notasService.guardarNotas(_idEstudianteActual, cursos);
+    } catch (e) {
+      print('✗ Error al guardar notas localmente: $e');
+    }
+  }
+
   CourseSyllabus? getSyllabusForCourse(int cursoIndex) {
     if (cursoIndex >= 0 && cursoIndex < cursos.length) {
       final cursoId = cursos[cursoIndex]['id'] as String?;
@@ -105,13 +158,11 @@ class CalculadoraController extends GetxController {
     return null;
   }
 
-  /// Obtiene las evaluaciones disponibles de un curso
   List<EvaluationComponent> getEvaluationsForCourse(int cursoIndex) {
     final syllabus = getSyllabusForCourse(cursoIndex);
     return syllabus?.evaluaciones ?? [];
   }
 
-  /// Verifica si hay datos de sílabo cargados
   bool hasSyllabusData(int cursoIndex) {
     if (cursoIndex >= 0 && cursoIndex < cursos.length) {
       final cursoId = cursos[cursoIndex]['id'] as String?;
@@ -120,7 +171,6 @@ class CalculadoraController extends GetxController {
     return false;
   }
 
-  /// Obtiene los IDs de evaluaciones que ya tienen notas registradas
   List<String> getRegisteredEvaluationIds(int cursoIndex) {
     if (cursoIndex >= 0 && cursoIndex < cursos.length) {
       final notas = cursos[cursoIndex]['notas'] as List?;
@@ -132,7 +182,6 @@ class CalculadoraController extends GetxController {
     return [];
   }
 
-  /// Obtiene las evaluaciones disponibles que NO tienen notas registradas
   List<EvaluationComponent> getAvailableEvaluations(int cursoIndex) {
     final allEvaluations = getEvaluationsForCourse(cursoIndex);
     final registeredIds = getRegisteredEvaluationIds(cursoIndex);
@@ -141,4 +190,3 @@ class CalculadoraController extends GetxController {
         .toList();
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:ulima_plus/models/docente_model.dart';
 
 class Asesoria {
-
   final String id;
   final String cursoId;
   final String curso;
@@ -24,22 +23,19 @@ class Asesoria {
     required this.zoom,
   });
 
-  factory Asesoria.fromJson(
-    Map<String,dynamic> json,
-  ) {
-
+  factory Asesoria.fromJson(Map<String, dynamic> json) {
     return Asesoria(
-      id: json['id'],
-      cursoId: json['cursoId'],
-      curso: json['curso'],
-
-      docente: Docente.fromJson(json['docente']),
-
-      dia: json['dia'],
-      inicio: json['inicio'],
-      fin: json['fin'],
-      aula: json['aula'],
-      zoom: json['zoom'],
+      id: json['id']?.toString() ?? '',
+      cursoId: json['cursoId']?.toString() ?? '',
+      curso: json['curso']?.toString() ?? 'Sin curso',
+      
+      docente: Docente.fromJson(json['docente'] ?? {}),
+      
+      dia: json['dia']?.toString() ?? 'Por definir',
+      inicio: json['inicio']?.toString() ?? '',
+      fin: json['fin']?.toString() ?? '',
+      aula: json['aula']?.toString() ?? 'Por definir',
+      zoom: json['zoom']?.toString() ?? '',
     );
   }
 }

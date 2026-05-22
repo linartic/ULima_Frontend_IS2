@@ -1,20 +1,203 @@
 {
   "secciones": [
     {
-      "idSeccion": "1",
+      "idSeccion": "IS-856",
       "codigoSeccion": "856",
-      "promedioSeccion": 15.8,
-      "idCurso": "IS2-856",
-      "curso": "Ingeniería de Software II",
-
+      "idCurso": "1",
+      "curso": "INGENIERÍA DE SOFTWARE II",
+      "salon": "L3-402",
+      "dia": "Lunes",
+      "hora_inicio": "08:00 am",
+      "hora_fin": "10:00 am",
+      "color": "blue",
       "docente": {
         "code": "D01",
         "firstName": "Hernan",
         "lastName": "Quintana"
       },
-
+      "promedioSeccion": 15.8,
       "asistido": 28,
       "inasistencia": 4,
+      "total": 32
+    },
+    {
+      "idSeccion": "ML-753",
+      "codigoSeccion": "753",
+      "idCurso": "2",
+      "curso": "APRENDIZAJE DE MÁQUINA/MACHINE LEARNING",
+      "salon": "B201",
+      "dia": "Lunes",
+      "hora_inicio": "08:00 am",
+      "hora_fin": "10:00 am",
+      "color": "purple",
+      "docente": {
+        "code": "D02",
+        "firstName": "Carlos",
+        "lastName": "Lopez"
+      },
+      "promedioSeccion": 14.2,
+      "asistido": 26,
+      "inasistencia": 6,
+      "total": 32
+    },
+    {
+      "idSeccion": "GDO-754",
+      "codigoSeccion": "754",
+      "idCurso": "3",
+      "curso": "GESTIÓN DE OPERACIONES",
+      "salon": "B202",
+      "dia": "Martes",
+      "hora_inicio": "02:00 pm",
+      "hora_fin": "04:00 pm",
+      "color": "orange",
+      "docente": {
+        "code": "D01",
+        "firstName": "Hernan",
+        "lastName": "Quintana"
+      },
+      "promedioSeccion": 16.0,
+      "asistido": 27,
+      "inasistencia": 5,
+      "total": 32
+    },
+    {
+      "idSeccion": "GDO-755",
+      "codigoSeccion": "755",
+      "idCurso": "3",
+      "curso": "GESTIÓN DE OPERACIONES",
+      "salon": "B203",
+      "dia": "Lunes",
+      "hora_inicio": "10:00 am",
+      "hora_fin": "12:00 pm",
+      "color": "orange",
+      "docente": {
+        "code": "D02",
+        "firstName": "Carlos",
+        "lastName": "Lopez"
+      },
+      "promedioSeccion": 15.4,
+      "asistido": 25,
+      "inasistencia": 7,
+      "total": 32
+    },
+    {
+      "idSeccion": "PM-854",
+      "codigoSeccion": "854",
+      "idCurso": "4",
+      "curso": "PROGRAMACIÓN MÓVIL",
+      "salon": "C301",
+      "dia": "Miércoles",
+      "hora_inicio": "11:00 am",
+      "hora_fin": "01:00 pm",
+      "color": "teal",
+      "docente": {
+        "code": "D01",
+        "firstName": "Hernan",
+        "lastName": "Quintana"
+      },
+      "promedioSeccion": 17.1,
+      "asistido": 29,
+      "inasistencia": 3,
+      "total": 32
+    },
+    {
+      "idSeccion": "SIE-755",
+      "codigoSeccion": "755",
+      "idCurso": "5",
+      "curso": "SISTEMAS DE INTELIGENCIA EMPRESARIAL",
+      "salon": "C302",
+      "dia": "Jueves",
+      "hora_inicio": "09:00 am",
+      "hora_fin": "11:00 am",
+      "color": "red",
+      "docente": {
+        "code": "D02",
+        "firstName": "Carlos",
+        "lastName": "Lopez"
+      },
+      "promedioSeccion": 16.3,
+      "asistido": 24,
+      "inasistencia": 8,
+      "total": 32
+    },
+    {
+      "idSeccion": "PW-855",
+      "codigoSeccion": "801",
+      "idCurso": "6",
+      "curso": "PROGRAMACIÓN WEB",
+      "salon": "D101",
+      "dia": "Viernes",
+      "hora_inicio": "07:00 am",
+      "hora_fin": "09:00 am",
+      "color": "pink",
+      "docente": {
+        "code": "D01",
+        "firstName": "Hernan",
+        "lastName": "Quintana"
+      },
+      "promedioSeccion": 16.8,
+      "asistido": 30,
+      "inasistencia": 2,
+      "total": 32
+    },
+    {
+      "idSeccion": "GP-802",
+      "codigoSeccion": "802",
+      "idCurso": "7",
+      "curso": "GESTIÓN DE PROYECTOS",
+      "salon": "D102",
+      "dia": "Viernes",
+      "hora_inicio": "02:00 pm",
+      "hora_fin": "04:00 pm",
+      "color": "orange",
+      "docente": {
+        "code": "D02",
+        "firstName": "Carlos",
+        "lastName": "Lopez"
+      },
+      "promedioSeccion": 14.9,
+      "asistido": 26,
+      "inasistencia": 6,
+      "total": 32
+    },
+    {
+      "idSeccion": "GP-804",
+      "codigoSeccion": "804",
+      "idCurso": "7",
+      "curso": "GESTIÓN DE PROYECTOS",
+      "salon": "D104",
+      "dia": "Jueves",
+      "hora_inicio": "04:00 pm",
+      "hora_fin": "06:00 pm",
+      "color": "orange",
+      "docente": {
+        "code": "D01",
+        "firstName": "Hernan",
+        "lastName": "Quintana"
+      },
+      "promedioSeccion": 15.5,
+      "asistido": 28,
+      "inasistencia": 4,
+      "total": 32
+    },
+    {
+      "idSeccion": "CALCIII-403",
+      "codigoSeccion": "403",
+      "idCurso": "8",
+      "curso": "CÁLCULO III",
+      "salon": "D103",
+      "dia": "Viernes",
+      "hora_inicio": "04:00 pm",
+      "hora_fin": "06:00 pm",
+      "color": "green",
+      "docente": {
+        "code": "D02",
+        "firstName": "Carlos",
+        "lastName": "Lopez"
+      },
+      "promedioSeccion": 15.0,
+      "asistido": 27,
+      "inasistencia": 5,
       "total": 32
     }
   ]

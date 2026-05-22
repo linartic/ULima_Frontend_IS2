@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../descripcion_cursos/descrip_cursos.dart';
 import 'horario_controller.dart';
 
-
 class HorarioPage extends StatelessWidget {
   const HorarioPage({super.key});
 
@@ -17,22 +16,20 @@ class HorarioPage extends StatelessWidget {
       final cleanStr = timeStr.trim().toLowerCase();
       final parts = cleanStr.split(' ');
       if (parts.length < 2) return 7.0;
-      
+
       final isPm = parts[1] == 'pm';
       final hms = parts[0].split(':');
       int hour = int.tryParse(hms[0]) ?? 12;
       int minute = hms.length > 1 ? (int.tryParse(hms[1]) ?? 0) : 0;
-      
+
       if (isPm && hour != 12) hour += 12;
       if (!isPm && hour == 12) hour = 0;
-      
+
       return hour + (minute / 60.0);
     } catch (_) {
       return 7.0;
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +38,9 @@ class HorarioPage extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? const Color(0xFF1E1E26) : const Color(0xFFF8F9FA),
+      backgroundColor: isDark
+          ? const Color(0xFF1E1E26)
+          : const Color(0xFFF8F9FA),
       body: Obx(() {
         final activeDay = controller.currentDay;
         if (activeDay == null) {
@@ -95,7 +94,9 @@ class HorarioPage extends StatelessWidget {
               child: Text(
                 activeDay.weekText,
                 style: TextStyle(
-                  color: isDark ? const Color(0xFFB0B0C0) : const Color(0xFF666666),
+                  color: isDark
+                      ? const Color(0xFFB0B0C0)
+                      : const Color(0xFF666666),
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
@@ -113,11 +114,11 @@ class HorarioPage extends StatelessWidget {
                         children: List.generate(totalHours, (index) {
                           final hourVal = startHour + index;
                           final isPm = hourVal >= 12;
-                          final displayHour = hourVal > 12 
-                              ? (hourVal - 12).toInt() 
+                          final displayHour = hourVal > 12
+                              ? (hourVal - 12).toInt()
                               : hourVal.toInt();
                           final amPm = isPm ? 'pm' : 'am';
-                          
+
                           return SizedBox(
                             height: hourHeight,
                             child: Row(
@@ -126,11 +127,16 @@ class HorarioPage extends StatelessWidget {
                                 SizedBox(
                                   width: 65,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 16, top: 4),
+                                    padding: const EdgeInsets.only(
+                                      left: 16,
+                                      top: 4,
+                                    ),
                                     child: Text(
                                       '$displayHour $amPm',
                                       style: TextStyle(
-                                        color: isDark ? const Color(0xFF9090A0) : const Color(0xFF9E9E9E),
+                                        color: isDark
+                                            ? const Color(0xFF9090A0)
+                                            : const Color(0xFF9E9E9E),
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -141,7 +147,9 @@ class HorarioPage extends StatelessWidget {
                                   child: Container(
                                     margin: const EdgeInsets.only(top: 12),
                                     height: 1.2,
-                                    color: isDark ? const Color(0xFF2C2C38) : const Color(0xFFECECEC),
+                                    color: isDark
+                                        ? const Color(0xFF2C2C38)
+                                        : const Color(0xFFECECEC),
                                   ),
                                 ),
                               ],
@@ -150,27 +158,36 @@ class HorarioPage extends StatelessWidget {
                         }),
                       ),
                       ...courses.map((course) {
-                        final nombreStr = (course['name'] as String? ?? course['nombre'] as String? ?? '').toUpperCase();
-                        final aulaStr = course['code'] as String? ?? '';
+                        final nombreStr =
+                            (course['curso'] as String? ?? 'CURSO')
+                                .toUpperCase();
+                        final aulaStr =
+                            course['salon'] as String? ?? 'Sin salón';
                         final colorStr = course['color'] as String? ?? 'blue';
-                        final startStr = course['hora_inicio'] as String? ?? '07:00 am';
-                        final endStr = course['hora_fin'] as String? ?? '09:00 am';
+                        final startStr =
+                            course['hora_inicio'] as String? ?? '07:00 am';
+                        final endStr =
+                            course['hora_fin'] as String? ?? '09:00 am';
 
                         final startVal = _timeToHours(startStr);
                         final endVal = _timeToHours(endStr);
 
-                        final double topPosition = (startVal - startHour) * hourHeight + 12.0;
-                        final double heightVal = (endVal - startVal) * hourHeight - 8.0;
+                        final double topPosition =
+                            (startVal - startHour) * hourHeight + 12.0;
+                        final double heightVal =
+                            (endVal - startVal) * hourHeight - 8.0;
 
-                        final courseColor = {
-                          'pink': colors.secondaryContainer,
-                          'blue': colors.secondary,
-                          'orange': colors.primary,
-                          'green': colors.tertiaryContainer,
-                          'purple': colors.tertiary,
-                          'teal': colors.primaryContainer,
-                          'red': colors.error,
-                        }[colorStr.toLowerCase()] ?? colors.outline;
+                        final courseColor =
+                            {
+                              'pink': colors.secondaryContainer,
+                              'blue': colors.secondary,
+                              'orange': colors.primary,
+                              'green': colors.tertiaryContainer,
+                              'purple': colors.tertiary,
+                              'teal': colors.primaryContainer,
+                              'red': colors.error,
+                            }[colorStr.toLowerCase()] ??
+                            colors.outline;
 
                         return Positioned(
                           top: topPosition,
@@ -179,11 +196,15 @@ class HorarioPage extends StatelessWidget {
                           height: heightVal,
                           child: InkWell(
                             onTap: () {
-                              Get.to(() => DescripCursosPage());
+                              final String idSeccion = course['idSeccion'];
+                              Get.to(() => DescripCursosPage(idSeccion: idSeccion ));
                             },
                             borderRadius: BorderRadius.circular(16),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 12,
+                              ),
                               decoration: BoxDecoration(
                                 color: courseColor,
                                 borderRadius: BorderRadius.circular(16),

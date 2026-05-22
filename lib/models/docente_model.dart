@@ -1,5 +1,4 @@
 class Docente {
-
   final String code;
   final String firstName;
   final String lastName;
@@ -12,15 +11,12 @@ class Docente {
 
   String get fullName => '$firstName $lastName';
 
-  // Convierte JSON a objeto
-  factory Docente.fromJson(
-    Map<String,dynamic> json,
-  ) {
-
+  // Convierte JSON a objeto con protección anti-nulos
+  factory Docente.fromJson(Map<String, dynamic> json) {
     return Docente(
-      code:json['code'],
-      firstName: json['firstName'],
-      lastName:json['lastName'],
+      code: json['code']?.toString() ?? 'Sin código',
+      firstName: json['firstName']?.toString() ?? 'No',
+      lastName: json['lastName']?.toString() ?? 'Asignado',
     );
   }
 }

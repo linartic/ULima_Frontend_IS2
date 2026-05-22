@@ -10,7 +10,7 @@ class CursoCard extends StatelessWidget {
   final Function(int, int) onDeleteNota;
 
   const CursoCard({
-    super.key, 
+    super.key,
     required this.curso,
     required this.promedio,
     required this.sumaPesos,
@@ -21,11 +21,11 @@ class CursoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color:  colors.onSecondary, 
+        color: colors.onSecondary,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -34,14 +34,14 @@ class CursoCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: colors.primaryContainer, 
+              color: colors.primaryContainer,
               borderRadius: BorderRadius.circular(25),
               boxShadow: [
                 BoxShadow(
                   color: colors.shadow.withOpacity(0.1),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
-                )
+                ),
               ],
             ),
             child: Column(
@@ -53,10 +53,12 @@ class CursoCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Cambia tu Text temporalmente por esto para ver qué hay en "curso":
+                          // En lib/components/calculadora/curso_card.dart
                           Text(
-                            curso['seccion'] ?? 'Sin sección', 
+                            "Sección: ${curso['codigoSeccion'] ?? 'Sin sección'}",
                             style: TextStyle(
-                              color: colors.onPrimary, 
+                              color: colors.onPrimary,
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                             ),
@@ -93,19 +95,26 @@ class CursoCard extends StatelessWidget {
                         if (promedio < 11.0)
                           Row(
                             children: [
-                              Icon(Icons.error_outline, color: colors.onPrimary, size: 14),
+                              Icon(
+                                Icons.error_outline,
+                                color: colors.onPrimary,
+                                size: 14,
+                              ),
                               Text(
                                 " Desaprobado",
-                                style: TextStyle(color: colors.onPrimary, fontSize: 11),
+                                style: TextStyle(
+                                  color: colors.onPrimary,
+                                  fontSize: 11,
+                                ),
                               ),
                             ],
                           ),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(height: 15),
-                
+
                 Container(
                   height: 38,
                   decoration: BoxDecoration(
@@ -132,10 +141,10 @@ class CursoCard extends StatelessWidget {
                             fontSize: 13,
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

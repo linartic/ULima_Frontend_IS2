@@ -5,7 +5,7 @@ import '../models/asesoria_model.dart';
 class AsesoriaService {
 
   Future<List<Asesoria>>
-      fetchAsesorias() async {
+      fetchAsesorias(String idSeccion) async {
 
     final String response =
         await rootBundle.loadString(

@@ -1,0 +1,55 @@
+{
+  "notasEstudiantes": [
+    {
+      "idEstudiante": "20235218",
+      "idCurso": "1",
+      "codigoSeccion": "IS-856",
+      "evaluaciones": [
+        {
+          "evaluacionId": "eval_1_01",
+          "nombre": "Examen Escrito 1",
+          "valor": 16.5,
+          "peso": 20.0
+        },
+        {
+          "evaluacionId": "eval_2_01",
+          "nombre": "Proyecto",
+          "valor": 18.0,
+          "peso": 25.0
+        }
+      ]
+    },
+    {
+      "idEstudiante": "20232548",
+      "idCurso": "1",
+      "codigoSeccion": "IS-856",
+      "evaluaciones": [
+        {
+          "evaluacionId": "eval_1_01",
+          "nombre": "Examen Escrito 1",
+          "valor": 14.0,
+          "peso": 20.0
+        },
+        {
+          "evaluacionId": "eval_2_01",
+          "nombre": "Proyecto",
+          "valor": 15.5,
+          "peso": 25.0
+        }
+      ]
+    },
+    {
+      "idEstudiante": "20232907",
+      "idCurso": "6",
+      "codigoSeccion": "IS-856",
+      "evaluaciones": [
+        {
+          "evaluacionId": "eval_6_01",
+          "nombre": "Practica 1",
+          "valor": 17.0,
+          "peso": 20.0
+        }
+      ]
+    }
+  ]
+}

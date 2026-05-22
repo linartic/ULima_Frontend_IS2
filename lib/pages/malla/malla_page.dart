@@ -1,8 +1,9 @@
 // lib/pages/malla/malla_page.dart
-// Malla curricular con dos piscinas: obligatorios (arriba) y electivos (abajo).
+// Pantalla de Malla Curricular interactiva — grid 2D estilo mockup React.
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../configs/themes.dart';
 import '../../models/malla_models.dart';
@@ -41,7 +42,9 @@ class MallaPage extends StatelessWidget {
   }
 }
 
-// ── Barra de progreso ──────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
+// Barra superior con contadores + progreso
+// -----------------------------------------------------------------------------
 class _ProgressBar extends StatelessWidget {
   const _ProgressBar({required this.controller, required this.colors});
   final MallaController controller;
@@ -164,7 +167,9 @@ class _Chip extends StatelessWidget {
   }
 }
 
-// ── Toolbar de zoom ────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
+// Toolbar de zoom + reset
+// -----------------------------------------------------------------------------
 class _ZoomToolbar extends StatelessWidget {
   const _ZoomToolbar({required this.controller});
   final MallaController controller;
@@ -176,7 +181,7 @@ class _ZoomToolbar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
       child: Row(
         children: [
-          _IconBtn(icon: Icons.zoom_out, onTap: controller.zoomOut),
+          _IconBtn(icon: LucideIcons.zoomOut, onTap: controller.zoomOut),
           const SizedBox(width: 4),
           Obx(
             () => SizedBox(
@@ -192,82 +197,17 @@ class _ZoomToolbar extends StatelessWidget {
               ),
             ),
           ),
-          _IconBtn(icon: Icons.zoom_in, onTap: controller.zoomIn),
+          _IconBtn(icon: LucideIcons.zoomIn, onTap: controller.zoomIn),
           const SizedBox(width: 4),
-          _IconBtn(
-            icon: Icons.center_focus_strong,
-            onTap: controller.resetZoom,
-          ),
+          _IconBtn(icon: LucideIcons.locateFixed, onTap: controller.resetZoom),
           const Spacer(),
-          // Leyenda: línea sólida = obligatorio, línea discontinua = electivo
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 18,
-                height: 2.5,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF64748B),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(width: 5),
-              const Text(
-                'Obligatorio',
-                style: TextStyle(
-                  color: Color(0xFF475569),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(width: 12),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 5,
-                    height: 2.5,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF64748B),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                  const SizedBox(width: 3),
-                  Container(
-                    width: 5,
-                    height: 2.5,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF64748B),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                  const SizedBox(width: 3),
-                  Container(
-                    width: 5,
-                    height: 2.5,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF64748B),
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(width: 5),
-              const Text(
-                'Electivo',
-                style: TextStyle(
-                  color: Color(0xFF475569),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
+          _LegendDot(color: CourseStatus.approved.color, label: 'Apr.'),
+          const SizedBox(width: 8),
+          _LegendDot(color: CourseStatus.current.color, label: 'Cur.'),
+          const SizedBox(width: 8),
+          _LegendDot(color: CourseStatus.unlocked.color, label: 'Disp.'),
+          const SizedBox(width: 8),
+          _LegendDot(color: CourseStatus.locked.color, label: 'Bloq.'),
         ],
       ),
     );
@@ -299,7 +239,38 @@ class _IconBtn extends StatelessWidget {
   }
 }
 
-// ── Canvas principal ───────────────────────────────────────────────────────────
+class _LegendDot extends StatelessWidget {
+  const _LegendDot({required this.color, required this.label});
+  final Color color;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 8,
+          height: 8,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: const TextStyle(
+            color: Color(0xFF475569),
+            fontSize: 10,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Lienzo principal — InteractiveViewer + CustomPaint + cards posicionadas
+// -----------------------------------------------------------------------------
 class _MallaCanvas extends StatelessWidget {
   const _MallaCanvas({required this.controller});
   final MallaController controller;
@@ -307,17 +278,13 @@ class _MallaCanvas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final mandatory = controller.mandatoryCards;
-      final electives = controller.electiveCards;
-      final allCards = controller.cards;
+      final cards = controller.cards;
       final statuses = controller.statuses;
       final size = controller.canvasSize();
-      final zoom = controller.zoom.value;
-
-      // Posiciones absolutas de todas las cards (obligatorios + electivos).
       final positions = <String, Offset>{
-        for (final c in allCards) c.id: controller.positionFor(c),
+        for (final c in cards) c.id: controller.positionFor(c),
       };
+      final zoom = controller.zoom.value;
 
       return InteractiveViewer(
         constrained: false,
@@ -326,6 +293,8 @@ class _MallaCanvas extends StatelessWidget {
         scaleEnabled: true,
         panEnabled: true,
         boundaryMargin: const EdgeInsets.all(200),
+        // Aplicamos un zoom inicial vía Transform en el contenido, manteniendo el
+        // pan/zoom táctil del InteractiveViewer.
         child: Transform.scale(
           scale: zoom,
           alignment: Alignment.topLeft,
@@ -334,87 +303,27 @@ class _MallaCanvas extends StatelessWidget {
             height: size.height,
             child: Stack(
               children: [
-                // ── Etiqueta sección obligatorios ─────────────────────────────
-                Positioned(
-                  left: MallaController.padding,
-                  top: MallaController.padding,
-                  child: const _SectionLabel(
-                    icon: Icons.menu_book_outlined,
-                    text: 'OBLIGATORIOS',
-                  ),
-                ),
-
-                // ── Cabeceras de nivel — piscina obligatoria ──────────────────
-                ..._levelHeaders(
-                  mandatory,
-                  yOffset:
-                      MallaController.padding +
-                      MallaController.sectionLabelHeight,
-                ),
-
-                // ── Separador entre piscinas ──────────────────────────────────
-                if (electives.isNotEmpty)
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    top: controller.separatorY - 18,
-                    child: _PoolDivider(
-                      width: size.width,
-                      separatorY: controller.separatorY,
-                    ),
-                  ),
-
-                // ── Etiqueta sección electivos ────────────────────────────────
-                if (electives.isNotEmpty)
-                  Positioned(
-                    left: MallaController.padding,
-                    top:
-                        controller.electiveSectionY -
-                        MallaController.sectionLabelHeight,
-                    child: const _SectionLabel(
-                      icon: Icons.bookmark_border,
-                      text: 'ELECTIVOS',
-                    ),
-                  ),
-
-                // ── Cabeceras de nivel — piscina electiva ─────────────────────
-                if (electives.isNotEmpty)
-                  ..._levelHeaders(
-                    electives,
-                    yOffset: controller.electiveSectionY,
-                  ),
-
-                // ── Conectores de prerrequisitos ──────────────────────────────
+                // Etiquetas de columna (NIVEL 1, NIVEL 2, ...).
+                ..._levelHeaders(cards),
+                // Conectores entre prerrequisitos.
                 Positioned.fill(
                   child: IgnorePointer(
                     child: CustomPaint(
                       painter: PrerequisitePainter(
-                        courses: allCards,
+                        courses: cards,
                         statuses: statuses,
                         positions: positions,
                       ),
                     ),
                   ),
                 ),
-
-                // ── Cards obligatorias ────────────────────────────────────────
-                for (final c in mandatory)
+                // Cards interactivas.
+                for (final c in cards)
                   Positioned(
                     left: positions[c.id]!.dx,
-                    top: positions[c.id]!.dy,
-                    child: CourseCard(
-                      course: c,
-                      status: statuses[c.id] ?? CourseStatus.locked,
-                      onTap: () => _openDetails(context, c, statuses),
-                      onLongPress: () => controller.cycleStatus(c.id),
-                    ),
-                  ),
-
-                // ── Cards electivas ───────────────────────────────────────────
-                for (final c in electives)
-                  Positioned(
-                    left: positions[c.id]!.dx,
-                    top: positions[c.id]!.dy,
+                    top:
+                        positions[c.id]!.dy +
+                        32, // 32 = espacio del header de nivel
                     child: CourseCard(
                       course: c,
                       status: statuses[c.id] ?? CourseStatus.locked,
@@ -430,23 +339,21 @@ class _MallaCanvas extends StatelessWidget {
     });
   }
 
-  List<Widget> _levelHeaders(
-    List<CourseNode> cards, {
-    required double yOffset,
-  }) {
+  List<Widget> _levelHeaders(List<CourseNode> cards) {
     if (cards.isEmpty) return const [];
     final levels = cards.map((c) => c.level).toSet().toList()..sort();
-    return [
-      for (final lvl in levels)
+    final result = <Widget>[];
+    for (final lvl in levels) {
+      final x =
+          MallaController.padding +
+          (lvl - 1) * (MallaController.cardWidth + MallaController.columnGap);
+      result.add(
         Positioned(
-          left:
-              MallaController.padding +
-              (lvl - 1) *
-                  (MallaController.cardWidth + MallaController.columnGap),
-          top: yOffset,
+          left: x,
+          top: MallaController.padding,
           child: SizedBox(
             width: MallaController.cardWidth,
-            height: MallaController.levelHeaderHeight,
+            height: 26,
             child: Center(
               child: Text(
                 'NIVEL $lvl',
@@ -460,7 +367,9 @@ class _MallaCanvas extends StatelessWidget {
             ),
           ),
         ),
-    ];
+      );
+    }
+    return result;
   }
 
   void _openDetails(
@@ -480,69 +389,6 @@ class _MallaCanvas extends StatelessWidget {
   }
 }
 
-// ── Separador visual entre piscinas ───────────────────────────────────────────
-class _PoolDivider extends StatelessWidget {
-  const _PoolDivider({required this.width, required this.separatorY});
-  final double width;
-  final double separatorY;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: 36,
-      child: Row(
-        children: [
-          const SizedBox(width: MallaController.padding),
-          Expanded(
-            child: Container(
-              height: 1.5,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0x00CBD5E1),
-                    Color(0xFFCBD5E1),
-                    Color(0x00CBD5E1),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: MallaController.padding),
-        ],
-      ),
-    );
-  }
-}
-
-// ── Label de sección ───────────────────────────────────────────────────────────
-class _SectionLabel extends StatelessWidget {
-  const _SectionLabel({required this.icon, required this.text});
-  final IconData icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 13, color: const Color(0xFF64748B)),
-        const SizedBox(width: 5),
-        Text(
-          text,
-          style: const TextStyle(
-            color: Color(0xFF64748B),
-            fontSize: 11,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 1.4,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-// ── Detail sheet ───────────────────────────────────────────────────────────────
 class _CourseDetailSheet extends StatelessWidget {
   const _CourseDetailSheet({required this.course, required this.statuses});
   final CourseNode course;
@@ -593,27 +439,6 @@ class _CourseDetailSheet extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               _PillStatus(status: currentStatus),
-              if (course.isExternal) ...[
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF0F4FF),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Text(
-                    course.externalFaculty!,
-                    style: const TextStyle(
-                      color: Color(0xFF4B5563),
-                      fontWeight: FontWeight.w800,
-                      fontSize: 11,
-                    ),
-                  ),
-                ),
-              ],
             ],
           ),
           const SizedBox(height: 8),
@@ -630,16 +455,13 @@ class _CourseDetailSheet extends StatelessWidget {
             spacing: 8,
             runSpacing: 6,
             children: [
+              _InfoTag(icon: LucideIcons.layers, text: 'Nivel ${course.level}'),
               _InfoTag(
-                icon: Icons.layers_outlined,
-                text: 'Nivel ${course.level}',
-              ),
-              _InfoTag(
-                icon: Icons.workspace_premium_outlined,
+                icon: LucideIcons.award,
                 text: '${course.credits} créditos',
               ),
               if (course.isElective)
-                const _InfoTag(icon: Icons.bookmark_border, text: 'Electivo'),
+                const _InfoTag(icon: LucideIcons.bookmark, text: 'Electivo'),
             ],
           ),
           const SizedBox(height: 16),
@@ -700,7 +522,7 @@ class _CourseDetailSheet extends StatelessWidget {
                 controller.cycleStatus(course.id);
                 Navigator.pop(context);
               },
-              icon: const Icon(Icons.repeat, size: 18),
+              icon: const Icon(LucideIcons.repeat, size: 18),
               label: Text(_nextStatusLabel(currentStatus)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: MaterialTheme.primaryColor,
@@ -721,7 +543,7 @@ class _CourseDetailSheet extends StatelessWidget {
               ),
               child: const Row(
                 children: [
-                  Icon(Icons.lock_outline, size: 16, color: Color(0xFF64748B)),
+                  Icon(LucideIcons.lock, size: 16, color: Color(0xFF64748B)),
                   SizedBox(width: 8),
                   Expanded(
                     child: Text(
@@ -762,13 +584,14 @@ class _PrereqList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mallaController = Get.find<MallaController>();
-    final byId = {for (final c in mallaController.cards) c.id: c};
+    final mallaService = Get.find<MallaController>();
+    final byId = {for (final c in mallaService.cards) c.id: c};
+
     final concrete = course.coursePrerequisites;
     final cycleReq = course.requiredCompletedLevel;
     final cycleReqOk = cycleReq == null
         ? false
-        : mallaController.hasCompletedMandatoryCycles(cycleReq, statuses);
+        : mallaService.hasCompletedMandatoryCycles(cycleReq, statuses);
 
     if (concrete.isEmpty && cycleReq == null) {
       return const Text(
@@ -786,9 +609,9 @@ class _PrereqList extends StatelessWidget {
         if (cycleReq != null)
           _PrereqRow(
             label:
-                'Haber aprobado todos los obligatorios hasta el nivel $cycleReq',
+                'Haber culminado hasta el ciclo $cycleReq (solo obligatorios)',
             ok: cycleReqOk,
-            icon: cycleReqOk ? Icons.flag_outlined : Icons.block,
+            icon: cycleReqOk ? LucideIcons.flag : LucideIcons.circleSlash,
           ),
         ...concrete.map((p) {
           final c = byId[p];
@@ -796,7 +619,7 @@ class _PrereqList extends StatelessWidget {
           return _PrereqRow(
             label: c?.name ?? p,
             ok: ok,
-            icon: ok ? Icons.done_all : Icons.block,
+            icon: ok ? LucideIcons.checkCheck : LucideIcons.circleSlash,
           );
         }),
       ],

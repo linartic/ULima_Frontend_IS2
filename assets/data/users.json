@@ -3,8 +3,8 @@
     {
       "code": "20235218",
       "password": "ulima123",
-      "firstName": "Jefferson Angelo",
-      "lastName": "Sanchez Palacios",
+      "firstName": "Jeff",
+      "lastName": "Angelo",
       "email": "20235218@aloe.ulima.edu.pe",
       "role": "delegado",
       "career_id": 1,
@@ -14,15 +14,28 @@
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4, 5, 6, 7],
-        "approvedElectives": ["internet_de_las_cosas", "sistemas_distribuidos"],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "approvedElectives": [
+          "paradigmas_programacion",
+          "analisis_diseno_algoritmos"
+        ],
         "currentCourses": [
-          "propuesta_investigacion",
-          "sistemas_erp",
-          "auditoria_control_sistemas",
-          "ingenieria_software_ii",
-          "programacion_movil",
-          "topicos_avanzados_ciberseguridad"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -52,12 +65,18 @@
           "paradigmas_programacion"
         ],
         "currentCourses": [
-          "sistemas_inteligencia_empresarial",
-          "gestion_operaciones",
-          "ingenieria_software_i",
-          "machine_learning",
-          "ciberseguridad",
-          "analisis_diseno_algoritmos"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "ML-753"
+          }
         ]
       }
     },
@@ -84,13 +103,14 @@
         ],
         "approvedElectives": [],
         "currentCourses": [
-          "ingenieria_procesos_negocio",
-          "redes_computadoras",
-          "simulacion",
-          "estructuras_datos_ii",
-          "programacion_web",
-          "gestion_financiera",
-          "paradigmas_programacion"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -116,12 +136,14 @@
         ],
         "approvedElectives": [],
         "currentCourses": [
-          "estadistica_aplicada",
-          "investigacion_operaciones_i",
-          "sistemas_operativos",
-          "desarrollo_competencias_gerenciales",
-          "estructuras_datos_i",
-          "modelamiento_base_datos"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -153,11 +175,14 @@
           "programacion_movil"
         ],
         "currentCourses": [
-          "propuesta_investigacion",
-          "sistemas_erp",
-          "auditoria_control_sistemas",
-          "ingenieria_software_ii",
-          "analisis_diseno_algoritmos"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -182,12 +207,14 @@
         ],
         "approvedElectives": [],
         "currentCourses": [
-          "estadistica_probabilidad",
-          "calculo_iii",
-          "modelacion_integracion_sistemas",
-          "costeo_operaciones",
-          "programacion_orientada_objetos",
-          "arquitectura_computadoras"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -211,12 +238,14 @@
         ],
         "approvedElectives": [],
         "currentCourses": [
-          "inteligencia_artificial_aplicada",
-          "calculo_ii",
-          "sistemas_organizacionales",
-          "fisica_sistemas",
-          "estructuras_discretas",
-          "introduccion_programacion"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -250,11 +279,14 @@
           "topicos_avanzados_ciberseguridad"
         ],
         "currentCourses": [
-          "planeamiento_estrategico",
-          "gestion_proyectos",
-          "seminario_investigacion_i",
-          "seguridad_sistemas",
-          "sistemas_distribuidos"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -280,12 +312,14 @@
         ],
         "approvedElectives": [],
         "currentCourses": [
-          "estadistica_aplicada",
-          "investigacion_operaciones_i",
-          "sistemas_operativos",
-          "desarrollo_competencias_gerenciales",
-          "estructuras_datos_i",
-          "modelamiento_base_datos"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     },
@@ -338,11 +372,14 @@
           "analitica_negocios"
         ],
         "currentCourses": [
-          "seminario_investigacion_ii",
-          "gestion_servicios_digitales",
-          "proyecto_integrador_sistemas",
-          "innovacion_digital",
-          "arquitectura_empresarial"
+          {
+            "idCurso": "1",
+            "idSeccion": "IS-856"
+          },
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
         ]
       }
     }

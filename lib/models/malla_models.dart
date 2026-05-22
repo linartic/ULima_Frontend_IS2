@@ -86,7 +86,6 @@ class CourseNode {
     required this.category,
     required this.row,
     required this.specialties,
-    this.externalFaculty,
   });
 
   final String id;
@@ -103,11 +102,7 @@ class CourseNode {
   /// Especialidades que recomiendan este electivo. Vacío para obligatorios.
   final List<String> specialties;
 
-  /// Facultad externa si el curso pertenece a otra carrera (e.g. "Comunicaciones").
-  final String? externalFaculty;
-
   bool get isElective => category == CourseCategory.elective;
-  bool get isExternal => externalFaculty != null;
 
   /// True si el prereq es un marcador "haber culminado X ciclo".
   bool _isCicloMarker(String p) => p.startsWith('_') && p.endsWith('_CICLO_');
@@ -137,7 +132,6 @@ class CourseNode {
       row: (json['row'] as num?)?.toInt() ?? 0,
       specialties:
           (json['specialties'] as List?)?.cast<String>() ?? const <String>[],
-      externalFaculty: json['externalFaculty'] as String?,
     );
   }
 }
@@ -147,35 +141,41 @@ class CourseProgress {
   CourseProgress({
     required this.approvedLevels,
     required this.approvedElectives,
-    required this.currentCourses,
+    required this.currentCourses, // Ahora será List<Map<String, dynamic>>
   });
 
-  /// Niveles cuyos cursos obligatorios están todos aprobados.
   final Set<int> approvedLevels;
-
-  /// Electivos individuales que el alumno ya aprobó.
   final Set<String> approvedElectives;
-
-  /// Cursos (id) que el alumno está llevando en este ciclo.
-  final Set<String> currentCourses;
+  final List<Map<String, dynamic>> currentCourses; // Cambiado de Set<String>
 
   factory CourseProgress.empty() => CourseProgress(
-        approvedLevels: <int>{},
-        approvedElectives: <String>{},
-        currentCourses: <String>{},
-      );
+    approvedLevels: <int>{},
+    approvedElectives: <String>{},
+    currentCourses: <Map<String, dynamic>>[],
+  );
 
   factory CourseProgress.fromJson(Map<String, dynamic>? json) {
     if (json == null) return CourseProgress.empty();
+
+    // Convertimos currentCourses con lógica flexible
+    final rawCourses = (json['currentCourses'] as List?) ?? [];
+    final List<Map<String, dynamic>> processedCourses = rawCourses
+        .map((e) {
+          if (e is Map<String, dynamic>) return e;
+          // Si es un String antiguo, lo convertimos a mapa para que no rompa la app
+          return {'idSeccion': e.toString(), 'idCurso': 'desconocido'};
+        })
+        .toList()
+        .cast<Map<String, dynamic>>();
+
     return CourseProgress(
-      approvedLevels:
-          ((json['approvedLevels'] as List?) ?? const [])
-              .map<int>((e) => (e as num).toInt())
-              .toSet(),
-      approvedElectives:
-          ((json['approvedElectives'] as List?) ?? const []).cast<String>().toSet(),
-      currentCourses:
-          ((json['currentCourses'] as List?) ?? const []).cast<String>().toSet(),
+      approvedLevels: ((json['approvedLevels'] as List?) ?? const [])
+          .map<int>((e) => (e as num).toInt())
+          .toSet(),
+      approvedElectives: ((json['approvedElectives'] as List?) ?? const [])
+          .cast<String>()
+          .toSet(),
+      currentCourses: processedCourses,
     );
   }
 }

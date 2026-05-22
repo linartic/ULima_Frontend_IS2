@@ -2,9 +2,8 @@
   "asesorias": [
     {
       "id": "1",
-      "cursoId": "IS2-856",
+      "cursoId": "IS-856",
       "curso": "Ingeniería de Software II",
-
       "docente": {
         "code": "D01",
         "firstName": "Hernan",
