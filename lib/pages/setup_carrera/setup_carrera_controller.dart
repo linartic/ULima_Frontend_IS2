@@ -28,8 +28,13 @@ class SetupCarreraController extends GetxController {
   void onInit() {
     super.onInit();
     final u = _auth.currentUser;
-    if (u != null) {
-      selectedCarreraId.value = u.careerId ?? 1;
+    final defaultCarrera = carreras.firstWhereOrNull(
+      (c) => c['is_active'] == true,
+    );
+    selectedCarreraId.value =
+        u?.careerId ?? (defaultCarrera?['id'] as int?) ?? 1;
+
+    if (u != null && u.especialidades.isNotEmpty) {
       selectedEspecialidades.assignAll(u.especialidades);
     }
   }
@@ -44,20 +49,24 @@ class SetupCarreraController extends GetxController {
 
   Future<void> finish() async {
     errorMessage.value = null;
-    saving.value = true;
 
     final cId = selectedCarreraId.value;
     if (cId == null) {
       errorMessage.value = 'Por favor, selecciona una carrera.';
-      saving.value = false;
       return;
     }
 
-    _auth.completeSetup(
-      careerId: cId,
-      especialidades: selectedEspecialidades.toList(),
-    );
-    saving.value = false;
-    Get.offAllNamed('/home');
+    saving.value = true;
+    try {
+      await _auth.completeSetup(
+        careerId: cId,
+        especialidades: selectedEspecialidades.toList(),
+      );
+      Get.offAllNamed('/home');
+    } catch (e) {
+      errorMessage.value = 'No pudimos guardar la configuración: $e';
+    } finally {
+      saving.value = false;
+    }
   }
 }
