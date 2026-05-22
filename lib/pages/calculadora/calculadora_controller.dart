@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../../models/evaluation_model.dart';
-import '../../services/evaluation_syllabus_service.dart';
+import '../../services/evaluations_service.dart';
 import '../../services/courses_service.dart';
 
 class CalculadoraController extends GetxController {

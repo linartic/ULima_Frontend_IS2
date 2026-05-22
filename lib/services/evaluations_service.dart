@@ -22,7 +22,7 @@ class EvaluationSyllabusService {
 
     try {
       final jsonString = await rootBundle.loadString(
-        'assets/data/evaluation_syllabus.json',
+        'assets/data/evaluaciones.json',
       );
 
       final Map<String, dynamic> jsonData = jsonDecode(jsonString);

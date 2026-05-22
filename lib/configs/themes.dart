@@ -21,7 +21,7 @@ class MaterialTheme {
   static Color headerColor(Brightness brightness) {
     return brightness == Brightness.light
         ? primaryColor
-        : const Color(0xFF1F1F1F);
+        : Color.fromARGB(255, 30, 30, 36);
   }
 
   //INFO CURSOS

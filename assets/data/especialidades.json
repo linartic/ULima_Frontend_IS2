@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "carrera_id": 1,
+    "name": "Desarrollo de Software",
+    "description": "Enfocada en el diseño, desarrollo, pruebas y mantenimiento de sistemas de software de alta calidad y rendimiento.",
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "carrera_id": 1,
+    "name": "Ciberseguridad",
+    "description": "Especialidad dedicada a la protección de sistemas, redes, programas y datos contra ataques digitales, accesos no autorizados y daños.",
+    "is_active": true
+  },
+  {
+    "id": 3,
+    "carrera_id": 1,
+    "name": "Ciencia de Datos",
+    "description": "Orientada al análisis masivo de datos mediante algoritmos matemáticos y estadísticos para obtener información relevante y predecir tendencias.",
+    "is_active": true
+  },
+  {
+    "id": 4,
+    "carrera_id": 1,
+    "name": "Tecnologías de la Información",
+    "description": "Enfocada en la infraestructura tecnológica, incluyendo hardware, software, redes y servicios requeridos para el funcionamiento de una organización.",
+    "is_active": true
+  },
+  {
+    "id": 5,
+    "carrera_id": 2,
+    "name": "Logística y Operaciones",
+    "description": "Gestión y optimización de cadenas de suministro, inventarios y procesos de manufactura y distribución.",
+    "is_active": true
+  },
+  {
+    "id": 6,
+    "carrera_id": 2,
+    "name": "Gestión de la Calidad",
+    "description": "Aseguramiento de estándares de calidad en productos, servicios y procesos organizacionales bajo marcos normativos internacionales.",
+    "is_active": true
+  },
+  {
+    "id": 7,
+    "carrera_id": 3,
+    "name": "Finanzas",
+    "description": "Especialización en análisis financiero, mercados de capitales, valoración de empresas y toma de decisiones de inversión.",
+    "is_active": true
+  },
+  {
+    "id": 8,
+    "carrera_id": 3,
+    "name": "Marketing y Estrategia",
+    "description": "Planificación y desarrollo de estrategias de mercadotecnia, estudio de comportamiento de consumidores e innovación comercial.",
+    "is_active": true
+  }
+]
