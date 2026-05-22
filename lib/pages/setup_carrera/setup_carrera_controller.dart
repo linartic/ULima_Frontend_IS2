@@ -8,11 +8,12 @@ import '../../services/auth_service.dart';
 class SetupCarreraController extends GetxController {
   static const carreraFija = 'Ingeniería de Sistemas';
 
+  /// Nombres oficiales de los diplomas de especialidad (Plan 2026).
   final especialidadesDisponibles = const <String>[
-    'Desarrollo de Software',
-    'Ciberseguridad',
-    'Ciencia de Datos',
+    'Ingeniería de Software',
+    'Sistemas de Información',
     'Tecnologías de la Información',
+    'Desarrollo de Videojuegos',
   ];
 
   final selectedCarrera = carreraFija.obs;
@@ -42,9 +43,7 @@ class SetupCarreraController extends GetxController {
   Future<void> finish() async {
     errorMessage.value = null;
     saving.value = true;
-    // Aquí podríamos persistir contra un backend en el futuro.
-    // Por ahora actualizamos el usuario en memoria.
-    _auth.completeSetup(
+    await _auth.completeSetup(
       career: selectedCarrera.value,
       especialidades: selectedEspecialidades.toList(),
     );

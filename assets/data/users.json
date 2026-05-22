@@ -3,24 +3,24 @@
     {
       "code": "20235218",
       "password": "ulima123",
-      "firstName": "Jeff",
-      "lastName": "Angelo",
+      "firstName": "Jefferson Angelo",
+      "lastName": "Sanchez Palacios",
       "email": "20235218@aloe.ulima.edu.pe",
       "role": "delegado",
       "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "especialidades": ["Ingeniería de Software"],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
         "approvedLevels": [1, 2, 3, 4, 5, 6, 7],
-        "approvedElectives": ["paradigmas_programacion", "analisis_diseno_algoritmos"],
+        "approvedElectives": ["internet_de_las_cosas", "sistemas_distribuidos"],
         "currentCourses": [
           "propuesta_investigacion",
           "sistemas_erp",
           "auditoria_control_sistemas",
           "ingenieria_software_ii",
-          "deep_learning",
-          "programacion_movil"
+          "programacion_movil",
+          "topicos_avanzados_ciberseguridad"
         ]
       }
     },

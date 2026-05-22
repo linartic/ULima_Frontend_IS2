@@ -1,12 +1,12 @@
 // lib/services/auth_service.dart
-// Servicio de autenticación basado en JSON local (assets/data/users.json).
-// Mantiene la sesión en memoria mientras la app corre.
+// Autenticación con JSON local + persistencia de sesión via StorageService.
 
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:get/get.dart';
 
 import '../models/user_model.dart';
+import 'storage_service.dart';
 
 class AuthService extends GetxService {
   static AuthService get to => Get.find();
@@ -19,8 +19,9 @@ class AuthService extends GetxService {
   bool get isLoggedIn => _currentUser.value != null;
   bool get isLoading => _loading.value;
 
-  /// Carga el catálogo de usuarios mock desde assets.
-  /// Se llama automáticamente la primera vez que se intenta hacer login.
+  StorageService get _storage => StorageService.to;
+
+  /// Carga el catálogo de usuarios mock desde assets (idempotente).
   Future<void> _ensureLoaded() async {
     if (_users.isNotEmpty) return;
     final raw = await rootBundle.loadString('assets/data/users.json');
@@ -29,9 +30,36 @@ class AuthService extends GetxService {
     _users.assignAll(list);
   }
 
-  /// Intenta autenticar al usuario. Devuelve `null` si las credenciales
-  /// son correctas, o un mensaje de error legible si fallan.
-  Future<String?> login({required String code, required String password}) async {
+  /// Intenta restaurar la sesión guardada en local storage.
+  /// Devuelve true si se restauró correctamente.
+  Future<bool> tryRestoreSession() async {
+    final code = _storage.savedCode;
+    if (code == null) return false;
+    await _ensureLoaded();
+    final match = _users.firstWhereOrNull(
+      (u) => u['code'].toString() == code,
+    );
+    if (match == null) {
+      await _storage.clearSession();
+      return false;
+    }
+    final user = UserModel.fromJson(match);
+    // Aplicar datos de setup guardados.
+    final career = _storage.savedCareer;
+    if (career != null && career.isNotEmpty) user.career = career;
+    final especialidades = _storage.savedEspecialidades;
+    if (especialidades.isNotEmpty) user.especialidades = especialidades;
+    user.setupComplete = _storage.savedSetupComplete;
+
+    _currentUser.value = user;
+    return true;
+  }
+
+  /// Intenta autenticar al usuario. Devuelve null si OK, o mensaje de error.
+  Future<String?> login({
+    required String code,
+    required String password,
+  }) async {
     _loading.value = true;
     try {
       await _ensureLoaded();
@@ -39,13 +67,12 @@ class AuthService extends GetxService {
       final match = _users.firstWhereOrNull(
         (u) => u['code'].toString() == normalizedCode,
       );
-      if (match == null) {
-        return 'No encontramos un alumno con ese código.';
-      }
+      if (match == null) return 'No encontramos un alumno con ese código.';
       if ((match['password'] as String?) != password) {
         return 'La contraseña no es correcta.';
       }
       _currentUser.value = UserModel.fromJson(match);
+      await _storage.saveCode(normalizedCode);
       return null;
     } catch (e) {
       return 'Ocurrió un error inesperado: $e';
@@ -54,17 +81,26 @@ class AuthService extends GetxService {
     }
   }
 
-  /// Actualiza carrera/especialidades del usuario actual y marca el setup completo.
-  void completeSetup({required String career, required List<String> especialidades}) {
+  /// Actualiza carrera/especialidades y marca el setup completo.
+  Future<void> completeSetup({
+    required String career,
+    required List<String> especialidades,
+  }) async {
     final u = _currentUser.value;
     if (u == null) return;
     u.career = career;
     u.especialidades = List.of(especialidades);
     u.setupComplete = true;
     _currentUser.refresh();
+    await _storage.saveSetup(
+      career: career,
+      especialidades: especialidades,
+      setupComplete: true,
+    );
   }
 
-  void logout() {
+  Future<void> logout() async {
     _currentUser.value = null;
+    await _storage.clearSession();
   }
 }

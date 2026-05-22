@@ -11,13 +11,19 @@ import '../models/user_model.dart';
 class MallaService extends GetxService {
   static MallaService get to => Get.find();
 
-  /// Mapeo flexible entre los strings de especialidad que aparecen en
-  /// users.json (algunos legacy) y los nombres oficiales de los 4 diplomas.
+  /// Retrocompatibilidad con nombres legacy almacenados en users.json antes
+  /// del Plan 2026. Los nombres nuevos (valores) coinciden exactamente con
+  /// los diplomas oficiales y con el campo `specialties` del JSON de la malla.
   static const Map<String, String> _especialidadAliases = {
     'Desarrollo de Software': 'Ingeniería de Software',
     'Ciberseguridad': 'Tecnologías de la Información',
     'Ciencia de Datos': 'Sistemas de Información',
     'TI': 'Tecnologías de la Información',
+    // Nombres actuales incluidos como identidad para no romper normalizeSpecialty.
+    'Ingeniería de Software': 'Ingeniería de Software',
+    'Sistemas de Información': 'Sistemas de Información',
+    'Tecnologías de la Información': 'Tecnologías de la Información',
+    'Desarrollo de Videojuegos': 'Desarrollo de Videojuegos',
   };
 
   final RxList<CourseNode> _courses = <CourseNode>[].obs;
@@ -150,10 +156,18 @@ class MallaService extends GetxService {
     return elective.specialties.any(normalized.contains);
   }
 
-  /// Lista filtrada (obligatorios siempre, electivos según especialidad).
+  /// Lista filtrada: obligatorios siempre; electivos visibles si coinciden con
+  /// la especialidad elegida O si el alumno ya los aprobó/está cursando
+  /// (independientemente de la especialidad).
   List<CourseNode> visibleCoursesFor(UserModel user) {
-    return _courses
-        .where((c) => electiveMatchesUserSpecialties(c, user.especialidades))
-        .toList();
+    final progress = user.courseProgress ?? CourseProgress.empty();
+    final approved = approvedCourseIdsFor(progress);
+    final enrolled = progress.currentCourses;
+
+    return _courses.where((c) {
+      if (!c.isElective) return true;
+      if (approved.contains(c.id) || enrolled.contains(c.id)) return true;
+      return electiveMatchesUserSpecialties(c, user.especialidades);
+    }).toList();
   }
 }

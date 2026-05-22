@@ -1,8 +1,8 @@
 // lib/pages/malla/widgets/course_card.dart
 // Tarjeta individual de un curso en la malla.
+// Los electivos se diferencian de los obligatorios por un borde discontinuo.
 
 import 'package:flutter/material.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../../models/malla_models.dart';
 import '../malla_controller.dart';
@@ -24,20 +24,20 @@ class CourseCard extends StatelessWidget {
   IconData get _statusIcon {
     switch (status) {
       case CourseStatus.approved:
-        return LucideIcons.check;
+        return Icons.check;
       case CourseStatus.current:
-        return LucideIcons.circleDot;
+        return Icons.radio_button_checked;
       case CourseStatus.unlocked:
-        return LucideIcons.circle;
+        return Icons.radio_button_unchecked;
       case CourseStatus.locked:
-        return LucideIcons.lock;
+        return Icons.lock_outline;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final isLocked = status == CourseStatus.locked;
-    return Material(
+    final body = Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
@@ -50,7 +50,10 @@ class CourseCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: status.color,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: status.borderColor, width: 2.5),
+            // Obligatorios: borde sólido normal. Electivos: sin borde (lo pinta el CustomPaint).
+            border: course.isElective
+                ? null
+                : Border.all(color: status.borderColor, width: 2.5),
             boxShadow: const [
               BoxShadow(
                 color: Color(0x22000000),
@@ -66,16 +69,18 @@ class CourseCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      course.code,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 0.5,
+                    Expanded(
+                      child: Text(
+                        course.code,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.5,
+                        ),
                       ),
                     ),
-                    const Spacer(),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 0.22),
@@ -127,7 +132,27 @@ class CourseCard extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    if (course.isElective)
+                    if (course.isExternal)
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.28),
+                          borderRadius: BorderRadius.circular(99),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
+                        child: Text(
+                          course.externalFaculty!.substring(0, 3).toUpperCase(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 0.6,
+                          ),
+                        ),
+                      )
+                    else if (course.isElective)
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white.withValues(alpha: 0.22),
@@ -138,7 +163,7 @@ class CourseCard extends StatelessWidget {
                           vertical: 2,
                         ),
                         child: const Text(
-                          'ELECTIVO',
+                          'ELECT.',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 8,
@@ -155,5 +180,63 @@ class CourseCard extends StatelessWidget {
         ),
       ),
     );
+
+    // Los electivos se envuelven en un CustomPaint que dibuja el borde discontinuo.
+    if (!course.isElective) return body;
+    return CustomPaint(
+      painter: _DashedBorderPainter(color: status.borderColor),
+      child: body,
+    );
   }
+}
+
+// ── Painter del borde discontinuo ──────────────────────────────────────────────
+
+class _DashedBorderPainter extends CustomPainter {
+  final Color color;
+
+  const _DashedBorderPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const radius = 12.0;
+    const strokeW = 2.5;
+    const dashLen = 6.0;
+    const gapLen = 4.0;
+
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeW
+      ..style = PaintingStyle.stroke;
+
+    final rrect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(
+        strokeW / 2,
+        strokeW / 2,
+        size.width - strokeW,
+        size.height - strokeW,
+      ),
+      const Radius.circular(radius),
+    );
+
+    final path = Path()..addRRect(rrect);
+    for (final metric in path.computeMetrics()) {
+      double dist = 0;
+      bool drawing = true;
+      while (dist < metric.length) {
+        final len = drawing ? dashLen : gapLen;
+        if (drawing) {
+          canvas.drawPath(
+            metric.extractPath(dist, (dist + len).clamp(0, metric.length)),
+            paint,
+          );
+        }
+        dist += len;
+        drawing = !drawing;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DashedBorderPainter old) => color != old.color;
 }
