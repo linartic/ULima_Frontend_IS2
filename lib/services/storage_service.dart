@@ -13,7 +13,8 @@ class StorageService extends GetxService {
   late SharedPreferences _prefs;
 
   static const _kCode = 'session_code';
-  static const _kCareer = 'session_career';
+  static const _kCareerId = 'session_career_id';
+  static const _kLegacyCareer = 'session_career';
   static const _kEspecialidades = 'session_especialidades';
   static const _kSetupComplete = 'session_setup_complete';
   static const _kStatuses = 'session_statuses';
@@ -31,22 +32,36 @@ class StorageService extends GetxService {
 
   // ── Setup de carrera/especialidad ───────────────────────────────────────────
 
-  String? get savedCareer => _prefs.getString(_kCareer);
+  int? get savedCareerId => _prefs.getInt(_kCareerId);
 
-  List<String> get savedEspecialidades {
+  List<int> get savedEspecialidades {
     final raw = _prefs.getString(_kEspecialidades);
     if (raw == null) return const [];
-    return (jsonDecode(raw) as List).cast<String>();
+    final decoded = jsonDecode(raw) as List;
+    return decoded
+        .map((value) {
+          if (value is int) return value;
+          if (value is num) return value.toInt();
+          return int.tryParse(value.toString());
+        })
+        .whereType<int>()
+        .toList();
   }
+
+  bool get hasSavedSetup =>
+      _prefs.containsKey(_kCareerId) ||
+      _prefs.containsKey(_kLegacyCareer) ||
+      _prefs.containsKey(_kEspecialidades) ||
+      _prefs.containsKey(_kSetupComplete);
 
   bool get savedSetupComplete => _prefs.getBool(_kSetupComplete) ?? false;
 
   Future<void> saveSetup({
-    required String career,
-    required List<String> especialidades,
+    required int careerId,
+    required List<int> especialidades,
     required bool setupComplete,
   }) async {
-    await _prefs.setString(_kCareer, career);
+    await _prefs.setInt(_kCareerId, careerId);
     await _prefs.setString(_kEspecialidades, jsonEncode(especialidades));
     await _prefs.setBool(_kSetupComplete, setupComplete);
   }
@@ -74,7 +89,8 @@ class StorageService extends GetxService {
 
   Future<void> clearSession() async {
     await _prefs.remove(_kCode);
-    await _prefs.remove(_kCareer);
+    await _prefs.remove(_kCareerId);
+    await _prefs.remove(_kLegacyCareer);
     await _prefs.remove(_kEspecialidades);
     await _prefs.remove(_kSetupComplete);
     await _prefs.remove(_kStatuses);

@@ -13,6 +13,11 @@ class AuthService extends GetxService {
 
   final Rx<UserModel?> _currentUser = Rx<UserModel?>(null);
   final RxList<Map<String, dynamic>> _users = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> _carreras = <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> _especialidades =
+      <Map<String, dynamic>>[].obs;
+  final RxList<Map<String, dynamic>> _userEspecialidades =
+      <Map<String, dynamic>>[].obs;
   final RxBool _loading = false.obs;
 
   UserModel? get currentUser => _currentUser.value;
@@ -21,13 +26,70 @@ class AuthService extends GetxService {
 
   StorageService get _storage => StorageService.to;
 
+  List<Map<String, dynamic>> get carreras => _carreras;
+  List<Map<String, dynamic>> get especialidades => _especialidades;
+
+  String getCareerName(int? id) {
+    if (id == null) return '';
+    final match = _carreras.firstWhereOrNull((c) => c['id'] == id);
+    return match != null ? match['name'] as String : '';
+  }
+
+  String getEspecialidadName(int id) {
+    final match = _especialidades.firstWhereOrNull((e) => e['id'] == id);
+    return match != null ? match['name'] as String : '';
+  }
+
   /// Carga el catálogo de usuarios mock desde assets (idempotente).
   Future<void> _ensureLoaded() async {
-    if (_users.isNotEmpty) return;
+    if (_users.isNotEmpty &&
+        _carreras.isNotEmpty &&
+        _especialidades.isNotEmpty &&
+        _userEspecialidades.isNotEmpty) {
+      return;
+    }
+
     final raw = await rootBundle.loadString('assets/data/users.json');
     final decoded = jsonDecode(raw) as Map<String, dynamic>;
     final list = (decoded['users'] as List).cast<Map<String, dynamic>>();
     _users.assignAll(list);
+
+    final rawCarreras = await rootBundle.loadString(
+      'assets/data/carreras.json',
+    );
+    _carreras.assignAll(
+      (jsonDecode(rawCarreras) as List).cast<Map<String, dynamic>>(),
+    );
+
+    final rawEspecialidades = await rootBundle.loadString(
+      'assets/data/especialidades.json',
+    );
+    _especialidades.assignAll(
+      (jsonDecode(rawEspecialidades) as List).cast<Map<String, dynamic>>(),
+    );
+
+    final rawUserEspecialidades = await rootBundle.loadString(
+      'assets/data/user_especialidades.json',
+    );
+    _userEspecialidades.assignAll(
+      (jsonDecode(rawUserEspecialidades) as List).cast<Map<String, dynamic>>(),
+    );
+  }
+
+  Map<String, dynamic> _withEspecialidadesFromRelation(
+    Map<String, dynamic> userJson,
+  ) {
+    final copy = Map<String, dynamic>.from(userJson);
+    final userCode = copy['code'].toString();
+    final userEspIds = _userEspecialidades
+        .where((ue) => ue['user_code'].toString() == userCode)
+        .map((ue) => (ue['especialidad_id'] as num).toInt())
+        .toList();
+
+    if (userEspIds.isNotEmpty) {
+      copy['especialidades'] = userEspIds;
+    }
+    return copy;
   }
 
   /// Intenta restaurar la sesión guardada en local storage.
@@ -36,20 +98,20 @@ class AuthService extends GetxService {
     final code = _storage.savedCode;
     if (code == null) return false;
     await _ensureLoaded();
-    final match = _users.firstWhereOrNull(
-      (u) => u['code'].toString() == code,
-    );
+    final match = _users.firstWhereOrNull((u) => u['code'].toString() == code);
     if (match == null) {
       await _storage.clearSession();
       return false;
     }
-    final user = UserModel.fromJson(match);
+    final user = UserModel.fromJson(_withEspecialidadesFromRelation(match));
     // Aplicar datos de setup guardados.
-    final career = _storage.savedCareer;
-    if (career != null && career.isNotEmpty) user.career = career;
+    final careerId = _storage.savedCareerId;
+    if (careerId != null) user.careerId = careerId;
     final especialidades = _storage.savedEspecialidades;
     if (especialidades.isNotEmpty) user.especialidades = especialidades;
-    user.setupComplete = _storage.savedSetupComplete;
+    if (_storage.hasSavedSetup) {
+      user.setupComplete = _storage.savedSetupComplete;
+    }
 
     _currentUser.value = user;
     return true;
@@ -71,7 +133,10 @@ class AuthService extends GetxService {
       if ((match['password'] as String?) != password) {
         return 'La contraseña no es correcta.';
       }
-      _currentUser.value = UserModel.fromJson(match);
+
+      _currentUser.value = UserModel.fromJson(
+        _withEspecialidadesFromRelation(match),
+      );
       await _storage.saveCode(normalizedCode);
       return null;
     } catch (e) {
@@ -81,19 +146,19 @@ class AuthService extends GetxService {
     }
   }
 
-  /// Actualiza carrera/especialidades y marca el setup completo.
+  /// Actualiza carrera/especialidades del usuario actual y marca el setup completo.
   Future<void> completeSetup({
-    required String career,
-    required List<String> especialidades,
+    required int careerId,
+    required List<int> especialidades,
   }) async {
     final u = _currentUser.value;
     if (u == null) return;
-    u.career = career;
+    u.careerId = careerId;
     u.especialidades = List.of(especialidades);
     u.setupComplete = true;
     _currentUser.refresh();
     await _storage.saveSetup(
-      career: career,
+      careerId: careerId,
       especialidades: especialidades,
       setupComplete: true,
     );

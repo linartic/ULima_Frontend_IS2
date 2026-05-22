@@ -69,12 +69,16 @@ flutter:
     - assets/data/secciones.json
     - assets/data/anuncios.json
     - assets/data/asesorias.json
-    - assets/data/evaluation_syllabus.json
+    - assets/data/evaluaciones.json
     - assets/data/courses.json
     - assets/data/users.json
     - assets/data/docentes.json
     - assets/data/contactos.json
     - assets/data/malla_sistemas.json
+    - assets/data/carreras.json
+    - assets/data/especialidades.json
+    - assets/data/user_especialidades.json
+    - assets/data/schedule_days.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

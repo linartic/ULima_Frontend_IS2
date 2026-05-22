@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../models/malla_models.dart';
 import '../models/user_model.dart';
+import 'auth_service.dart';
 
 class MallaService extends GetxService {
   static MallaService get to => Get.find();
@@ -147,13 +148,18 @@ class MallaService extends GetxService {
   /// especialidad asociada (caso 520074), siempre se muestra.
   bool electiveMatchesUserSpecialties(
     CourseNode elective,
-    List<String> userEspecialidades,
+    List<int> userEspecialidades,
   ) {
     if (!elective.isElective) return true;
     if (elective.specialties.isEmpty) return true;
     if (userEspecialidades.isEmpty) return true;
-    final normalized = userEspecialidades.map(normalizeSpecialty).toSet();
-    return elective.specialties.any(normalized.contains);
+    final authService = AuthService.to;
+    final userEspNames = userEspecialidades
+        .map((id) => authService.getEspecialidadName(id))
+        .where((name) => name.isNotEmpty)
+        .map(normalizeSpecialty)
+        .toSet();
+    return elective.specialties.any(userEspNames.contains);
   }
 
   /// Lista filtrada: obligatorios siempre; electivos visibles si coinciden con

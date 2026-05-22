@@ -22,21 +22,15 @@ class ContactoCard
             .colorScheme;
 
     // Inicial nombre
-    final inicial =
-        nombre[0]
-            .toUpperCase();
+    final inicial = nombre.split(' ')[1][0].toUpperCase();
 
     return Container(
 
       width: double.infinity,
 
-      padding:
-          const EdgeInsets.all(16),
 
       decoration: BoxDecoration(
 
-        // MISMO ESTILO
-        // QUE TUS DEMÁS CARDS
         color: colors.surface,
 
         borderRadius:
@@ -55,11 +49,10 @@ class ContactoCard
           // Avatar
           Container(
 
-            width: 72,
-            height: 72,
+            width: 50,
+            height: 50,
 
             decoration: BoxDecoration(
-
               color:
                   colors.surfaceContainerHighest,
 
@@ -78,7 +71,7 @@ class ContactoCard
                   color:
                       colors.onSurface,
 
-                  fontSize: 30,
+                  fontSize: 20,
 
                   fontWeight:
                       FontWeight.bold,
@@ -87,7 +80,7 @@ class ContactoCard
             ),
           ),
 
-          const SizedBox(width: 18),
+          const SizedBox(width: 5),
 
           // Información
           Expanded(
@@ -105,17 +98,14 @@ class ContactoCard
                 // Nombre
                 Text(
 
-                  nombre.toUpperCase(),
+                  nombre.toUpperCase(), //
 
                   style: TextStyle(
 
                     color:
-                        colors.primary,
+                        colors.onSurface,
 
                     fontSize: 16,
-
-                    fontWeight:
-                        FontWeight.w700,
                   ),
                 ),
 
@@ -131,7 +121,7 @@ class ContactoCard
 
                     padding:
                         const EdgeInsets.only(
-                      top: 4,
+                      top: 0,
                     ),
 
                     child: Text(
@@ -150,10 +140,7 @@ class ContactoCard
                               65,
                             ),
 
-                        fontSize: 14,
-
-                        fontWeight:
-                            FontWeight.w700,
+                        fontSize: 12,
                       ),
                     ),
                   ),

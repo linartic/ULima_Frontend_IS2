@@ -76,7 +76,6 @@ class ContactoService {
       }
     }
 
-    // SORT 😎🔥
     alumnos.sort((a,b) {
 
       // Delegado primero
@@ -100,10 +99,7 @@ class ContactoService {
       }
 
       // Orden alfabético
-      return a.lastName
-          .compareTo(
-        b.lastName,
-      );
+      return a.lastName.compareTo(b.lastName);
     });
 
     // Resultado final

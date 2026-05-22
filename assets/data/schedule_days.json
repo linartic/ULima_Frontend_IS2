@@ -1,0 +1,37 @@
+[
+  {
+    "dayName": "Lunes",
+    "dateText": "12 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  },
+  {
+    "dayName": "Martes",
+    "dateText": "13 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  },
+  {
+    "dayName": "Miércoles",
+    "dateText": "14 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  },
+  {
+    "dayName": "Jueves",
+    "dateText": "15 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  },
+  {
+    "dayName": "Viernes",
+    "dateText": "16 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  },
+  {
+    "dayName": "Sábado",
+    "dateText": "17 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  },
+  {
+    "dayName": "Domingo",
+    "dateText": "18 De Enero",
+    "weekText": "Semana 2 del ciclo"
+  }
+]

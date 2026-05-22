@@ -7,8 +7,10 @@
       "lastName": "Sanchez Palacios",
       "email": "20235218@aloe.ulima.edu.pe",
       "role": "delegado",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Ingeniería de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
@@ -31,13 +33,24 @@
       "lastName": "Rodríguez",
       "email": "20232548@aloe.ulima.edu.pe",
       "role": "subdelegado",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4, 5, 6],
-        "approvedElectives": ["paradigmas_programacion"],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "approvedElectives": [
+          "paradigmas_programacion"
+        ],
         "currentCourses": [
           "sistemas_inteligencia_empresarial",
           "gestion_operaciones",
@@ -55,12 +68,20 @@
       "lastName": "Tejada",
       "email": "20232907@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4, 5],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "approvedElectives": [],
         "currentCourses": [
           "ingenieria_procesos_negocio",
@@ -80,12 +101,19 @@
       "lastName": "Ruiz",
       "email": "20232637@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4
+        ],
         "approvedElectives": [],
         "currentCourses": [
           "estadistica_aplicada",
@@ -104,13 +132,26 @@
       "lastName": "Salazar",
       "email": "20232685@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4, 5, 6, 7],
-        "approvedElectives": ["paradigmas_programacion", "programacion_movil"],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "approvedElectives": [
+          "paradigmas_programacion",
+          "programacion_movil"
+        ],
         "currentCourses": [
           "propuesta_investigacion",
           "sistemas_erp",
@@ -127,12 +168,18 @@
       "lastName": "Falcon",
       "email": "20231098@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3],
+        "approvedLevels": [
+          1,
+          2,
+          3
+        ],
         "approvedElectives": [],
         "currentCourses": [
           "estadistica_probabilidad",
@@ -151,12 +198,17 @@
       "lastName": "Ruiz",
       "email": "20231483@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2],
+        "approvedLevels": [
+          1,
+          2
+        ],
         "approvedElectives": [],
         "currentCourses": [
           "inteligencia_artificial_aplicada",
@@ -175,12 +227,23 @@
       "lastName": "Quispe",
       "email": "20221234@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Ciberseguridad"],
+      "career_id": 1,
+      "especialidades": [
+        2
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4, 5, 6, 7, 8],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
         "approvedElectives": [
           "internet_de_las_cosas",
           "redes_avanzadas",
@@ -202,12 +265,19 @@
       "lastName": "Mendoza",
       "email": "20245100@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Desarrollo de Software"],
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4
+        ],
         "approvedElectives": [],
         "currentCourses": [
           "estadistica_aplicada",
@@ -226,7 +296,7 @@
       "lastName": "Torres",
       "email": "20255678@aloe.ulima.edu.pe",
       "role": "estudiante",
-      "career": null,
+      "career_id": 2,
       "especialidades": [],
       "currentCycle": "2026-1",
       "setupComplete": false,
@@ -243,12 +313,24 @@
       "lastName": "Salinas",
       "email": "20215555@aloe.ulima.edu.pe",
       "role": "subdelegado",
-      "career": "Ingeniería de Sistemas",
-      "especialidades": ["Ciencia de Datos"],
+      "career_id": 1,
+      "especialidades": [
+        3
+      ],
       "currentCycle": "2026-1",
       "setupComplete": true,
       "courseProgress": {
-        "approvedLevels": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "approvedLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
         "approvedElectives": [
           "gestion_base_de_datos",
           "ingenieria_del_conocimiento",

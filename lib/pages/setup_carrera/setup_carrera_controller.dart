@@ -1,53 +1,72 @@
-// lib/pages/setup_carrera/setup_carrera_controller.dart
-// CU3 + CU4 – configuración de carrera y especialidades.
-
 import 'package:get/get.dart';
 
 import '../../services/auth_service.dart';
 
 class SetupCarreraController extends GetxController {
-  static const carreraFija = 'Ingeniería de Sistemas';
-
-  /// Nombres oficiales de los diplomas de especialidad (Plan 2026).
-  final especialidadesDisponibles = const <String>[
-    'Ingeniería de Software',
-    'Sistemas de Información',
-    'Tecnologías de la Información',
-    'Desarrollo de Videojuegos',
-  ];
-
-  final selectedCarrera = carreraFija.obs;
-  final selectedEspecialidades = <String>{}.obs;
+  final selectedCarreraId = RxnInt();
+  final selectedEspecialidades = <int>{}.obs;
   final errorMessage = RxnString();
   final saving = false.obs;
 
   AuthService get _auth => AuthService.to;
 
+  List<Map<String, dynamic>> get carreras => _auth.carreras;
+
+  List<Map<String, dynamic>> get especialidadesDisponibles {
+    final cId = selectedCarreraId.value;
+    if (cId == null) return const [];
+    return _auth.especialidades
+        .where((e) => e['carrera_id'] == cId && e['is_active'] == true)
+        .toList();
+  }
+
+  String get selectedCarreraName {
+    return _auth.getCareerName(selectedCarreraId.value);
+  }
+
   @override
   void onInit() {
     super.onInit();
     final u = _auth.currentUser;
-    if (u?.especialidades.isNotEmpty == true) {
-      selectedEspecialidades.assignAll(u!.especialidades);
+    final defaultCarrera = carreras.firstWhereOrNull(
+      (c) => c['is_active'] == true,
+    );
+    selectedCarreraId.value =
+        u?.careerId ?? (defaultCarrera?['id'] as int?) ?? 1;
+
+    if (u != null && u.especialidades.isNotEmpty) {
+      selectedEspecialidades.assignAll(u.especialidades);
     }
   }
 
-  void toggleEspecialidad(String esp) {
-    if (selectedEspecialidades.contains(esp)) {
-      selectedEspecialidades.remove(esp);
+  void toggleEspecialidad(int id) {
+    if (selectedEspecialidades.contains(id)) {
+      selectedEspecialidades.remove(id);
     } else {
-      selectedEspecialidades.add(esp);
+      selectedEspecialidades.add(id);
     }
   }
 
   Future<void> finish() async {
     errorMessage.value = null;
+
+    final cId = selectedCarreraId.value;
+    if (cId == null) {
+      errorMessage.value = 'Por favor, selecciona una carrera.';
+      return;
+    }
+
     saving.value = true;
-    await _auth.completeSetup(
-      career: selectedCarrera.value,
-      especialidades: selectedEspecialidades.toList(),
-    );
-    saving.value = false;
-    Get.offAllNamed('/home');
+    try {
+      await _auth.completeSetup(
+        careerId: cId,
+        especialidades: selectedEspecialidades.toList(),
+      );
+      Get.offAllNamed('/home');
+    } catch (e) {
+      errorMessage.value = 'No pudimos guardar la configuración: $e';
+    } finally {
+      saving.value = false;
+    }
   }
 }
