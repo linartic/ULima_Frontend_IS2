@@ -15,9 +15,15 @@ class SetupCarreraController extends GetxController {
   List<Map<String, dynamic>> get especialidadesDisponibles {
     final cId = selectedCarreraId.value;
     if (cId == null) return const [];
-    return _auth.especialidades
+    final list = _auth.especialidades
         .where((e) => e['carrera_id'] == cId && e['is_active'] == true)
         .toList();
+    list.sort((a, b) {
+      final orderA = (a['display_order'] as num?)?.toInt() ?? 999;
+      final orderB = (b['display_order'] as num?)?.toInt() ?? 999;
+      return orderA.compareTo(orderB);
+    });
+    return list;
   }
 
   String get selectedCarreraName {

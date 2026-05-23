@@ -229,7 +229,7 @@
       "role": "estudiante",
       "career_id": 1,
       "especialidades": [
-        2
+        3
       ],
       "currentCycle": "2026-1",
       "setupComplete": true,
@@ -315,7 +315,7 @@
       "role": "subdelegado",
       "career_id": 1,
       "especialidades": [
-        3
+        2
       ],
       "currentCycle": "2026-1",
       "setupComplete": true,

@@ -337,7 +337,9 @@ class _EspecialidadesList extends StatelessWidget {
                               espDesc,
                               style: TextStyle(
                                 color: selected
-                                    ? MaterialTheme.primaryDark.withOpacity(0.8)
+                                    ? MaterialTheme.primaryDark.withValues(
+                                        alpha: 0.8,
+                                      )
                                     : const Color(0xFF666666),
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400,

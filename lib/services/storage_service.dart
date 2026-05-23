@@ -15,9 +15,11 @@ class StorageService extends GetxService {
   static const _kCode = 'session_code';
   static const _kCareerId = 'session_career_id';
   static const _kLegacyCareer = 'session_career';
-  static const _kEspecialidades = 'session_especialidades';
+  static const _kEspecialidades = 'session_especialidades_v2';
+  static const _kLegacyEspecialidades = 'session_especialidades';
   static const _kSetupComplete = 'session_setup_complete';
-  static const _kStatuses = 'session_statuses';
+  static const _kStatuses = 'session_statuses_v2';
+  static const _kLegacyStatuses = 'session_statuses';
 
   Future<StorageService> init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -52,6 +54,7 @@ class StorageService extends GetxService {
       _prefs.containsKey(_kCareerId) ||
       _prefs.containsKey(_kLegacyCareer) ||
       _prefs.containsKey(_kEspecialidades) ||
+      _prefs.containsKey(_kLegacyEspecialidades) ||
       _prefs.containsKey(_kSetupComplete);
 
   bool get savedSetupComplete => _prefs.getBool(_kSetupComplete) ?? false;
@@ -92,7 +95,9 @@ class StorageService extends GetxService {
     await _prefs.remove(_kCareerId);
     await _prefs.remove(_kLegacyCareer);
     await _prefs.remove(_kEspecialidades);
+    await _prefs.remove(_kLegacyEspecialidades);
     await _prefs.remove(_kSetupComplete);
     await _prefs.remove(_kStatuses);
+    await _prefs.remove(_kLegacyStatuses);
   }
 }

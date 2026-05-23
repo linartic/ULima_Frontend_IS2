@@ -29,7 +29,7 @@
   },
   {
     "user_code": "20221234",
-    "especialidad_id": 2
+    "especialidad_id": 3
   },
   {
     "user_code": "20245100",
@@ -37,6 +37,6 @@
   },
   {
     "user_code": "20215555",
-    "especialidad_id": 3
+    "especialidad_id": 2
   }
 ]

@@ -1,6 +1,6 @@
 // lib/pages/malla/widgets/course_card.dart
 // Tarjeta individual de un curso en la malla.
-// Los electivos se diferencian de los obligatorios por un borde discontinuo.
+// Los electivos usan un borde punteado encima de la tarjeta.
 
 import 'package:flutter/material.dart';
 
@@ -50,7 +50,6 @@ class CourseCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: status.color,
             borderRadius: BorderRadius.circular(12),
-            // Obligatorios: borde sólido normal. Electivos: sin borde (lo pinta el CustomPaint).
             border: course.isElective
                 ? null
                 : Border.all(color: status.borderColor, width: 2.5),
@@ -181,32 +180,33 @@ class CourseCard extends StatelessWidget {
       ),
     );
 
-    // Los electivos se envuelven en un CustomPaint que dibuja el borde discontinuo.
     if (!course.isElective) return body;
+
     return CustomPaint(
-      painter: _DashedBorderPainter(color: status.borderColor),
+      foregroundPainter: _DottedBorderPainter(
+        color: Colors.white.withValues(alpha: isLocked ? 0.5 : 0.78),
+      ),
       child: body,
     );
   }
 }
 
-// ── Painter del borde discontinuo ──────────────────────────────────────────────
+class _DottedBorderPainter extends CustomPainter {
+  const _DottedBorderPainter({required this.color});
 
-class _DashedBorderPainter extends CustomPainter {
   final Color color;
-
-  const _DashedBorderPainter({required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
     const radius = 12.0;
-    const strokeW = 2.5;
-    const dashLen = 6.0;
-    const gapLen = 4.0;
+    const strokeW = 2.4;
+    const dotLen = 0.6;
+    const gapLen = 5.4;
 
     final paint = Paint()
       ..color = color
       ..strokeWidth = strokeW
+      ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;
 
     final rrect = RRect.fromRectAndRadius(
@@ -221,22 +221,21 @@ class _DashedBorderPainter extends CustomPainter {
 
     final path = Path()..addRRect(rrect);
     for (final metric in path.computeMetrics()) {
-      double dist = 0;
-      bool drawing = true;
-      while (dist < metric.length) {
-        final len = drawing ? dashLen : gapLen;
-        if (drawing) {
-          canvas.drawPath(
-            metric.extractPath(dist, (dist + len).clamp(0, metric.length)),
-            paint,
-          );
-        }
-        dist += len;
-        drawing = !drawing;
+      var distance = 0.0;
+      while (distance < metric.length) {
+        canvas.drawPath(
+          metric.extractPath(
+            distance,
+            (distance + dotLen).clamp(0, metric.length),
+          ),
+          paint,
+        );
+        distance += dotLen + gapLen;
       }
     }
   }
 
   @override
-  bool shouldRepaint(_DashedBorderPainter old) => color != old.color;
+  bool shouldRepaint(_DottedBorderPainter oldDelegate) =>
+      oldDelegate.color != color;
 }

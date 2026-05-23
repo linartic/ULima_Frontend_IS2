@@ -28,6 +28,7 @@ class MallaController extends GetxController {
   final cards = <CourseNode>[].obs;
   final statuses = <String, CourseStatus>{}.obs;
   final zoom = 1.0.obs;
+  final focusRequests = 0.obs;
 
   // ── Caché de layout (se recalcula en _refresh) ──────────────────────────────
   final _electiveNormRows = <String, int>{};
@@ -79,7 +80,7 @@ class MallaController extends GetxController {
           saved.entries.where((e) => visible.contains(e.key)),
         );
         statuses.addAll(filtered);
-        statuses.refresh();
+        _recomputeDerivedAvailability();
       }
     } finally {
       loading.value = false;
@@ -98,6 +99,16 @@ class MallaController extends GetxController {
     cards.assignAll(visible);
     statuses.assignAll(_malla.computeStatuses(u));
     _computePoolLayout();
+  }
+
+  void _recomputeDerivedAvailability() {
+    statuses.assignAll(
+      _malla.recomputeDerivedAvailability(
+        visibleCourses: cards,
+        currentStatuses: statuses,
+      ),
+    );
+    statuses.refresh();
   }
 
   /// Calcula las filas normalizadas (0-indexed) de los electivos dentro de su
@@ -143,6 +154,44 @@ class MallaController extends GetxController {
     );
   }
 
+  int? get currentStudentLevel {
+    final pendingMandatory = mandatoryCards
+        .where((c) => statuses[c.id] != CourseStatus.approved)
+        .toList();
+    if (pendingMandatory.isNotEmpty) {
+      return pendingMandatory
+          .map((c) => c.level)
+          .reduce((a, b) => a < b ? a : b);
+    }
+
+    final pending = cards
+        .where((c) => statuses[c.id] != CourseStatus.approved)
+        .toList();
+    if (pending.isEmpty) return null;
+    return pending.map((c) => c.level).reduce((a, b) => a < b ? a : b);
+  }
+
+  Offset? focusOffsetForCurrentLevel() {
+    final level = currentStudentLevel;
+    if (level == null) return null;
+
+    final target =
+        mandatoryCards
+            .where(
+              (c) =>
+                  c.level == level && statuses[c.id] != CourseStatus.approved,
+            )
+            .toList()
+          ..sort((a, b) => a.row.compareTo(b.row));
+
+    if (target.isNotEmpty) return positionFor(target.first);
+
+    return Offset(
+      padding + (level - 1) * (cardWidth + columnGap),
+      padding + sectionLabelHeight + levelHeaderHeight,
+    );
+  }
+
   /// Y del separador entre piscinas (centro del sectionGap).
   double get separatorY => _mandatorySectionBottom + sectionGap / 2;
 
@@ -179,7 +228,7 @@ class MallaController extends GetxController {
         return;
     }
     statuses[courseId] = next;
-    statuses.refresh();
+    _recomputeDerivedAvailability();
     StorageService.to.saveStatuses(statuses);
   }
 
@@ -208,5 +257,8 @@ class MallaController extends GetxController {
   // ── Zoom ────────────────────────────────────────────────────────────────────
   void zoomIn() => zoom.value = (zoom.value + 0.1).clamp(0.5, 1.6);
   void zoomOut() => zoom.value = (zoom.value - 0.1).clamp(0.5, 1.6);
-  void resetZoom() => zoom.value = 1.0;
+  void resetZoom() {
+    zoom.value = 1.0;
+    focusRequests.value++;
+  }
 }

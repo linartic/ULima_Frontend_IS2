@@ -100,6 +100,46 @@ class MallaService extends GetxService {
     return result;
   }
 
+  /// Recalcula sólo los estados derivados (`locked` / `unlocked`) usando los
+  /// cursos aprobados manualmente en la pantalla. Los estados explícitos
+  /// (`current` / `approved`) se conservan porque son decisión del alumno.
+  Map<String, CourseStatus> recomputeDerivedAvailability({
+    required Iterable<CourseNode> visibleCourses,
+    required Map<String, CourseStatus> currentStatuses,
+  }) {
+    final byId = <String, CourseNode>{for (final c in _courses) c.id: c};
+    final approved = currentStatuses.entries
+        .where((entry) => entry.value == CourseStatus.approved)
+        .map((entry) => entry.key)
+        .toSet();
+
+    final result = <String, CourseStatus>{};
+    for (final c in visibleCourses) {
+      final existing = currentStatuses[c.id];
+      if (existing == CourseStatus.approved ||
+          existing == CourseStatus.current) {
+        result[c.id] = existing!;
+        continue;
+      }
+
+      final reqLvl = c.requiredCompletedLevel;
+      if (reqLvl != null &&
+          !hasCompletedMandatoryCyclesFromApprovedIds(approved, reqLvl)) {
+        result[c.id] = CourseStatus.locked;
+        continue;
+      }
+
+      final allPrereqsOk = c.coursePrerequisites.every((p) {
+        if (!byId.containsKey(p)) return false;
+        return approved.contains(p);
+      });
+
+      result[c.id] = allPrereqsOk ? CourseStatus.unlocked : CourseStatus.locked;
+    }
+
+    return result;
+  }
+
   /// IDs aprobados derivados del progreso persistido.
   ///
   /// `approvedLevels` representa ciclos completos, pero cada ciclo completo
