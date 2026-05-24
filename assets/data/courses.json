@@ -7,7 +7,7 @@
       "is_active": true,
       "ciclo": "2026-1",
       "secciones": [
-        { "idSeccion": "IS-856", "codigoSeccion": "856" }      
+        { "idSeccion": "IS-856", "codigoSeccion": "856" }
       ]
     },
     {
@@ -17,7 +17,7 @@
       "is_active": false,
       "ciclo": "2026-1",
       "secciones": [
-        { "idSeccion": "ML-753", "codigoSeccion": "753" }      
+        { "idSeccion": "ML-753", "codigoSeccion": "753" }
       ]
     },
     {
@@ -37,7 +37,7 @@
       "default_credit": 4,
       "is_active": false,
       "secciones": [
-        { "idSeccion": "PM-854", "codigoSeccion": "854" }      
+        { "idSeccion": "PM-854", "codigoSeccion": "854" }
       ]
     },
     {
@@ -47,7 +47,7 @@
       "is_active": false,
       "ciclo": "2026-1",
       "secciones": [
-        { "idSeccion": "SIE-755", "codigoSeccion": "755" }      
+        { "idSeccion": "SIE-755", "codigoSeccion": "755" }
       ]
     },
     {
@@ -57,7 +57,7 @@
       "is_active": true,
       "ciclo": "2026-1",
       "secciones": [
-        { "idSeccion": "PW-855", "codigoSeccion": "855" }      
+        { "idSeccion": "PW-855", "codigoSeccion": "855" }
       ]
     },
     {
@@ -69,7 +69,7 @@
       "ciclo": "2026-1",
       "secciones": [
         { "idSeccion": "GP-802", "codigoSeccion": "802" },
-        { "idSeccion": "GP-804", "codigoSeccion": "804" }     
+        { "idSeccion": "GP-804", "codigoSeccion": "804" }
       ]
     },
     {
@@ -80,7 +80,216 @@
       "is_active": true,
       "ciclo": "2026-1",
       "secciones": [
-        { "idSeccion": "CALCIII-403", "codigoSeccion": "403" }      
+        { "idSeccion": "CALCIII-403", "codigoSeccion": "403" }
+      ]
+    },
+    {
+      "id": "9",
+      "nombre": "COMPUTACIÓN EN LA NUBE / CLOUD COMPUTING",
+      "name": "CLOUD COMPUTING",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "CND-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "10",
+      "nombre": "SEMINARIO DE INVESTIGACIÓN II",
+      "name": "SEMINARIO INV. II",
+      "default_credit": 4,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "SINV2-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "11",
+      "nombre": "SEMINARIO DE INVESTIGACIÓN I",
+      "name": "SEMINARIO INV. I",
+      "default_credit": 4,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "SINV1-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "12",
+      "nombre": "GESTIÓN DE SERVICIOS DIGITALES",
+      "name": "GEST. SERV. DIGITALES",
+      "default_credit": 4,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "GSD-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "13",
+      "nombre": "SISTEMAS ERP",
+      "name": "SISTEMAS ERP",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "ERP-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "14",
+      "nombre": "INTERNET DE LAS COSAS / INTERNET OF THINGS",
+      "name": "IoT",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "IOT-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "15",
+      "nombre": "SEGURIDAD DE SISTEMAS",
+      "name": "SEG. DE SISTEMAS",
+      "default_credit": 4,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "SS-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "16",
+      "nombre": "GESTIÓN DE BASE DE DATOS",
+      "name": "GEST. BASE DATOS",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "GBD-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "17",
+      "nombre": "ARQUITECTURA DE SOFTWARE",
+      "name": "ARQ. SOFTWARE",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "AS-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "18",
+      "nombre": "ARQUITECTURA EMPRESARIAL",
+      "name": "ARQ. EMPRESARIAL",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "AE-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "19",
+      "nombre": "INGENIERÍA DEL CONOCIMIENTO",
+      "name": "ING. CONOCIMIENTO",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "IK-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "20",
+      "nombre": "INTERACCIÓN HUMANO COMPUTADORA / HUMAN COMPUTER INTERACTION",
+      "name": "IHC",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "IHC-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "21",
+      "nombre": "DEVOPS",
+      "name": "DEVOPS",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "DO-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "22",
+      "nombre": "PLANEAMIENTO ESTRATÉGICO",
+      "name": "PLAN. ESTRATÉGICO",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "PE-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "23",
+      "nombre": "ANALÍTICA CON BIG DATA",
+      "name": "BIG DATA",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "BDA-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "24",
+      "nombre": "ARQUITECTURA DE TECNOLOGÍAS DE LA INFORMACIÓN",
+      "name": "ARQ. TI",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "ATI-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "25",
+      "nombre": "ANÁLISIS Y DISEÑO DE ALGORITMOS",
+      "name": "DISEÑO ALGORITMOS",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "ADA-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "26",
+      "nombre": "PROPUESTA DE INVESTIGACIÓN",
+      "name": "PROP. INVESTIGACIÓN",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "PI-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "27",
+      "nombre": "SISTEMAS DISTRIBUIDOS",
+      "name": "SIST. DISTRIBUIDOS",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "SD-TBD", "codigoSeccion": "TBD" }
       ]
     }
   ]

@@ -1,16 +1,199 @@
 {
   "docentes": [
-
     {
       "code": "D01",
       "firstName": "Hernan",
       "lastName": "Quintana"
     },
-
     {
       "code": "D02",
       "firstName": "Carlos",
       "lastName": "Lopez"
+    },
+    {
+      "code": "D03",
+      "firstName": "Jose Jesús",
+      "lastName": "Valdivia Caballero"
+    },
+    {
+      "code": "D04",
+      "firstName": "Jorge Luis",
+      "lastName": "Irey Nuñez"
+    },
+    {
+      "code": "D05",
+      "firstName": "Angela Gabriela",
+      "lastName": "Mayhua Quispe"
+    },
+    {
+      "code": "D06",
+      "firstName": "Juan Carlos Eduardo",
+      "lastName": "Romaina Acevedo"
+    },
+    {
+      "code": "D07",
+      "firstName": "Enrique Humberto",
+      "lastName": "Palacios Lopez"
+    },
+    {
+      "code": "D08",
+      "firstName": "Richard Edgard",
+      "lastName": "Aguilar Paredes"
+    },
+    {
+      "code": "D09",
+      "firstName": "Jose Luis",
+      "lastName": "Alfaro Marquina"
+    },
+    {
+      "code": "D10",
+      "firstName": "Ivan Christian",
+      "lastName": "Bautista Fuentes"
+    },
+    {
+      "code": "D11",
+      "firstName": "Marco Antonio",
+      "lastName": "Fernandez Del Pomar"
+    },
+    {
+      "code": "D12",
+      "firstName": "Hector German",
+      "lastName": "Llanos Punyin"
+    },
+    {
+      "code": "D13",
+      "firstName": "Juan Francisco",
+      "lastName": "Lopez Aleman"
+    },
+    {
+      "code": "D14",
+      "firstName": "Jean Janssen",
+      "lastName": "Matos Manguinuri"
+    },
+    {
+      "code": "D15",
+      "firstName": "Javier Teodocio",
+      "lastName": "Roque Espinoza"
+    },
+    {
+      "code": "D16",
+      "firstName": "Javier Richard",
+      "lastName": "Quinto Ancieta"
+    },
+    {
+      "code": "D17",
+      "firstName": "Edwin Jonathan",
+      "lastName": "Escobedo Cárdenas"
+    },
+    {
+      "code": "D18",
+      "firstName": "Rosario Marybel",
+      "lastName": "Guzmán Jiménez"
+    },
+    {
+      "code": "D19",
+      "firstName": "Paulo Nazareno",
+      "lastName": "Maia Sampaio"
+    },
+    {
+      "code": "D20",
+      "firstName": "Javier",
+      "lastName": "More Sánchez"
+    },
+    {
+      "code": "D21",
+      "firstName": "Hernán",
+      "lastName": "Nina Hanco"
+    },
+    {
+      "code": "D22",
+      "firstName": "Lourdes",
+      "lastName": "Ramírez Cerna"
+    },
+    {
+      "code": "D23",
+      "firstName": "Franci",
+      "lastName": "Suni López"
+    },
+    {
+      "code": "D24",
+      "firstName": "Christiam Javier",
+      "lastName": "Ortiz Pachas"
+    },
+    {
+      "code": "D25",
+      "firstName": "Diego Norberto",
+      "lastName": "Helfer Rodriguez"
+    },
+    {
+      "code": "D26",
+      "firstName": "Jorge Victor",
+      "lastName": "Miranda Pacheco"
+    },
+    {
+      "code": "D27",
+      "firstName": "Edwin Manuel",
+      "lastName": "Alvarez Valdivia"
+    },
+    {
+      "code": "D28",
+      "firstName": "José Raúl",
+      "lastName": "Diaz Parra"
+    },
+    {
+      "code": "D29",
+      "firstName": "Francisco",
+      "lastName": "Riccio Chávez"
+    },
+    {
+      "code": "D30",
+      "firstName": "José Alberto",
+      "lastName": "Caballero Ortiz"
+    },
+    {
+      "code": "D31",
+      "firstName": "Percy",
+      "lastName": "Diez Quiñones Panduro"
+    },
+    {
+      "code": "D32",
+      "firstName": "Miriam Elizabeth",
+      "lastName": "Amable Ciudad"
+    },
+    {
+      "code": "D33",
+      "firstName": "Henry Joe",
+      "lastName": "Wong Urquiza"
+    },
+    {
+      "code": "D34",
+      "firstName": "Enver Gerald",
+      "lastName": "Tarazona Vargas"
+    },
+    {
+      "code": "D35",
+      "firstName": "Winston",
+      "lastName": "Lewis Fuentes"
+    },
+    {
+      "code": "D36",
+      "firstName": "Octavio",
+      "lastName": "Jara Villavicencio"
+    },
+    {
+      "code": "D37",
+      "firstName": "Guillermo Antonio",
+      "lastName": "Dávila Calle"
+    },
+    {
+      "code": "D38",
+      "firstName": "Juan Manuel",
+      "lastName": "Machuca De Pina"
+    },
+    {
+      "code": "D39",
+      "firstName": "Jean Pierre",
+      "lastName": "Tincopa Flores"
     }
   ]
 }
