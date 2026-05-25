@@ -80,13 +80,32 @@ class HorarioController extends GetxController {
 
     final currentDayName = activeDay.dayName.toLowerCase();
 
-    return _todasLasSecciones.where((s) {
-      final courseDay = (s['dia'] as String? ?? '').toLowerCase();
-      final esMismoDia = courseDay == currentDayName;
-      final estaInscrito = idsInscritos.contains(s['idSeccion']);
+    final courses = <Map<String, dynamic>>[];
 
-      return esMismoDia && estaInscrito;
-    }).toList();
+    for (final section in _todasLasSecciones) {
+      final estaInscrito = idsInscritos.contains(section['idSeccion']);
+      if (!estaInscrito) continue;
+
+      final horarios = section['horarios'];
+      if (horarios is List && horarios.isNotEmpty) {
+        for (final rawHorario in horarios) {
+          if (rawHorario is! Map) continue;
+          final horario = Map<String, dynamic>.from(rawHorario);
+          final courseDay = (horario['dia'] as String? ?? '').toLowerCase();
+          if (courseDay != currentDayName) continue;
+
+          courses.add({...section, ...horario});
+        }
+        continue;
+      }
+
+      final courseDay = (section['dia'] as String? ?? '').toLowerCase();
+      if (courseDay == currentDayName) {
+        courses.add(section);
+      }
+    }
+
+    return courses;
   }
 
   void previousDay() {

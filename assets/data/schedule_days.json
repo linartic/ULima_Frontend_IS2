@@ -1,37 +1,37 @@
 [
   {
     "dayName": "Lunes",
-    "dateText": "12 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "13 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   },
   {
     "dayName": "Martes",
-    "dateText": "13 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "14 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   },
   {
     "dayName": "Miércoles",
-    "dateText": "14 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "15 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   },
   {
     "dayName": "Jueves",
-    "dateText": "15 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "16 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   },
   {
     "dayName": "Viernes",
-    "dateText": "16 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "17 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   },
   {
     "dayName": "Sábado",
-    "dateText": "17 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "18 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   },
   {
     "dayName": "Domingo",
-    "dateText": "18 De Enero",
-    "weekText": "Semana 2 del ciclo"
+    "dateText": "19 de Abril",
+    "weekText": "Semana 2 del ciclo 2026-1"
   }
 ]

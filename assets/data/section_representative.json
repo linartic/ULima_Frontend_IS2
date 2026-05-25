@@ -1,24 +1,202 @@
 {
-  "sectionRepresentatives":[
+  "sectionRepresentatives": [
     {
-      "id":"1",
-      "enrollmentId":"1",
-      "role":"delegado"
+      "id": "1",
+      "enrollmentId": "20",
+      "role": "delegado",
+      "sectionKey": "ingenieria_de_software_ii_856",
+      "studentCode": "20233916",
+      "studentFullName": "Luna Moran Franco Antonio",
+      "isActive": true
     },
     {
-      "id":"2",
-      "enrollmentId":"11",
-      "role":"subdelegado"
+      "id": "2",
+      "enrollmentId": "30",
+      "role": "subdelegado",
+      "sectionKey": "ingenieria_de_software_ii_856",
+      "studentCode": "20232685",
+      "studentFullName": "Salazar Torres Julio Gabriel",
+      "isActive": true
     },
     {
-      "id":"3",
-      "enrollmentId":"7",
-      "role":"delegado"
+      "id": "3",
+      "enrollmentId": "56",
+      "role": "delegado",
+      "sectionKey": "sistemas_erp_851",
+      "studentCode": "20214076",
+      "studentFullName": "Revilla Robles Manuel Jesus",
+      "isActive": true
     },
     {
-      "id":"4",
-      "enrollmentId":"10",
-      "role":"subdelegado"
+      "id": "4",
+      "enrollmentId": "61",
+      "role": "subdelegado",
+      "sectionKey": "sistemas_erp_851",
+      "studentCode": "20224068",
+      "studentFullName": "Solorzano Ormeño Gonzalo Sebastian",
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "enrollmentId": "90",
+      "role": "delegado",
+      "sectionKey": "programacion_movil_854",
+      "studentCode": "20232907",
+      "studentFullName": "Tejada Montesinos Martin Rodrigo",
+      "isActive": true
+    },
+    {
+      "id": "6",
+      "enrollmentId": "74",
+      "role": "subdelegado",
+      "sectionKey": "programacion_movil_854",
+      "studentCode": "20231304",
+      "studentFullName": "Gonzales Villar Jose Joaquin",
+      "isActive": true
+    },
+    {
+      "id": "7",
+      "enrollmentId": "108",
+      "role": "delegado",
+      "sectionKey": "auditoria_y_control_de_sistemas_851",
+      "studentCode": "20233903",
+      "studentFullName": "Garay Salinas Gabriela Nicole",
+      "isActive": true
+    },
+    {
+      "id": "8",
+      "enrollmentId": "124",
+      "role": "subdelegado",
+      "sectionKey": "auditoria_y_control_de_sistemas_851",
+      "studentCode": "20235218",
+      "studentFullName": "Sanchez Palacios Jefferson Angelo",
+      "isActive": true
+    },
+    {
+      "id": "9",
+      "enrollmentId": "147",
+      "role": "delegado",
+      "sectionKey": "propuesta_de_investigacion_855",
+      "studentCode": "20235218",
+      "studentFullName": "Sanchez Palacios Jefferson Angelo",
+      "isActive": true
+    },
+    {
+      "id": "10",
+      "enrollmentId": "149",
+      "role": "subdelegado",
+      "sectionKey": "propuesta_de_investigacion_855",
+      "studentCode": "20235471",
+      "studentFullName": "Zavalaga Trujillo Jesus Augusto",
+      "isActive": true
+    },
+    {
+      "id": "11",
+      "enrollmentId": "159",
+      "role": "delegado",
+      "sectionKey": "topicos_avanzados_en_ciberseguridad_852",
+      "studentCode": "20202988",
+      "studentFullName": "Gomez Zegarra Kevin Edson",
+      "isActive": true
+    },
+    {
+      "id": "12",
+      "enrollmentId": "163",
+      "role": "subdelegado",
+      "sectionKey": "topicos_avanzados_en_ciberseguridad_852",
+      "studentCode": "20211225",
+      "studentFullName": "Gutierrez Hurtado Piero Alejandro",
+      "isActive": true
+    },
+    {
+      "id": "13",
+      "enrollmentId": "191",
+      "role": "delegado",
+      "sectionKey": "gestion_de_operaciones_752",
+      "studentCode": "20236236",
+      "studentFullName": "Gianella Pazos Matias Danilo",
+      "isActive": true
+    },
+    {
+      "id": "14",
+      "enrollmentId": "206",
+      "role": "subdelegado",
+      "sectionKey": "gestion_de_operaciones_752",
+      "studentCode": "20232565",
+      "studentFullName": "Rojas Andamayo Leonardo Angel De Jesus",
+      "isActive": true
+    },
+    {
+      "id": "15",
+      "enrollmentId": "220",
+      "role": "delegado",
+      "sectionKey": "analitica_con_big_data_852",
+      "studentCode": "20213505",
+      "studentFullName": "Diaz Vallejos Walter Andres",
+      "isActive": true
+    },
+    {
+      "id": "16",
+      "enrollmentId": "225",
+      "role": "subdelegado",
+      "sectionKey": "analitica_con_big_data_852",
+      "studentCode": "20233903",
+      "studentFullName": "Garay Salinas Gabriela Nicole",
+      "isActive": true
+    },
+    {
+      "id": "17",
+      "enrollmentId": "265",
+      "role": "delegado",
+      "sectionKey": "ingenieria_de_software_i_752",
+      "studentCode": "20233903",
+      "studentFullName": "Garay Salinas Gabriela Nicole",
+      "isActive": true
+    },
+    {
+      "id": "18",
+      "enrollmentId": "281",
+      "role": "subdelegado",
+      "sectionKey": "ingenieria_de_software_i_752",
+      "studentCode": "20224068",
+      "studentFullName": "Solorzano Ormeño Gonzalo Sebastian",
+      "isActive": true
+    },
+    {
+      "id": "19",
+      "enrollmentId": "295",
+      "role": "delegado",
+      "sectionKey": "ingenieria_del_conocimiento_751",
+      "studentCode": "20200446",
+      "studentFullName": "Castañeda Arregui Ricardo Fabricio",
+      "isActive": true
+    },
+    {
+      "id": "20",
+      "enrollmentId": "307",
+      "role": "subdelegado",
+      "sectionKey": "ingenieria_del_conocimiento_751",
+      "studentCode": "20221122",
+      "studentFullName": "Gonzales Olivera Anthony David",
+      "isActive": true
+    },
+    {
+      "id": "21",
+      "enrollmentId": "340",
+      "role": "delegado",
+      "sectionKey": "sistemas_distribuidos_853",
+      "studentCode": "20221252",
+      "studentFullName": "Huaman Salhuana Neil Nelson",
+      "isActive": true
+    },
+    {
+      "id": "22",
+      "enrollmentId": "338",
+      "role": "subdelegado",
+      "sectionKey": "sistemas_distribuidos_853",
+      "studentCode": "20233903",
+      "studentFullName": "Garay Salinas Gabriela Nicole",
+      "isActive": true
     }
   ]
 }

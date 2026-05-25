@@ -1,902 +1,433 @@
 {
   "cursos": [
     {
-      "cursoId": "IS-856",
-      "cursoNombre": "INGENIERIA DE SOFTWARE II",
+      "cursoId": "ingenieria_de_software_ii_856",
+      "cursoNombre": "INGENIERÍA DE SOFTWARE II",
       "evaluaciones": [
         {
-          "id": "eval_1_01",
+          "id": "eval_001_01",
           "nombre": "Examen Escrito 1",
           "sigla": "EE1",
-          "peso": 20.0,
+          "peso": 20,
           "tipo": "examen"
         },
         {
-          "id": "eval_2_01",
-          "nombre": "Proyecto",
-          "sigla": "Proy1",
-          "peso": 25.0,
+          "id": "eval_001_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
           "tipo": "practica"
         },
         {
-          "id": "eval_3_01",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_4_01",
-          "nombre": "Proyecto",
-          "sigla": "Proy2",
-          "peso": 30.0,
-          "tipo": "practica"
-        }
-      ]
-    },
-    {
-      "cursoId": "ML-753",
-      "cursoNombre": "APRENDIZAJE DE MÁQUINA/MACHINE LEARNING",
-      "evaluaciones": [
-        {
-          "id": "eval_2_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 10.0,
-          "tipo": "teorica"
-        },
-        {
-          "id": "eval_2_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 25.0,
-          "tipo": "teorica"
-        },
-        {
-          "id": "eval_2_03",
-          "nombre": "Proyecto (20% programa, 80% reporte)",
-          "sigla": "PROY",
-          "peso": 30.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_2_04",
-          "nombre": "Examen Escrito 3",
-          "sigla": "EE3",
-          "peso": 35.0,
-          "tipo": "teorica"
-        }
-      ]
-    },
-    {
-      "cursoId": "GDO-754",
-      "cursoNombre": "GESTIÓN DE OPERACIONES",
-      "evaluaciones": [
-        {
-          "id": "eval_3_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_3_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_3_03",
-          "nombre": "Examen Parcial",
-          "sigla": "EP",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_3_04",
-          "nombre": "Examen Final",
-          "sigla": "EF",
-          "peso": 30.0,
-          "tipo": "examen"
-        }
-      ]
-    },
-    {
-      "cursoId": "PM-854",
-      "cursoNombre": "PROGRAMACIÓN MÓVIL",
-      "evaluaciones": [
-        {
-          "id": "eval_4_01",
-          "nombre": "Trabajo de Producción 1",
-          "sigla": "TP1",
-          "peso": 25.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_4_02",
-          "nombre": "Trabajo de Producción 2",
-          "sigla": "TP2",
-          "peso": 25.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_4_03",
-          "nombre": "Trabajo de Producción 3",
-          "sigla": "TP3",
-          "peso": 25.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_4_04",
-          "nombre": "Proyecto Final",
-          "sigla": "PF",
-          "peso": 25.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "SIE-755",
-      "cursoNombre": "SISTEMAS DE INTELIGENCIA EMPRESARIAL",
-      "evaluaciones": [
-        {
-          "id": "eval_5_01",
-          "nombre": "Examen escrito",
-          "sigla": "EE",
-          "peso": 20.0,
-          "tipo": "teorica"
-        },
-        {
-          "id": "eval_5_02",
-          "nombre": "Laboratorio 1",
-          "sigla": "LB",
-          "peso": 25.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_5_03",
-          "nombre": "Laboratorio 2",
-          "sigla": "LB",
-          "peso": 25.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_5_04",
-          "nombre": "Exposición de Trabajos finales",
-          "sigla": "TI",
-          "peso": 30.0,
-          "tipo": "practica"
-        }
-      ]
-    },
-    {
-      "cursoId": "PW-855",
-      "cursoNombre": "PROGRAMACIÓN WEB",
-      "evaluaciones": [
-        {
-          "id": "eval_6_01",
-          "nombre": "Ejercicio Individual 1",
-          "sigla": "EI1",
-          "peso": 10.0,
-          "tipo": "tarea"
-        },
-        {
-          "id": "eval_6_02",
-          "nombre": "Ejercicio Colaborativo",
-          "sigla": "EC",
-          "peso": 20.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_6_03",
-          "nombre": "Ejercicio Individual 2",
-          "sigla": "EI2",
-          "peso": 20.0,
-          "tipo": "tarea"
-        },
-        {
-          "id": "eval_6_04",
-          "nombre": "Examen Escrito",
-          "sigla": "EE",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_6_05",
+          "id": "eval_001_03",
           "nombre": "Proyecto",
           "sigla": "PROY",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "GP-802",
-      "cursoNombre": "GESTIÓN DE PROYECTOS",
-      "evaluaciones": [
-        {
-          "id": "eval_7_01",
-          "nombre": "Proyecto 1",
-          "sigla": "PROY1",
-          "peso": 20.0,
+          "peso": 30,
           "tipo": "proyecto"
         },
         {
-          "id": "eval_7_02",
-          "nombre": "Proyecto 2",
-          "sigla": "PROY2",
-          "peso": 20.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_7_03",
-          "nombre": "Participación",
-          "sigla": "PART",
-          "peso": 30.0,
-          "tipo": "participacion"
-        },
-        {
-          "id": "eval_7_04",
-          "nombre": "Exposición",
-          "sigla": "EXP",
-          "peso": 30.0,
-          "tipo": "otra"
-        }
-      ]
-    },
-    {
-      "cursoId": "CND-TBD",
-      "cursoNombre": "COMPUTACIÓN EN LA NUBE / CLOUD COMPUTING",
-      "evaluaciones": [
-        {
-          "id": "eval_8_01",
-          "nombre": "Examen Escrito",
-          "sigla": "EE",
-          "peso": 10.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_8_02",
-          "nombre": "Laboratorio 1",
-          "sigla": "LB1",
-          "peso": 15.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_8_03",
-          "nombre": "Laboratorio 2",
-          "sigla": "LB2",
-          "peso": 20.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_8_04",
-          "nombre": "Laboratorio 3",
-          "sigla": "LB3",
-          "peso": 20.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_8_05",
-          "nombre": "Proyecto",
-          "sigla": "PR",
-          "peso": 35.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "SINV2-TBD",
-      "cursoNombre": "SEMINARIO DE INVESTIGACIÓN II",
-      "evaluaciones": [
-        {
-          "id": "eval_9_01",
-          "nombre": "Trabajo de Investigación 1",
-          "sigla": "TI1",
-          "peso": 20.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_9_02",
-          "nombre": "Trabajo de Investigación 2",
-          "sigla": "TI2",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_9_03",
-          "nombre": "Trabajo de Investigación 3",
-          "sigla": "TI3",
-          "peso": 50.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "SINV1-TBD",
-      "cursoNombre": "SEMINARIO DE INVESTIGACIÓN I",
-      "evaluaciones": [
-        {
-          "id": "eval_10_01",
-          "nombre": "Trabajo de Investigación 1",
-          "sigla": "TI1",
-          "peso": 20.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_10_02",
-          "nombre": "Trabajo de Investigación 2",
-          "sigla": "TI2",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_10_03",
-          "nombre": "Trabajo de Investigación 3",
-          "sigla": "TI3",
-          "peso": 50.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "GSD-TBD",
-      "cursoNombre": "GESTIÓN DE SERVICIOS DIGITALES",
-      "evaluaciones": [
-        {
-          "id": "eval_11_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_11_02",
-          "nombre": "Proyecto 1",
-          "sigla": "PROY1",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_11_03",
+          "id": "eval_001_04",
           "nombre": "Examen Escrito 2",
           "sigla": "EE2",
-          "peso": 20.0,
+          "peso": 30,
           "tipo": "examen"
-        },
-        {
-          "id": "eval_11_04",
-          "nombre": "Proyecto 2",
-          "sigla": "PROY2",
-          "peso": 30.0,
-          "tipo": "proyecto"
         }
-      ]
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
     },
     {
-      "cursoId": "ERP-TBD",
+      "cursoId": "sistemas_erp_851",
       "cursoNombre": "SISTEMAS ERP",
       "evaluaciones": [
         {
-          "id": "eval_12_01",
+          "id": "eval_002_01",
           "nombre": "Examen Escrito 1",
           "sigla": "EE1",
-          "peso": 20.0,
+          "peso": 20,
           "tipo": "examen"
         },
         {
-          "id": "eval_12_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 25.0,
-          "tipo": "examen"
+          "id": "eval_002_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
         },
         {
-          "id": "eval_12_03",
-          "nombre": "Examen Escrito 3",
-          "sigla": "EE3",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_12_04",
-          "nombre": "Estudio de Caso",
-          "sigla": "EC",
-          "peso": 35.0,
-          "tipo": "otra"
-        }
-      ]
-    },
-    {
-      "cursoId": "IOT-TBD",
-      "cursoNombre": "INTERNET DE LAS COSAS / INTERNET OF THINGS",
-      "evaluaciones": [
-        {
-          "id": "eval_13_01",
-          "nombre": "Práctica en Laboratorio 1",
-          "sigla": "PL1",
-          "peso": 20.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_13_02",
-          "nombre": "Práctica en Laboratorio 2",
-          "sigla": "PL2",
-          "peso": 20.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_13_03",
-          "nombre": "Práctica en Laboratorio 3",
-          "sigla": "PL3",
-          "peso": 25.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_13_04",
+          "id": "eval_002_03",
           "nombre": "Proyecto",
           "sigla": "PROY",
-          "peso": 35.0,
+          "peso": 30,
           "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "SS-TBD",
-      "cursoNombre": "SEGURIDAD DE SISTEMAS",
-      "evaluaciones": [
-        {
-          "id": "eval_14_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 20.0,
-          "tipo": "examen"
         },
         {
-          "id": "eval_14_02",
+          "id": "eval_002_04",
           "nombre": "Examen Escrito 2",
           "sigla": "EE2",
-          "peso": 25.0,
+          "peso": 30,
+          "tipo": "examen"
+        }
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "programacion_movil_854",
+      "cursoNombre": "PROGRAMACIÓN MÓVIL",
+      "evaluaciones": [
+        {
+          "id": "eval_003_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
           "tipo": "examen"
         },
         {
-          "id": "eval_14_03",
-          "nombre": "Práctica en Laboratorio",
-          "sigla": "PL",
-          "peso": 25.0,
-          "tipo": "laboratorio"
+          "id": "eval_003_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
         },
         {
-          "id": "eval_14_04",
+          "id": "eval_003_03",
           "nombre": "Proyecto",
           "sigla": "PROY",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "GBD-TBD",
-      "cursoNombre": "GESTIÓN DE BASE DE DATOS",
-      "evaluaciones": [
-        {
-          "id": "eval_15_01",
-          "nombre": "Examen Escrito",
-          "sigla": "EE",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_15_02",
-          "nombre": "Laboratorio 1",
-          "sigla": "LB1",
-          "peso": 15.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_15_03",
-          "nombre": "Laboratorio 2",
-          "sigla": "LB2",
-          "peso": 15.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_15_04",
-          "nombre": "Laboratorio 3",
-          "sigla": "LB3",
-          "peso": 20.0,
-          "tipo": "laboratorio"
-        },
-        {
-          "id": "eval_15_05",
-          "nombre": "Proyecto",
-          "sigla": "PR",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "AS-TBD",
-      "cursoNombre": "ARQUITECTURA DE SOFTWARE",
-      "evaluaciones": [
-        {
-          "id": "eval_16_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_16_02",
-          "nombre": "Proyecto 1",
-          "sigla": "PROY1",
-          "peso": 20.0,
+          "peso": 30,
           "tipo": "proyecto"
         },
         {
-          "id": "eval_16_03",
+          "id": "eval_003_04",
           "nombre": "Examen Escrito 2",
           "sigla": "EE2",
-          "peso": 25.0,
+          "peso": 30,
           "tipo": "examen"
-        },
-        {
-          "id": "eval_16_04",
-          "nombre": "Proyecto Final",
-          "sigla": "PF",
-          "peso": 30.0,
-          "tipo": "proyecto"
         }
-      ]
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
     },
     {
-      "cursoId": "AE-TBD",
-      "cursoNombre": "ARQUITECTURA EMPRESARIAL",
+      "cursoId": "auditoria_y_control_de_sistemas_851",
+      "cursoNombre": "AUDITORÍA Y CONTROL DE SISTEMAS",
       "evaluaciones": [
         {
-          "id": "eval_17_01",
+          "id": "eval_004_01",
           "nombre": "Examen Escrito 1",
           "sigla": "EE1",
-          "peso": 15.0,
+          "peso": 20,
           "tipo": "examen"
         },
         {
-          "id": "eval_17_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 15.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_17_03",
-          "nombre": "Trabajo de Producción 1",
-          "sigla": "TP1",
-          "peso": 20.0,
+          "id": "eval_004_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
           "tipo": "practica"
         },
         {
-          "id": "eval_17_04",
-          "nombre": "Examen Escrito 3",
-          "sigla": "EE3",
-          "peso": 15.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_17_05",
-          "nombre": "Trabajo de Producción 2",
-          "sigla": "TP2",
-          "peso": 35.0,
-          "tipo": "practica"
-        }
-      ]
-    },
-    {
-      "cursoId": "IK-TBD",
-      "cursoNombre": "INGENIERÍA DEL CONOCIMIENTO",
-      "evaluaciones": [
-        {
-          "id": "eval_18_01",
-          "nombre": "Examen Escrito",
-          "sigla": "EE",
-          "peso": 30.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_18_02",
-          "nombre": "Estudio de Caso",
-          "sigla": "EC",
-          "peso": 35.0,
-          "tipo": "otra"
-        },
-        {
-          "id": "eval_18_03",
+          "id": "eval_004_03",
           "nombre": "Proyecto",
           "sigla": "PROY",
-          "peso": 15.0,
+          "peso": 30,
           "tipo": "proyecto"
         },
         {
-          "id": "eval_18_04",
-          "nombre": "Exposición",
-          "sigla": "EXP",
-          "peso": 20.0,
-          "tipo": "otra"
-        }
-      ]
-    },
-    {
-      "cursoId": "IHC-TBD",
-      "cursoNombre": "INTERACCIÓN HUMANO COMPUTADORA / HUMAN COMPUTER INTERACTION",
-      "evaluaciones": [
-        {
-          "id": "eval_19_01",
-          "nombre": "Trabajo de Investigación 1",
-          "sigla": "TI1",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_19_02",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_19_03",
-          "nombre": "Trabajo de Investigación 2",
-          "sigla": "TI2",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_19_04",
+          "id": "eval_004_04",
           "nombre": "Examen Escrito 2",
           "sigla": "EE2",
-          "peso": 20.0,
+          "peso": 30,
           "tipo": "examen"
         }
-      ]
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
     },
     {
-      "cursoId": "DO-TBD",
-      "cursoNombre": "DEVOPS",
-      "evaluaciones": [
-        {
-          "id": "eval_20_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_20_02",
-          "nombre": "Exposición",
-          "sigla": "EXP",
-          "peso": 30.0,
-          "tipo": "otra"
-        },
-        {
-          "id": "eval_20_03",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_20_04",
-          "nombre": "Proyecto",
-          "sigla": "PR",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        }
-      ]
-    },
-    {
-      "cursoId": "PE-TBD",
-      "cursoNombre": "PLANEAMIENTO ESTRATÉGICO",
-      "evaluaciones": [
-        {
-          "id": "eval_21_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 15.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_21_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 15.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_21_03",
-          "nombre": "Trabajo de Producción 1",
-          "sigla": "TP1",
-          "peso": 20.0,
-          "tipo": "practica"
-        },
-        {
-          "id": "eval_21_04",
-          "nombre": "Examen Escrito 3",
-          "sigla": "EE3",
-          "peso": 15.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_21_05",
-          "nombre": "Trabajo de Producción 2",
-          "sigla": "TP2",
-          "peso": 35.0,
-          "tipo": "practica"
-        }
-      ]
-    },
-    {
-      "cursoId": "BDA-TBD",
-      "cursoNombre": "ANALÍTICA CON BIG DATA",
-      "evaluaciones": [
-        {
-          "id": "eval_22_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_22_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_22_03",
-          "nombre": "Examen Escrito 3",
-          "sigla": "EE3",
-          "peso": 25.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_22_04",
-          "nombre": "Trabajo de Producción",
-          "sigla": "TP",
-          "peso": 25.0,
-          "tipo": "practica"
-        }
-      ]
-    },
-    {
-      "cursoId": "ATI-TBD",
-      "cursoNombre": "ARQUITECTURA DE TECNOLOGÍAS DE LA INFORMACIÓN",
-      "evaluaciones": [
-        {
-          "id": "eval_23_01",
-          "nombre": "Exposición",
-          "sigla": "EXP",
-          "peso": 15.0,
-          "tipo": "otra"
-        },
-        {
-          "id": "eval_23_02",
-          "nombre": "Proyecto 1",
-          "sigla": "PROY1",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_23_03",
-          "nombre": "Proyecto 2",
-          "sigla": "PROY2",
-          "peso": 35.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_23_04",
-          "nombre": "Examen Escrito",
-          "sigla": "EE",
-          "peso": 20.0,
-          "tipo": "examen"
-        }
-      ]
-    },
-    {
-      "cursoId": "ADA-TBD",
-      "cursoNombre": "ANÁLISIS Y DISEÑO DE ALGORITMOS",
-      "evaluaciones": [
-        {
-          "id": "eval_24_01",
-          "nombre": "Examen Escrito 1",
-          "sigla": "EE1",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_24_02",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 20.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_24_03",
-          "nombre": "Trabajo de Investigación",
-          "sigla": "TI",
-          "peso": 30.0,
-          "tipo": "proyecto"
-        },
-        {
-          "id": "eval_24_04",
-          "nombre": "Examen Escrito 3",
-          "sigla": "EE3",
-          "peso": 30.0,
-          "tipo": "examen"
-        }
-      ]
-    },
-    {
-      "cursoId": "PI-TBD",
+      "cursoId": "propuesta_de_investigacion_855",
       "cursoNombre": "PROPUESTA DE INVESTIGACIÓN",
       "evaluaciones": [
         {
-          "id": "eval_25_01",
-          "nombre": "Trabajo de Investigación 1",
-          "sigla": "TI1",
-          "peso": 20.0,
+          "id": "eval_005_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_005_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_005_03",
+          "nombre": "Proyecto",
+          "sigla": "PROY",
+          "peso": 30,
           "tipo": "proyecto"
         },
         {
-          "id": "eval_25_02",
-          "nombre": "Exposición",
-          "sigla": "EXP",
-          "peso": 30.0,
-          "tipo": "otra"
-        },
-        {
-          "id": "eval_25_03",
-          "nombre": "Trabajo de Investigación 2",
-          "sigla": "TI2",
-          "peso": 50.0,
-          "tipo": "proyecto"
+          "id": "eval_005_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
         }
-      ]
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
     },
     {
-      "cursoId": "SD-TBD",
+      "cursoId": "topicos_avanzados_en_ciberseguridad_852",
+      "cursoNombre": "TÓPICOS AVANZADOS EN CIBERSEGURIDAD",
+      "evaluaciones": [
+        {
+          "id": "eval_006_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_006_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_006_03",
+          "nombre": "Proyecto",
+          "sigla": "PROY",
+          "peso": 30,
+          "tipo": "proyecto"
+        },
+        {
+          "id": "eval_006_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
+        }
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "gestion_de_operaciones_752",
+      "cursoNombre": "GESTIÓN DE OPERACIONES",
+      "evaluaciones": [
+        {
+          "id": "eval_007_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_007_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_007_03",
+          "nombre": "Proyecto",
+          "sigla": "PROY",
+          "peso": 30,
+          "tipo": "proyecto"
+        },
+        {
+          "id": "eval_007_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
+        }
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "analitica_con_big_data_852",
+      "cursoNombre": "ANALÍTICA CON BIG DATA",
+      "evaluaciones": [
+        {
+          "id": "eval_008_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_008_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_008_03",
+          "nombre": "Proyecto",
+          "sigla": "PROY",
+          "peso": 30,
+          "tipo": "proyecto"
+        },
+        {
+          "id": "eval_008_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
+        }
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "ingenieria_de_software_i_752",
+      "cursoNombre": "INGENIERÍA DE SOFTWARE I",
+      "evaluaciones": [
+        {
+          "id": "eval_009_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_009_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_009_03",
+          "nombre": "Proyecto",
+          "sigla": "PROY",
+          "peso": 30,
+          "tipo": "proyecto"
+        },
+        {
+          "id": "eval_009_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
+        }
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "ingenieria_del_conocimiento_751",
+      "cursoNombre": "INGENIERÍA DEL CONOCIMIENTO",
+      "evaluaciones": [
+        {
+          "id": "eval_010_01",
+          "nombre": "Examen Escrito 1",
+          "sigla": "EE1",
+          "peso": 20,
+          "tipo": "examen"
+        },
+        {
+          "id": "eval_010_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
+        },
+        {
+          "id": "eval_010_03",
+          "nombre": "Proyecto",
+          "sigla": "PROY",
+          "peso": 30,
+          "tipo": "proyecto"
+        },
+        {
+          "id": "eval_010_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
+        }
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "sistemas_distribuidos_853",
       "cursoNombre": "SISTEMAS DISTRIBUIDOS",
       "evaluaciones": [
         {
-          "id": "eval_26_01",
+          "id": "eval_011_01",
           "nombre": "Examen Escrito 1",
           "sigla": "EE1",
-          "peso": 35.0,
+          "peso": 20,
           "tipo": "examen"
         },
         {
-          "id": "eval_26_02",
-          "nombre": "Práctica en Laboratorio",
-          "sigla": "PL",
-          "peso": 15.0,
-          "tipo": "laboratorio"
+          "id": "eval_011_02",
+          "nombre": "Práctica Calificada",
+          "sigla": "PC",
+          "peso": 20,
+          "tipo": "practica"
         },
         {
-          "id": "eval_26_03",
-          "nombre": "Examen Escrito 2",
-          "sigla": "EE2",
-          "peso": 35.0,
-          "tipo": "examen"
-        },
-        {
-          "id": "eval_26_04",
+          "id": "eval_011_03",
           "nombre": "Proyecto",
           "sigla": "PROY",
-          "peso": 15.0,
+          "peso": 30,
           "tipo": "proyecto"
+        },
+        {
+          "id": "eval_011_04",
+          "nombre": "Examen Escrito 2",
+          "sigla": "EE2",
+          "peso": 30,
+          "tipo": "examen"
         }
-      ]
+      ],
+      "sourceNote": "El JSON recolectado no contiene silabo para esta seccion; se mantiene un esquema de evaluacion generico para la calculadora."
+    },
+    {
+      "cursoId": "seguridad_salud_ocupacional",
+      "cursoNombre": "Seguridad, Salud Ocupacional y Bienestar Organizacional",
+      "evaluaciones": [
+        {
+          "id": "eval_520074_01",
+          "nombre": "Estudio de caso",
+          "sigla": "EC",
+          "peso": 20,
+          "tipo": "proyecto",
+          "week": 5,
+          "gradingMode": "100% grupal"
+        },
+        {
+          "id": "eval_520074_02",
+          "nombre": "Control de lectura",
+          "sigla": "CL",
+          "peso": 25,
+          "tipo": "examen",
+          "week": 10,
+          "gradingMode": "100% individual"
+        },
+        {
+          "id": "eval_520074_03",
+          "nombre": "Participación",
+          "sigla": "P",
+          "peso": 25,
+          "tipo": "otra",
+          "week": 13,
+          "gradingMode": "100% individual"
+        },
+        {
+          "id": "eval_520074_04",
+          "nombre": "Examen escrito",
+          "sigla": "EE",
+          "peso": 30,
+          "tipo": "examen",
+          "week": 15,
+          "gradingMode": "100% individual"
+        }
+      ],
+      "learningOutcomeGeneral": "Diseñar un sistema de gestión de seguridad y salud ocupacional.",
+      "pesoTotal": 100
     }
   ]
 }
