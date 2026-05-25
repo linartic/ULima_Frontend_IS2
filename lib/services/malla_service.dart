@@ -60,6 +60,7 @@ class MallaService extends GetxService {
   /// Calcula el mapa { courseId: status } para un usuario.
   Map<String, CourseStatus> computeStatuses(UserModel user) {
     final progress = user.courseProgress ?? CourseProgress.empty();
+    final currentCourseIds = currentCourseIdsFor(progress);
 
     // Lookup por id.
     final byId = <String, CourseNode>{for (final c in _courses) c.id: c};
@@ -71,7 +72,7 @@ class MallaService extends GetxService {
     final result = <String, CourseStatus>{};
     for (final c in _courses) {
       // Si está en curso → current.
-      if (progress.currentCourses.contains(c.id)) {
+      if (currentCourseIds.contains(c.id)) {
         result[c.id] = CourseStatus.current;
         continue;
       }
@@ -156,6 +157,20 @@ class MallaService extends GetxService {
     return approved;
   }
 
+  /// IDs de cursos en ciclo actual. Soporta el formato nuevo (`idCurso`) y
+  /// claves equivalentes por si quedan sesiones antiguas guardadas.
+  Set<String> currentCourseIdsFor(CourseProgress progress) {
+    final ids = <String>{};
+    for (final currentCourse in progress.currentCourses) {
+      final rawId =
+          currentCourse['courseId'] ??
+          currentCourse['idCurso'] ??
+          currentCourse['id'];
+      if (rawId != null) ids.add(rawId.toString());
+    }
+    return ids;
+  }
+
   /// True si todos los cursos obligatorios hasta `throughLevel` están aprobados.
   ///
   /// Los electivos se excluyen siempre, incluso si pertenecen visualmente a un
@@ -184,15 +199,15 @@ class MallaService extends GetxService {
   }
 
   /// Decide si un electivo debe mostrarse según la(s) especialidad(es)
-  /// elegidas por el alumno. Si no eligió ninguna o el electivo no tiene
-  /// especialidad asociada (caso 520074), siempre se muestra.
+  /// elegidas por el alumno. Si no eligió ninguna, no se recomiendan electivos
+  /// nuevos; los aprobados/en curso entran por `visibleCoursesFor`.
   bool electiveMatchesUserSpecialties(
     CourseNode elective,
     List<int> userEspecialidades,
   ) {
     if (!elective.isElective) return true;
+    if (userEspecialidades.isEmpty) return false;
     if (elective.specialties.isEmpty) return true;
-    if (userEspecialidades.isEmpty) return true;
     final authService = AuthService.to;
     final userEspNames = userEspecialidades
         .map((id) => authService.getEspecialidadName(id))
@@ -203,17 +218,27 @@ class MallaService extends GetxService {
   }
 
   /// Lista filtrada: obligatorios siempre; electivos visibles si coinciden con
-  /// la especialidad elegida O si el alumno ya los aprobó/está cursando
-  /// (independientemente de la especialidad).
-  List<CourseNode> visibleCoursesFor(UserModel user) {
+  /// la especialidad elegida, si el alumno ya los aprobó/está cursando, o si
+  /// vienen incluidos por historial local.
+  List<CourseNode> visibleCoursesFor(
+    UserModel user, {
+    Set<String> includeCourseIds = const <String>{},
+  }) {
     final progress = user.courseProgress ?? CourseProgress.empty();
     final approved = approvedCourseIdsFor(progress);
-    final enrolled = progress.currentCourses;
+    final enrolled = currentCourseIdsFor(progress);
 
-    return _courses.where((c) {
-      if (!c.isElective) return true;
-      if (approved.contains(c.id) || enrolled.contains(c.id)) return true;
-      return electiveMatchesUserSpecialties(c, user.especialidades);
-    }).toList();
+    final visibleById = <String, CourseNode>{};
+    for (final c in _courses) {
+      final shouldShow =
+          !c.isElective ||
+          approved.contains(c.id) ||
+          enrolled.contains(c.id) ||
+          includeCourseIds.contains(c.id) ||
+          electiveMatchesUserSpecialties(c, user.especialidades);
+      if (!shouldShow) continue;
+      visibleById.putIfAbsent(c.id, () => c);
+    }
+    return visibleById.values.toList();
   }
 }

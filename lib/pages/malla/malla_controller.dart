@@ -37,6 +37,7 @@ class MallaController extends GetxController {
 
   late final MallaService _malla;
   late final AuthService _auth;
+  Worker? _userWorker;
 
   UserModel? get user => _auth.currentUser;
 
@@ -63,31 +64,44 @@ class MallaController extends GetxController {
     super.onInit();
     _malla = MallaService.to;
     _auth = AuthService.to;
+    _userWorker = ever<UserModel?>(_auth.currentUserRx, (_) {
+      if (!loading.value) _refresh(preserveCurrentStatuses: true);
+    });
     _bootstrap();
+  }
+
+  @override
+  void onClose() {
+    _userWorker?.dispose();
+    super.onClose();
   }
 
   Future<void> _bootstrap() async {
     loading.value = true;
     try {
       await _malla.load();
-      _refresh();
-      // Restaurar estados guardados en local storage.
-      final saved = StorageService.to.savedStatuses;
+      final code = user?.code;
+      final userSaved = code == null
+          ? null
+          : StorageService.to.savedStatusesFor(code);
+      final sessionSaved = StorageService.to.savedStatuses;
+      final saved = userSaved ?? sessionSaved;
       if (saved != null) {
-        // Sólo aplicar los ids que siguen siendo visibles.
-        final visible = cards.map((c) => c.id).toSet();
-        final filtered = Map.fromEntries(
-          saved.entries.where((e) => visible.contains(e.key)),
-        );
-        statuses.addAll(filtered);
-        _recomputeDerivedAvailability();
+        statuses.assignAll(_knownCourseStatuses(saved));
+      }
+      _refresh(preserveCurrentStatuses: true);
+      if (code != null && userSaved == null && sessionSaved != null) {
+        StorageService.to.saveStatuses(statuses, code: code);
       }
     } finally {
       loading.value = false;
     }
   }
 
-  void _refresh() {
+  void _refresh({bool preserveCurrentStatuses = false}) {
+    final previousStatuses = preserveCurrentStatuses
+        ? Map<String, CourseStatus>.from(statuses)
+        : const <String, CourseStatus>{};
     final u = user;
     if (u == null) {
       cards.clear();
@@ -95,20 +109,58 @@ class MallaController extends GetxController {
       _electiveNormRows.clear();
       return;
     }
-    final visible = _malla.visibleCoursesFor(u);
+    final visible = _malla.visibleCoursesFor(
+      u,
+      includeCourseIds: _persistentStatusCourseIds(previousStatuses),
+    );
     cards.assignAll(visible);
-    statuses.assignAll(_malla.computeStatuses(u));
+    final visibleIds = visible.map((c) => c.id).toSet();
+    final computed = _malla.computeStatuses(u);
+
+    final nextStatuses = <String, CourseStatus>{
+      for (final id in visibleIds) id: computed[id] ?? CourseStatus.locked,
+    };
+    for (final entry in previousStatuses.entries) {
+      if (_isPersistentStatus(entry.value)) {
+        nextStatuses[entry.key] = entry.value;
+      }
+    }
+
+    statuses.assignAll(_knownCourseStatuses(nextStatuses));
     _computePoolLayout();
+    _recomputeDerivedAvailability();
   }
 
   void _recomputeDerivedAvailability() {
-    statuses.assignAll(
-      _malla.recomputeDerivedAvailability(
-        visibleCourses: cards,
-        currentStatuses: statuses,
+    statuses.addAll(
+      _knownCourseStatuses(
+        _malla.recomputeDerivedAvailability(
+          visibleCourses: cards,
+          currentStatuses: statuses,
+        ),
       ),
     );
     statuses.refresh();
+  }
+
+  Map<String, CourseStatus> _knownCourseStatuses(
+    Map<String, CourseStatus> source,
+  ) {
+    final knownIds = _malla.courses.map((c) => c.id).toSet();
+    return Map.fromEntries(
+      source.entries.where((e) => knownIds.contains(e.key)),
+    );
+  }
+
+  Set<String> _persistentStatusCourseIds(Map<String, CourseStatus> source) {
+    return source.entries
+        .where((entry) => _isPersistentStatus(entry.value))
+        .map((entry) => entry.key)
+        .toSet();
+  }
+
+  bool _isPersistentStatus(CourseStatus status) {
+    return status == CourseStatus.approved || status == CourseStatus.current;
   }
 
   /// Calcula las filas normalizadas (0-indexed) de los electivos dentro de su
@@ -229,20 +281,21 @@ class MallaController extends GetxController {
     }
     statuses[courseId] = next;
     _recomputeDerivedAvailability();
-    StorageService.to.saveStatuses(statuses);
+    StorageService.to.saveStatuses(statuses, code: user?.code);
   }
 
   // ── Métricas de progreso ────────────────────────────────────────────────────
-  int get approvedCount =>
-      statuses.values.where((s) => s == CourseStatus.approved).length;
-  int get currentCount =>
-      statuses.values.where((s) => s == CourseStatus.current).length;
-  int get unlockedCount =>
-      statuses.values.where((s) => s == CourseStatus.unlocked).length;
+  int get approvedCount => _visibleStatusCount(CourseStatus.approved);
+  int get currentCount => _visibleStatusCount(CourseStatus.current);
+  int get unlockedCount => _visibleStatusCount(CourseStatus.unlocked);
   int get totalVisible => cards.length;
 
   double get approvedRatio =>
       totalVisible == 0 ? 0 : approvedCount / totalVisible;
+
+  int _visibleStatusCount(CourseStatus status) {
+    return cards.where((c) => statuses[c.id] == status).length;
+  }
 
   bool hasCompletedMandatoryCycles(
     int throughLevel,

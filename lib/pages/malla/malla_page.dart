@@ -314,9 +314,20 @@ class _MallaCanvasState extends State<_MallaCanvas> {
   final _transformationController = TransformationController();
   bool _didInitialFocus = false;
   int _lastFocusRequest = 0;
+  Size? _lastViewportSize;
+  Offset? _zoomCenter;
+  Offset? _zoomFocalPoint;
+  bool _applyingTransform = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _transformationController.addListener(_handleTransformationChanged);
+  }
 
   @override
   void dispose() {
+    _transformationController.removeListener(_handleTransformationChanged);
     _transformationController.dispose();
     super.dispose();
   }
@@ -327,6 +338,7 @@ class _MallaCanvasState extends State<_MallaCanvas> {
       builder: (context, constraints) {
         return Obx(() {
           final controller = widget.controller;
+          _lastViewportSize = constraints.biggest;
           final mandatory = controller.mandatoryCards;
           final electives = controller.electiveCards;
           final allCards = controller.cards;
@@ -335,12 +347,19 @@ class _MallaCanvasState extends State<_MallaCanvas> {
           final zoom = controller.zoom.value;
           final focusRequest = controller.focusRequests.value;
 
-          _scheduleFocusIfNeeded(
+          final focusScheduled = _scheduleFocusIfNeeded(
             viewportSize: constraints.biggest,
             canvasSize: size,
             zoom: zoom,
             focusRequest: focusRequest,
           );
+          if (!focusScheduled) {
+            _scheduleZoomIfNeeded(
+              viewportSize: constraints.biggest,
+              canvasSize: size,
+              zoom: zoom,
+            );
+          }
 
           // Posiciones absolutas de todas las cards (obligatorios + electivos).
           final positions = <String, Offset>{
@@ -354,105 +373,101 @@ class _MallaCanvasState extends State<_MallaCanvas> {
             maxScale: 1.6,
             scaleEnabled: true,
             panEnabled: true,
-            boundaryMargin: const EdgeInsets.all(200),
-            child: Transform.scale(
-              scale: zoom,
-              alignment: Alignment.topLeft,
-              child: SizedBox(
-                width: size.width,
-                height: size.height,
-                child: Stack(
-                  children: [
-                    // ── Etiqueta sección obligatorios ─────────────────────────
+            boundaryMargin: _viewerBoundaryMargin(constraints.biggest),
+            child: SizedBox(
+              width: size.width,
+              height: size.height,
+              child: Stack(
+                children: [
+                  // ── Etiqueta sección obligatorios ─────────────────────────
+                  Positioned(
+                    left: MallaController.padding,
+                    top: MallaController.padding,
+                    child: const _SectionLabel(
+                      icon: Icons.menu_book_outlined,
+                      text: 'OBLIGATORIOS',
+                    ),
+                  ),
+
+                  // ── Cabeceras de nivel — piscina obligatoria ──────────────
+                  ..._levelHeaders(
+                    mandatory,
+                    yOffset:
+                        MallaController.padding +
+                        MallaController.sectionLabelHeight,
+                  ),
+
+                  // ── Separador entre piscinas ──────────────────────────────
+                  if (electives.isNotEmpty)
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: controller.separatorY - 18,
+                      child: _PoolDivider(
+                        width: size.width,
+                        separatorY: controller.separatorY,
+                      ),
+                    ),
+
+                  // ── Etiqueta sección electivos ────────────────────────────
+                  if (electives.isNotEmpty)
                     Positioned(
                       left: MallaController.padding,
-                      top: MallaController.padding,
-                      child: const _SectionLabel(
-                        icon: Icons.menu_book_outlined,
-                        text: 'OBLIGATORIOS',
-                      ),
-                    ),
-
-                    // ── Cabeceras de nivel — piscina obligatoria ──────────────
-                    ..._levelHeaders(
-                      mandatory,
-                      yOffset:
-                          MallaController.padding +
+                      top:
+                          controller.electiveSectionY -
                           MallaController.sectionLabelHeight,
-                    ),
-
-                    // ── Separador entre piscinas ──────────────────────────────
-                    if (electives.isNotEmpty)
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        top: controller.separatorY - 18,
-                        child: _PoolDivider(
-                          width: size.width,
-                          separatorY: controller.separatorY,
-                        ),
-                      ),
-
-                    // ── Etiqueta sección electivos ────────────────────────────
-                    if (electives.isNotEmpty)
-                      Positioned(
-                        left: MallaController.padding,
-                        top:
-                            controller.electiveSectionY -
-                            MallaController.sectionLabelHeight,
-                        child: const _SectionLabel(
-                          icon: Icons.bookmark_border,
-                          text: 'ELECTIVOS',
-                        ),
-                      ),
-
-                    // ── Cabeceras de nivel — piscina electiva ─────────────────
-                    if (electives.isNotEmpty)
-                      ..._levelHeaders(
-                        electives,
-                        yOffset: controller.electiveSectionY,
-                      ),
-
-                    // ── Conectores de prerrequisitos ──────────────────────────
-                    Positioned.fill(
-                      child: IgnorePointer(
-                        child: CustomPaint(
-                          painter: PrerequisitePainter(
-                            courses: allCards,
-                            statuses: statuses,
-                            positions: positions,
-                          ),
-                        ),
+                      child: const _SectionLabel(
+                        icon: Icons.bookmark_border,
+                        text: 'ELECTIVOS',
                       ),
                     ),
 
-                    // ── Cards obligatorias ────────────────────────────────────
-                    for (final c in mandatory)
-                      Positioned(
-                        left: positions[c.id]!.dx,
-                        top: positions[c.id]!.dy,
-                        child: CourseCard(
-                          course: c,
-                          status: statuses[c.id] ?? CourseStatus.locked,
-                          onTap: () => _openDetails(context, c, statuses),
-                          onLongPress: () => controller.cycleStatus(c.id),
-                        ),
-                      ),
+                  // ── Cabeceras de nivel — piscina electiva ─────────────────
+                  if (electives.isNotEmpty)
+                    ..._levelHeaders(
+                      electives,
+                      yOffset: controller.electiveSectionY,
+                    ),
 
-                    // ── Cards electivas ───────────────────────────────────────
-                    for (final c in electives)
-                      Positioned(
-                        left: positions[c.id]!.dx,
-                        top: positions[c.id]!.dy,
-                        child: CourseCard(
-                          course: c,
-                          status: statuses[c.id] ?? CourseStatus.locked,
-                          onTap: () => _openDetails(context, c, statuses),
-                          onLongPress: () => controller.cycleStatus(c.id),
+                  // ── Conectores de prerrequisitos ──────────────────────────
+                  Positioned.fill(
+                    child: IgnorePointer(
+                      child: CustomPaint(
+                        painter: PrerequisitePainter(
+                          courses: allCards,
+                          statuses: statuses,
+                          positions: positions,
                         ),
                       ),
-                  ],
-                ),
+                    ),
+                  ),
+
+                  // ── Cards obligatorias ────────────────────────────────────
+                  for (final c in mandatory)
+                    Positioned(
+                      left: positions[c.id]!.dx,
+                      top: positions[c.id]!.dy,
+                      child: CourseCard(
+                        course: c,
+                        status: statuses[c.id] ?? CourseStatus.locked,
+                        onTap: () => _openDetails(context, c, statuses),
+                        onLongPress: () => controller.cycleStatus(c.id),
+                      ),
+                    ),
+
+                  // ── Cards electivas ───────────────────────────────────────
+                  for (final c in electives)
+                    Positioned(
+                      left: positions[c.id]!.dx,
+                      top: positions[c.id]!.dy,
+                      child: CourseCard(
+                        course: c,
+                        status: statuses[c.id] ?? CourseStatus.locked,
+                        onTap: () => _openDetails(context, c, statuses),
+                        onLongPress: () => controller.cycleStatus(c.id),
+                      ),
+                    ),
+                ],
               ),
             ),
           );
@@ -461,61 +476,155 @@ class _MallaCanvasState extends State<_MallaCanvas> {
     );
   }
 
-  void _scheduleFocusIfNeeded({
+  bool _scheduleFocusIfNeeded({
     required Size viewportSize,
     required Size canvasSize,
     required double zoom,
     required int focusRequest,
   }) {
     final manualRequest = focusRequest != _lastFocusRequest;
-    if (_didInitialFocus && !manualRequest) return;
-    if (!viewportSize.width.isFinite || !viewportSize.height.isFinite) return;
-    if (viewportSize.isEmpty || canvasSize.isEmpty) return;
+    if (_didInitialFocus && !manualRequest) return false;
+    if (!viewportSize.width.isFinite || !viewportSize.height.isFinite) {
+      return false;
+    }
+    if (viewportSize.isEmpty || canvasSize.isEmpty) return false;
 
     final target = widget.controller.focusOffsetForCurrentLevel();
-    if (target == null) return;
+    if (target == null) return false;
+    final targetCenter = Offset(
+      target.dx + MallaController.cardWidth / 2,
+      _mandatoryPoolTopY,
+    );
+    final focalPoint = _initialFocusFocalPoint(viewportSize);
 
     _didInitialFocus = true;
     _lastFocusRequest = focusRequest;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      _transformationController.value = _matrixForFocus(
-        target: target,
-        viewportSize: viewportSize,
-        canvasSize: canvasSize,
-        zoom: zoom,
+      _setTransformation(
+        _matrixForFocus(
+          target: targetCenter,
+          focalPoint: focalPoint,
+          viewportSize: viewportSize,
+          canvasSize: canvasSize,
+          zoom: zoom,
+        ),
       );
+      _zoomCenter = targetCenter;
+      _zoomFocalPoint = focalPoint;
     });
+    return true;
+  }
+
+  void _scheduleZoomIfNeeded({
+    required Size viewportSize,
+    required Size canvasSize,
+    required double zoom,
+  }) {
+    if (!viewportSize.width.isFinite || !viewportSize.height.isFinite) return;
+    if (viewportSize.isEmpty || canvasSize.isEmpty) return;
+    if ((_matrixScale() - zoom).abs() < 0.001) return;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final focalPoint = _zoomFocalPoint ?? viewportSize.center(Offset.zero);
+      final center = _zoomCenter ?? _contentPointForScreen(focalPoint);
+      _setTransformation(
+        _matrixForFocus(
+          target: center,
+          focalPoint: focalPoint,
+          viewportSize: viewportSize,
+          canvasSize: canvasSize,
+          zoom: zoom,
+        ),
+      );
+      _zoomCenter = center;
+    });
+  }
+
+  void _handleTransformationChanged() {
+    if (_applyingTransform) return;
+    final scale = _matrixScale().clamp(0.5, 1.6).toDouble();
+    if ((widget.controller.zoom.value - scale).abs() > 0.001) {
+      widget.controller.zoom.value = scale;
+    }
+    final viewportSize = _lastViewportSize;
+    if (viewportSize == null || viewportSize.isEmpty) return;
+    _zoomFocalPoint = viewportSize.center(Offset.zero);
+    _zoomCenter = _contentPointForScreen(_zoomFocalPoint!);
+  }
+
+  void _setTransformation(Matrix4 matrix) {
+    _applyingTransform = true;
+    _transformationController.value = matrix;
+    _applyingTransform = false;
+  }
+
+  double _matrixScale() {
+    return _transformationController.value.entry(0, 0).abs();
+  }
+
+  Offset _contentPointForScreen(Offset screenPoint) {
+    final matrix = _transformationController.value;
+    final scale = _matrixScale();
+    if (scale == 0) return Offset.zero;
+    return Offset(
+      (screenPoint.dx - matrix.entry(0, 3)) / scale,
+      (screenPoint.dy - matrix.entry(1, 3)) / scale,
+    );
+  }
+
+  Offset _initialFocusFocalPoint(Size viewportSize) {
+    const verticalFocusAnchor = 0.06;
+    return Offset(
+      viewportSize.width / 2,
+      viewportSize.height * verticalFocusAnchor,
+    );
   }
 
   Matrix4 _matrixForFocus({
     required Offset target,
+    required Offset focalPoint,
     required Size viewportSize,
     required Size canvasSize,
     required double zoom,
   }) {
     final contentWidth = canvasSize.width * zoom;
     final contentHeight = canvasSize.height * zoom;
-    final targetX = target.dx * zoom;
-    final targetY = target.dy * zoom;
 
-    var dx = viewportSize.width * 0.22 - targetX;
-    var dy = viewportSize.height * 0.18 - targetY;
+    var dx = focalPoint.dx - target.dx * zoom;
+    var dy = focalPoint.dy - target.dy * zoom;
 
-    const margin = 160.0;
-    final minDx = math.min(margin, viewportSize.width - contentWidth - margin);
-    final minDy = math.min(
-      margin,
-      viewportSize.height - contentHeight - margin,
+    final boundaryMargin = _viewerBoundaryMargin(viewportSize);
+    final horizontalMargin = boundaryMargin.horizontal / 2;
+    final verticalMargin = boundaryMargin.vertical / 2;
+    final minDx = math.min(
+      horizontalMargin,
+      viewportSize.width - contentWidth - horizontalMargin,
     );
-    dx = dx.clamp(minDx, margin).toDouble();
-    dy = dy.clamp(minDy, margin).toDouble();
+    final minDy = math.min(
+      verticalMargin,
+      viewportSize.height - contentHeight - verticalMargin,
+    );
+    dx = dx.clamp(minDx, horizontalMargin).toDouble();
+    dy = dy.clamp(minDy, verticalMargin).toDouble();
 
     final matrix = Matrix4.identity();
+    matrix.setEntry(0, 0, zoom);
+    matrix.setEntry(1, 1, zoom);
     matrix.setEntry(0, 3, dx);
     matrix.setEntry(1, 3, dy);
     return matrix;
   }
+
+  EdgeInsets _viewerBoundaryMargin(Size viewportSize) {
+    return const EdgeInsets.symmetric(horizontal: 96, vertical: 72);
+  }
+
+  static const double _mandatoryPoolTopY =
+      MallaController.padding +
+      MallaController.sectionLabelHeight +
+      MallaController.levelHeaderHeight;
 
   List<Widget> _levelHeaders(
     List<CourseNode> cards, {
