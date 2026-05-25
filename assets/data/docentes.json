@@ -3,197 +3,1142 @@
     {
       "code": "D01",
       "firstName": "Hernan Alejandro",
-      "lastName": "Quintana Cruz"
+      "lastName": "Quintana Cruz",
+      "teacherKey": "quintana_cruz_hernan_alejandro",
+      "fullName": "Quintana Cruz, Hernan Alejandro",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D02",
-      "firstName": "Jose Jesús",
-      "lastName": "Valdivia Caballero"
+      "firstName": "Aron",
+      "lastName": "Lo Li",
+      "teacherKey": "lo_li_aron",
+      "fullName": "Lo Li, Aron",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D03",
-      "firstName": "Carlos",
-      "lastName": "Lopez"
+      "firstName": "Guillermo",
+      "lastName": "Zevallos Luna Victoria",
+      "teacherKey": "zevallos_luna_victoria_guillermo",
+      "fullName": "Zevallos Luna Victoria, Guillermo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D04",
-      "firstName": "Jorge Luis",
-      "lastName": "Irey Nuñez"
+      "firstName": "Maria Cielo",
+      "lastName": "Escobedo Neyra",
+      "teacherKey": "escobedo_neyra_maria_cielo",
+      "fullName": "Escobedo Neyra, Maria Cielo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D05",
-      "firstName": "Angela Gabriela",
-      "lastName": "Mayhua Quispe"
+      "firstName": "Jose Jesus",
+      "lastName": "Valdivia Caballero",
+      "teacherKey": "valdivia_caballero_jose_jesus",
+      "fullName": "Valdivia Caballero, Jose Jesus",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D06",
-      "firstName": "Juan Carlos Eduardo",
-      "lastName": "Romaina Acevedo"
+      "firstName": "Jaddy Silvana",
+      "lastName": "Fernandez Iparraguirre",
+      "teacherKey": "fernandez_iparraguirre_jaddy_silvana",
+      "fullName": "Fernandez Iparraguirre, Jaddy Silvana",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D07",
-      "firstName": "Enrique Humberto",
-      "lastName": "Palacios Lopez"
+      "firstName": "Juan Manuel",
+      "lastName": "Machuca De Pina",
+      "teacherKey": "machuca_de_pina_juan_manuel",
+      "fullName": "Machuca De Pina, Juan Manuel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D08",
-      "firstName": "Richard Edgard",
-      "lastName": "Aguilar Paredes"
+      "firstName": "Sandro Juan",
+      "lastName": "Garcia Durante",
+      "teacherKey": "garcia_durante_sandro_juan",
+      "fullName": "Garcia Durante, Sandro Juan",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D09",
-      "firstName": "Jose Luis",
-      "lastName": "Alfaro Marquina"
+      "firstName": "Henry Joe",
+      "lastName": "Wong Urquiza",
+      "teacherKey": "wong_urquiza_henry_joe",
+      "fullName": "Wong Urquiza, Henry Joe",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D10",
-      "firstName": "Ivan Christian",
-      "lastName": "Bautista Fuentes"
+      "firstName": "Miriam Elizabeth",
+      "lastName": "Amable Ciudad",
+      "teacherKey": "amable_ciudad_miriam_elizabeth",
+      "fullName": "Amable Ciudad, Miriam Elizabeth",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D11",
-      "firstName": "Marco Antonio",
-      "lastName": "Fernandez Del Pomar"
+      "firstName": "Octavio V",
+      "lastName": "Jara Villavicencio",
+      "teacherKey": "jara_villavicencio_octavio_v",
+      "fullName": "Jara Villavicencio, Octavio V",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "No se encontró código visible en las vistas/capturas compartidas."
     },
     {
       "code": "D12",
-      "firstName": "Hector German",
-      "lastName": "Llanos Punyin"
+      "firstName": "José Carlos",
+      "lastName": "Sanabria Villanueva",
+      "teacherKey": "sanabria_villanueva_jose_carlos",
+      "fullName": "Sanabria Villanueva, José Carlos",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del sílabo; no se obtuvo código ni correo."
     },
     {
       "code": "D13",
-      "firstName": "Juan Francisco",
-      "lastName": "Lopez Aleman"
+      "firstName": "Sandra Rosa",
+      "lastName": "Santa Cruz Pereda",
+      "teacherKey": "santa_cruz_pereda_sandra_rosa",
+      "fullName": "Santa Cruz Pereda, Sandra Rosa",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del sílabo; no se obtuvo código ni correo."
     },
     {
       "code": "D14",
-      "firstName": "Jean Janssen",
-      "lastName": "Matos Manguinuri"
+      "firstName": "Caridad",
+      "lastName": "Aguilar Lozano",
+      "teacherKey": "aguilar_lozano_caridad",
+      "fullName": "Aguilar Lozano Caridad",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D15",
-      "firstName": "Javier Teodocio",
-      "lastName": "Roque Espinoza"
+      "firstName": "Richard Edgard",
+      "lastName": "Aguilar Paredes",
+      "teacherKey": "aguilar_paredes_richard_edgard",
+      "fullName": "Aguilar Paredes Richard Edgard",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D16",
-      "firstName": "Javier Richard",
-      "lastName": "Quinto Ancieta"
+      "firstName": "Jose Luis",
+      "lastName": "Alfaro Marquina",
+      "teacherKey": "alfaro_marquina_jose_luis",
+      "fullName": "Alfaro Marquina Jose Luis",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D17",
-      "firstName": "Edwin Jonathan",
-      "lastName": "Escobedo Cárdenas"
+      "firstName": "Edwin Manuel",
+      "lastName": "Alvarez Valdivia",
+      "teacherKey": "alvarez_valdivia_edwin_manuel",
+      "fullName": "Alvarez Valdivia Edwin Manuel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D18",
-      "firstName": "Rosario Marybel",
-      "lastName": "Guzmán Jiménez"
+      "firstName": "Oscar Jesus",
+      "lastName": "Barrientos Padilla",
+      "teacherKey": "barrientos_padilla_oscar_jesus",
+      "fullName": "Barrientos Padilla Oscar Jesus",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D19",
-      "firstName": "Paulo Nazareno",
-      "lastName": "Maia Sampaio"
+      "firstName": "Ivan Christian",
+      "lastName": "Bautista Fuentes",
+      "teacherKey": "bautista_fuentes_ivan_christian",
+      "fullName": "Bautista Fuentes Ivan Christian",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D20",
-      "firstName": "Javier",
-      "lastName": "More Sánchez"
+      "firstName": "Efrain Ricardo",
+      "lastName": "Bautista Ubillus",
+      "teacherKey": "bautista_ubillus_efrain_ricardo",
+      "fullName": "Bautista Ubillus Efrain Ricardo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D21",
-      "firstName": "Hernán",
-      "lastName": "Nina Hanco"
+      "firstName": "Jose Alberto",
+      "lastName": "Caballero Ortiz",
+      "teacherKey": "caballero_ortiz_jose_alberto",
+      "fullName": "Caballero Ortiz Jose Alberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D22",
-      "firstName": "Lourdes",
-      "lastName": "Ramírez Cerna"
+      "firstName": "Martha Medalit",
+      "lastName": "Campos Villegas",
+      "teacherKey": "campos_villegas_martha_medalit",
+      "fullName": "Campos Villegas Martha Medalit",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D23",
-      "firstName": "Franci",
-      "lastName": "Suni López"
+      "firstName": "Fiorella",
+      "lastName": "Capcha Sanchez",
+      "teacherKey": "capcha_sanchez_fiorella",
+      "fullName": "Capcha Sanchez Fiorella",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D24",
-      "firstName": "Christiam Javier",
-      "lastName": "Ortiz Pachas"
+      "firstName": "Miguel Jacinto",
+      "lastName": "Casma Salcedo",
+      "teacherKey": "casma_salcedo_miguel_jacinto",
+      "fullName": "Casma Salcedo Miguel Jacinto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D25",
-      "firstName": "Diego Norberto",
-      "lastName": "Helfer Rodriguez"
+      "firstName": "Manuel Fernando Jesus",
+      "lastName": "Castilla Salazar",
+      "teacherKey": "castilla_salazar_manuel_fernando_jesus",
+      "fullName": "Castilla Salazar Manuel Fernando Jesus",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D26",
-      "firstName": "Jorge Victor",
-      "lastName": "Miranda Pacheco"
+      "firstName": "Luis Ernesto",
+      "lastName": "Castillo Mesias",
+      "teacherKey": "castillo_mesias_luis_ernesto",
+      "fullName": "Castillo Mesias Luis Ernesto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D27",
-      "firstName": "Edwin Manuel",
-      "lastName": "Alvarez Valdivia"
+      "firstName": "Paulo Roberto",
+      "lastName": "Chahuara Vargas",
+      "teacherKey": "chahuara_vargas_paulo_roberto",
+      "fullName": "Chahuara Vargas Paulo Roberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D28",
-      "firstName": "José Raúl",
-      "lastName": "Diaz Parra"
+      "firstName": "Rocio Del Pilar",
+      "lastName": "Checa Fernandez",
+      "teacherKey": "checa_fernandez_rocio_del_pilar",
+      "fullName": "Checa Fernandez Rocio Del Pilar",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D29",
-      "firstName": "Francisco",
-      "lastName": "Riccio Chávez"
+      "firstName": "Jose Moises",
+      "lastName": "Cumpa Torres",
+      "teacherKey": "cumpa_torres_jose_moises",
+      "fullName": "Cumpa Torres Jose Moises",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D30",
-      "firstName": "José Alberto",
-      "lastName": "Caballero Ortiz"
+      "firstName": "Cesar Eduardo",
+      "lastName": "Curisinche Estrella",
+      "teacherKey": "curisinche_estrella_cesar_eduardo",
+      "fullName": "Curisinche Estrella Cesar Eduardo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D31",
-      "firstName": "Percy",
-      "lastName": "Diez Quiñones Panduro"
+      "firstName": "Ximena Marianne",
+      "lastName": "Cuzcano Chavez",
+      "teacherKey": "cuzcano_chavez_ximena_marianne",
+      "fullName": "Cuzcano Chavez Ximena Marianne",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D32",
-      "firstName": "Miriam Elizabeth",
-      "lastName": "Amable Ciudad"
+      "firstName": "Guillermo Antonio",
+      "lastName": "Davila Calle",
+      "teacherKey": "davila_calle_guillermo_antonio",
+      "fullName": "Davila Calle Guillermo Antonio",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D33",
-      "firstName": "Henry Joe",
-      "lastName": "Wong Urquiza"
+      "firstName": "Madrid Edmundo Augusto",
+      "lastName": "Dedios La",
+      "teacherKey": "dedios_la_madrid_edmundo_augusto",
+      "fullName": "Dedios La Madrid Edmundo Augusto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D34",
-      "firstName": "Enver Gerald",
-      "lastName": "Tarazona Vargas"
+      "firstName": "Vergara Eduardo Alejandro",
+      "lastName": "Del Solar",
+      "teacherKey": "del_solar_vergara_eduardo_alejandro",
+      "fullName": "Del Solar Vergara Eduardo Alejandro",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D35",
-      "firstName": "Winston",
-      "lastName": "Lewis Fuentes"
+      "firstName": "Serguei Ramiro Ramirovich",
+      "lastName": "Diaz Baskakov",
+      "teacherKey": "diaz_baskakov_serguei_ramiro_ramirovich",
+      "fullName": "Diaz Baskakov Serguei Ramiro Ramirovich",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D36",
-      "firstName": "Octavio",
-      "lastName": "Jara Villavicencio"
+      "firstName": "Jose Raul",
+      "lastName": "Diaz Parra",
+      "teacherKey": "diaz_parra_jose_raul",
+      "fullName": "Diaz Parra Jose Raul",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D37",
-      "firstName": "Guillermo Antonio",
-      "lastName": "Dávila Calle"
+      "firstName": "Panduro Percy",
+      "lastName": "Diez Quiñones",
+      "teacherKey": "diez_quinones_panduro_percy",
+      "fullName": "Diez Quiñones Panduro Percy",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D38",
-      "firstName": "Juan Manuel",
-      "lastName": "Machuca De Pina"
+      "firstName": "Jim Bryan",
+      "lastName": "Dios Luna",
+      "teacherKey": "dios_luna_jim_bryan",
+      "fullName": "Dios Luna Jim Bryan",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     },
     {
       "code": "D39",
+      "firstName": "Edwin Jonathan",
+      "lastName": "Escobedo Cardenas",
+      "teacherKey": "escobedo_cardenas_edwin_jonathan",
+      "fullName": "Escobedo Cardenas Edwin Jonathan",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D40",
+      "firstName": "Pomar Marco Antonio",
+      "lastName": "Fernandez Del",
+      "teacherKey": "fernandez_del_pomar_marco_antonio",
+      "fullName": "Fernandez Del Pomar Marco Antonio",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D41",
+      "firstName": "De Zeballos Diana Pamela",
+      "lastName": "Flores Berastain",
+      "teacherKey": "flores_berastain_de_zeballos_diana_pamela",
+      "fullName": "Flores Berastain De Zeballos Diana Pamela",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D42",
+      "firstName": "Jose Miguel",
+      "lastName": "Flores Ingaruca",
+      "teacherKey": "flores_ingaruca_jose_miguel",
+      "fullName": "Flores Ingaruca Jose Miguel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D43",
+      "firstName": "Jesus Eduardo",
+      "lastName": "Gamboa Unsihuay",
+      "teacherKey": "gamboa_unsihuay_jesus_eduardo",
+      "fullName": "Gamboa Unsihuay Jesus Eduardo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D44",
+      "firstName": "Gladys Hortencia",
+      "lastName": "Garcia Vilcapoma",
+      "teacherKey": "garcia_vilcapoma_gladys_hortencia",
+      "fullName": "Garcia Vilcapoma Gladys Hortencia",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D45",
+      "firstName": "Esteban Manuel",
+      "lastName": "Gerkes Molfino",
+      "teacherKey": "gerkes_molfino_esteban_manuel",
+      "fullName": "Gerkes Molfino Esteban Manuel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D46",
+      "firstName": "Victor Humberto",
+      "lastName": "Gomez Razza",
+      "teacherKey": "gomez_razza_victor_humberto",
+      "fullName": "Gomez Razza Victor Humberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D47",
+      "firstName": "Luis Manuel",
+      "lastName": "Gonzales Calderon",
+      "teacherKey": "gonzales_calderon_luis_manuel",
+      "fullName": "Gonzales Calderon Luis Manuel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D48",
+      "firstName": "Juan Manuel",
+      "lastName": "Gutierrez Cardenas",
+      "teacherKey": "gutierrez_cardenas_juan_manuel",
+      "fullName": "Gutierrez Cardenas Juan Manuel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D49",
+      "firstName": "Rosario Marybel",
+      "lastName": "Guzman Jimenez",
+      "teacherKey": "guzman_jimenez_rosario_marybel",
+      "fullName": "Guzman Jimenez Rosario Marybel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D50",
+      "firstName": "Agatha Cristina",
+      "lastName": "Hau Ochoa",
+      "teacherKey": "hau_ochoa_agatha_cristina",
+      "fullName": "Hau Ochoa Agatha Cristina",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D51",
+      "firstName": "Diego Norberto",
+      "lastName": "Helfer Rodriguez",
+      "teacherKey": "helfer_rodriguez_diego_norberto",
+      "fullName": "Helfer Rodriguez Diego Norberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D52",
+      "firstName": "Luz Aydely",
+      "lastName": "Herrera Santillan",
+      "teacherKey": "herrera_santillan_luz_aydely",
+      "fullName": "Herrera Santillan Luz Aydely",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D53",
+      "firstName": "Julio Cesar",
+      "lastName": "Huarachi Soto",
+      "teacherKey": "huarachi_soto_julio_cesar",
+      "fullName": "Huarachi Soto Julio Cesar",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D54",
+      "firstName": "Jorge Luis",
+      "lastName": "Irey Nuñez",
+      "teacherKey": "irey_nunez_jorge_luis",
+      "fullName": "Irey Nuñez Jorge Luis",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D55",
+      "firstName": "Hermann Mirko",
+      "lastName": "Klusmann Vieira",
+      "teacherKey": "klusmann_vieira_hermann_mirko",
+      "fullName": "Klusmann Vieira Hermann Mirko",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D56",
+      "firstName": "Winston",
+      "lastName": "Lewis Fuentes",
+      "teacherKey": "lewis_fuentes_winston",
+      "fullName": "Lewis Fuentes Winston",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D57",
+      "firstName": "Miguel Ricardo",
+      "lastName": "Llado Herrera",
+      "teacherKey": "llado_herrera_miguel_ricardo",
+      "fullName": "Llado Herrera Miguel Ricardo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D58",
+      "firstName": "Hector German",
+      "lastName": "Llanos Punyin",
+      "teacherKey": "llanos_punyin_hector_german",
+      "fullName": "Llanos Punyin Hector German",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D59",
+      "firstName": "Juan Francisco",
+      "lastName": "Lopez Aleman",
+      "teacherKey": "lopez_aleman_juan_francisco",
+      "fullName": "Lopez Aleman Juan Francisco",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D60",
+      "firstName": "Paulo Nazareno",
+      "lastName": "Maia Sampaio",
+      "teacherKey": "maia_sampaio_paulo_nazareno",
+      "fullName": "Maia Sampaio Paulo Nazareno",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D61",
+      "firstName": "Victor Hugo",
+      "lastName": "Marcelo Sanchez",
+      "teacherKey": "marcelo_sanchez_victor_hugo",
+      "fullName": "Marcelo Sanchez Victor Hugo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D62",
+      "firstName": "Jean Janssen",
+      "lastName": "Matos Manguinuri",
+      "teacherKey": "matos_manguinuri_jean_janssen",
+      "fullName": "Matos Manguinuri Jean Janssen",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D63",
+      "firstName": "Andrea",
+      "lastName": "Matuk Chijner",
+      "teacherKey": "matuk_chijner_andrea",
+      "fullName": "Matuk Chijner Andrea",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D64",
+      "firstName": "Angela Gabriela",
+      "lastName": "Mayhua Quispe",
+      "teacherKey": "mayhua_quispe_angela_gabriela",
+      "fullName": "Mayhua Quispe Angela Gabriela",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D65",
+      "firstName": "Jimmy Roberto",
+      "lastName": "Medina Flores",
+      "teacherKey": "medina_flores_jimmy_roberto",
+      "fullName": "Medina Flores Jimmy Roberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D66",
+      "firstName": "Aldo Richard",
+      "lastName": "Meza Rodriguez",
+      "teacherKey": "meza_rodriguez_aldo_richard",
+      "fullName": "Meza Rodriguez Aldo Richard",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D67",
+      "firstName": "Javier",
+      "lastName": "More Sanchez",
+      "teacherKey": "more_sanchez_javier",
+      "fullName": "More Sanchez Javier",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D68",
+      "firstName": "Nehil Indalicio",
+      "lastName": "Muñoz Casildo",
+      "teacherKey": "munoz_casildo_nehil_indalicio",
+      "fullName": "Muñoz Casildo Nehil Indalicio",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D69",
+      "firstName": "Giancarlo Juan",
+      "lastName": "Nakashima Chavez",
+      "teacherKey": "nakashima_chavez_giancarlo_juan",
+      "fullName": "Nakashima Chavez Giancarlo Juan",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D70",
+      "firstName": "Miguel Angel",
+      "lastName": "Navarro Neyra",
+      "teacherKey": "navarro_neyra_miguel_angel",
+      "fullName": "Navarro Neyra Miguel Angel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D71",
+      "firstName": "Rene",
+      "lastName": "Negron Huaman",
+      "teacherKey": "negron_huaman_rene",
+      "fullName": "Negron Huaman Rene",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D72",
+      "firstName": "Hernan",
+      "lastName": "Nina Hanco",
+      "teacherKey": "nina_hanco_hernan",
+      "fullName": "Nina Hanco Hernan",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D73",
+      "firstName": "Christiam Javier",
+      "lastName": "Ortiz Pachas",
+      "teacherKey": "ortiz_pachas_christiam_javier",
+      "fullName": "Ortiz Pachas Christiam Javier",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D74",
+      "firstName": "Alejandro Leopoldo",
+      "lastName": "Ortiz Valencia",
+      "teacherKey": "ortiz_valencia_alejandro_leopoldo",
+      "fullName": "Ortiz Valencia Alejandro Leopoldo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D75",
+      "firstName": "Enrique Humberto",
+      "lastName": "Palacios Lopez",
+      "teacherKey": "palacios_lopez_enrique_humberto",
+      "fullName": "Palacios Lopez Enrique Humberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D76",
+      "firstName": "Fernando Gustavo",
+      "lastName": "Palma Galindo",
+      "teacherKey": "palma_galindo_fernando_gustavo",
+      "fullName": "Palma Galindo Fernando Gustavo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D77",
+      "firstName": "Fabricio",
+      "lastName": "Paredes Larroca",
+      "teacherKey": "paredes_larroca_fabricio",
+      "fullName": "Paredes Larroca Fabricio",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D78",
+      "firstName": "Jorge Christiam",
+      "lastName": "Paredes Chavez",
+      "teacherKey": "paredes_chavez_jorge_christiam",
+      "fullName": "Paredes Chavez Jorge Christiam",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D79",
+      "firstName": "Segundo Oswaldo",
+      "lastName": "Pastor Huaman",
+      "teacherKey": "pastor_huaman_segundo_oswaldo",
+      "fullName": "Pastor Huaman Segundo Oswaldo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D80",
+      "firstName": "Fabio Fernando",
+      "lastName": "Pietrapiana Chiappe",
+      "teacherKey": "pietrapiana_chiappe_fabio_fernando",
+      "fullName": "Pietrapiana Chiappe Fabio Fernando",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D81",
+      "firstName": "Sofia Margarita",
+      "lastName": "Piscoya Chavez",
+      "teacherKey": "piscoya_chavez_sofia_margarita",
+      "fullName": "Piscoya Chavez Sofia Margarita",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D82",
+      "firstName": "Juan Alberto",
+      "lastName": "Puerta Arce",
+      "teacherKey": "puerta_arce_juan_alberto",
+      "fullName": "Puerta Arce Juan Alberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D83",
+      "firstName": "Javier Richard",
+      "lastName": "Quinto Ancieta",
+      "teacherKey": "quinto_ancieta_javier_richard",
+      "fullName": "Quinto Ancieta Javier Richard",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D84",
+      "firstName": "Lennin Paul",
+      "lastName": "Quiroz Villalobos",
+      "teacherKey": "quiroz_villalobos_lennin_paul",
+      "fullName": "Quiroz Villalobos Lennin Paul",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D85",
+      "firstName": "Leo Carlos Israel",
+      "lastName": "Ramirez Argume",
+      "teacherKey": "ramirez_argume_leo_carlos_israel",
+      "fullName": "Ramirez Argume Leo Carlos Israel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D86",
+      "firstName": "12 Pab. I2-102 (5)",
+      "lastName": "I 11",
+      "teacherKey": "i_11_12_pab_i2_102_5",
+      "fullName": "I 11 12 Pab. I2-102 (5)",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D87",
+      "firstName": "Luis Armando",
+      "lastName": "Raygada Vargas",
+      "teacherKey": "raygada_vargas_luis_armando",
+      "fullName": "Raygada Vargas Luis Armando",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D88",
+      "firstName": "Francisco Martin",
+      "lastName": "Riccio Chavez",
+      "teacherKey": "riccio_chavez_francisco_martin",
+      "fullName": "Riccio Chavez Francisco Martin",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D89",
+      "firstName": "Hugo Maximiliano",
+      "lastName": "Rodriguez Castillo",
+      "teacherKey": "rodriguez_castillo_hugo_maximiliano",
+      "fullName": "Rodriguez Castillo Hugo Maximiliano",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D90",
+      "firstName": "Nadia Katherine",
+      "lastName": "Rodriguez Rodriguez",
+      "teacherKey": "rodriguez_rodriguez_nadia_katherine",
+      "fullName": "Rodriguez Rodriguez Nadia Katherine",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D91",
+      "firstName": "Pablo Alberto",
+      "lastName": "Rojas Jaen",
+      "teacherKey": "rojas_jaen_pablo_alberto",
+      "fullName": "Rojas Jaen Pablo Alberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D92",
+      "firstName": "Juan Carlos Eduardo",
+      "lastName": "Romaina Acevedo",
+      "teacherKey": "romaina_acevedo_juan_carlos_eduardo",
+      "fullName": "Romaina Acevedo Juan Carlos Eduardo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D93",
+      "firstName": "Vilma Susana",
+      "lastName": "Romero Romero",
+      "teacherKey": "romero_romero_vilma_susana",
+      "fullName": "Romero Romero Vilma Susana",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D94",
+      "firstName": "George Edwin",
+      "lastName": "Romero Velazco",
+      "teacherKey": "romero_velazco_george_edwin",
+      "fullName": "Romero Velazco George Edwin",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D95",
+      "firstName": "Javier Teodocio",
+      "lastName": "Roque Espinoza",
+      "teacherKey": "roque_espinoza_javier_teodocio",
+      "fullName": "Roque Espinoza Javier Teodocio",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D96",
+      "firstName": "Cesar",
+      "lastName": "Rosales Rosales",
+      "teacherKey": "rosales_rosales_cesar",
+      "fullName": "Rosales Rosales Cesar",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D97",
+      "firstName": "Luis Miguel",
+      "lastName": "Ruiz Saldarriaga",
+      "teacherKey": "ruiz_saldarriaga_luis_miguel",
+      "fullName": "Ruiz Saldarriaga Luis Miguel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D98",
+      "firstName": "Davila Lutzgardo",
+      "lastName": "Saavedra Sanchez",
+      "teacherKey": "saavedra_sanchez_davila_lutzgardo",
+      "fullName": "Saavedra Sanchez Davila Lutzgardo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D99",
+      "firstName": "Jorge Luis Guillermo",
+      "lastName": "Salas Ochoa",
+      "teacherKey": "salas_ochoa_jorge_luis_guillermo",
+      "fullName": "Salas Ochoa Jorge Luis Guillermo",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D100",
+      "firstName": "Juana Viviana",
+      "lastName": "Sanchez Tenorio",
+      "teacherKey": "sanchez_tenorio_juana_viviana",
+      "fullName": "Sanchez Tenorio Juana Viviana",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D101",
+      "firstName": "Pedro Humberto",
+      "lastName": "Saravia Torres",
+      "teacherKey": "saravia_torres_pedro_humberto",
+      "fullName": "Saravia Torres Pedro Humberto",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D102",
+      "firstName": "Ronald Miguel",
+      "lastName": "Serrano Hernandez",
+      "teacherKey": "serrano_hernandez_ronald_miguel",
+      "fullName": "Serrano Hernandez Ronald Miguel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D103",
+      "firstName": "Franci",
+      "lastName": "Suni Lopez",
+      "teacherKey": "suni_lopez_franci",
+      "fullName": "Suni Lopez Franci",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D104",
+      "firstName": "John Oliver",
+      "lastName": "Taco Lopez",
+      "teacherKey": "taco_lopez_john_oliver",
+      "fullName": "Taco Lopez John Oliver",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D105",
       "firstName": "Jean Pierre",
-      "lastName": "Tincopa Flores"
+      "lastName": "Tincopa Flores",
+      "teacherKey": "tincopa_flores_jean_pierre",
+      "fullName": "Tincopa Flores Jean Pierre",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D106",
+      "firstName": "Carlos Martin",
+      "lastName": "Torres Paredes",
+      "teacherKey": "torres_paredes_carlos_martin",
+      "fullName": "Torres Paredes Carlos Martin",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D107",
+      "firstName": "Samantha Michelle",
+      "lastName": "Trujillo Cortez",
+      "teacherKey": "trujillo_cortez_samantha_michelle",
+      "fullName": "Trujillo Cortez Samantha Michelle",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D108",
+      "firstName": "Alejandro Ladislao",
+      "lastName": "Trujillo Quinde",
+      "teacherKey": "trujillo_quinde_alejandro_ladislao",
+      "fullName": "Trujillo Quinde Alejandro Ladislao",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D109",
+      "firstName": "Miguel Angel",
+      "lastName": "Valencia Amado",
+      "teacherKey": "valencia_amado_miguel_angel",
+      "fullName": "Valencia Amado Miguel Angel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D110",
+      "firstName": "Willy Wilmer",
+      "lastName": "Valladares Ramirez",
+      "teacherKey": "valladares_ramirez_willy_wilmer",
+      "fullName": "Valladares Ramirez Willy Wilmer",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D111",
+      "firstName": "Eduardo Angel",
+      "lastName": "Vasquez Reyes",
+      "teacherKey": "vasquez_reyes_eduardo_angel",
+      "fullName": "Vasquez Reyes Eduardo Angel",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D112",
+      "firstName": "Dario Neiver",
+      "lastName": "Velasquez Colchado",
+      "teacherKey": "velasquez_colchado_dario_neiver",
+      "fullName": "Velasquez Colchado Dario Neiver",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D113",
+      "firstName": "Michael Enrique",
+      "lastName": "Vera Panez",
+      "teacherKey": "vera_panez_michael_enrique",
+      "fullName": "Vera Panez Michael Enrique",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
+    },
+    {
+      "code": "D114",
+      "firstName": "Gianni Michael",
+      "lastName": "Zelada Garcia",
+      "teacherKey": "zelada_garcia_gianni_michael",
+      "fullName": "Zelada Garcia Gianni Michael",
+      "institutionalEmail": null,
+      "phone": null,
+      "sourceNote": "Docente extraído del rol de atención de alumnos 2026-1; no se encontró código visible."
     }
   ]
 }

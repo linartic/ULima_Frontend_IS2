@@ -25,9 +25,10 @@ class AsesoriaService {
 
       final filtradas = asesoriasRaw.where((a) {
         final mismoCurso = a['courseId'].toString() == seccion.idCurso;
-        final mismoDocente = a['docenteCode'].toString() == seccion.docenteCode;
+        final sectionKey = a['sectionKey']?.toString();
+        final mismaSeccion = sectionKey == null || sectionKey == idSeccion;
 
-        return mismoCurso && mismoDocente;
+        return mismoCurso && mismaSeccion;
       }).toList();
 
       final List<Asesoria> asesorias = [];
