@@ -3,10 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:ulima_plus/pages/calculadora/calculadora_page.dart';
-import 'package:ulima_plus/pages/descripcion_cursos/descrip_cursos.dart';
-import 'package:ulima_plus/pages/horario/horario.dart';
-import 'package:ulima_plus/pages/malla/malla_page.dart';
 
 import '/configs/themes.dart';
 import '/services/auth_service.dart';
@@ -19,7 +15,7 @@ import 'pages/login/login_page.dart';
 import 'pages/setup_carrera/setup_carrera_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();  
+  WidgetsFlutterBinding.ensureInitialized();
   LucideIcons.info.codePoint;
 
   // Servicios globales permanentes.

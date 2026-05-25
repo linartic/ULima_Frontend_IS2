@@ -4,16 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:ulima_plus/services/auth_service.dart';
 
-
 class AppFooter extends StatelessWidget {
   final int currentIndex;
   final Function(int)? onTap;
 
-  const AppFooter({
-    super.key,
-    required this.currentIndex,
-    this.onTap,
-  });
+  const AppFooter({super.key, required this.currentIndex, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +49,10 @@ class AppFooter extends StatelessWidget {
 
         // MODULO EXTRA A LOS ALUMNOS CON ROL 'Delegado'
         if (user?.isDelegate ?? false)
-        const BottomNavigationBarItem(
-          icon: Icon(LucideIcons.shield),
-          label: 'Delegado',
-        ),
+          const BottomNavigationBarItem(
+            icon: Icon(LucideIcons.shield),
+            label: 'Delegado',
+          ),
 
         const BottomNavigationBarItem(
           icon: Icon(LucideIcons.user),

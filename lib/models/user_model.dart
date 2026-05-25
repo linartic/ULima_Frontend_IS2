@@ -50,14 +50,14 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'code': code,
-        'firstName': firstName,
-        'lastName': lastName,
-        'email': email,
-        'role': role,
-        'career_id': careerId,
-        'especialidades': especialidades,
-        'currentCycle': currentCycle,
-        'setupComplete': setupComplete,
-      };
+    'code': code,
+    'firstName': firstName,
+    'lastName': lastName,
+    'email': email,
+    'role': role,
+    'career_id': careerId,
+    'especialidades': especialidades,
+    'currentCycle': currentCycle,
+    'setupComplete': setupComplete,
+  };
 }

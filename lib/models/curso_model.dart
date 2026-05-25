@@ -5,14 +5,14 @@ class Curso {
   final String nombre;
   final String ciclo;
   final List<Map<String, dynamic>> notas;
-  final String seccion; 
+  final String seccion;
 
   Curso({
     required this.id,
     required this.nombre,
     required this.ciclo,
     required this.notas,
-    required this.seccion, 
+    required this.seccion,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,8 +21,7 @@ class Curso {
       'nombre': nombre,
       'ciclo': ciclo,
       'notas': notas,
-      'seccion': seccion, 
-
+      'seccion': seccion,
     };
   }
 }

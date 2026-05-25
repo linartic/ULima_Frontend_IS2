@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ulima_plus/configs/themes.dart';
+
 class AppHeader extends StatelessWidget {
-
-
   const AppHeader({super.key});
 
   @override
@@ -14,10 +13,7 @@ class AppHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: MaterialTheme.headerColor(Theme.brightnessOf(context)),
         border: Border(
-          bottom: BorderSide(
-            color: colors.primaryContainer,
-            width: 2.0,
-          ),
+          bottom: BorderSide(color: colors.primaryContainer, width: 2.0),
         ),
       ),
       child: Column(
@@ -25,49 +21,48 @@ class AppHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              
-            Text(
-            'ULIMA++',
+              Text(
+                'ULIMA++',
 
-            style: TextStyle(
-              color: colors.onPrimary,
-              fontSize: 20,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold,
+                style: TextStyle(
+                  color: colors.onPrimary,
+                  fontSize: 20,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            
 
-          InkWell(
+              InkWell(
                 onTap: () {
-                  print('Ir a Alertas'); // Acción al tocar el ícono de notificaciones
+                  print(
+                    'Ir a Alertas',
+                  ); 
                   //Get.to(() => const AlertasPage()); // Acción al tocar el ícono de notificaciones
                 },
                 child: Stack(
-                children: [
+                  children: [
+                    Icon(
+                      Icons.notifications_none,
+                      color: colors.onPrimary,
+                      size: 30,
+                    ),
 
-                  Icon(
-                    Icons.notifications_none,
-                    color: colors.onPrimary,
-                    size: 30,
-                  ),
-
-                  //
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Container(
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 29, 111, 219),
-                        shape: BoxShape.circle,
+                    //
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 29, 111, 219),
+                          shape: BoxShape.circle,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
             ],
           ),
         ],

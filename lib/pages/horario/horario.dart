@@ -197,7 +197,9 @@ class HorarioPage extends StatelessWidget {
                           child: InkWell(
                             onTap: () {
                               final String idSeccion = course['idSeccion'];
-                              Get.to(() => DescripCursosPage(idSeccion: idSeccion ));
+                              Get.to(
+                                () => DescripCursosPage(idSeccion: idSeccion),
+                              );
                             },
                             borderRadius: BorderRadius.circular(16),
                             child: Container(

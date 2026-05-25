@@ -4,23 +4,19 @@ import '../../components/calculadora/curso_card.dart';
 import '../../components/calculadora/add_score.dart';
 import 'calculadora_controller.dart';
 
-// Usamos GetView para evitar el Get.put manual si ya está en los bindings,
-// o simplemente para tener acceso directo a 'controller'.
 class CalculadoraPage extends GetView<CalculadoraController> {
   const CalculadoraPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     final colors = Theme.of(context).colorScheme;
-    
+
     Get.lazyPut(() => CalculadoraController());
 
     return Scaffold(
-      backgroundColor: colors.surface, 
+      backgroundColor: colors.surface,
       body: Column(
-        children: [ 
-          // Header de Calculadora de Notas
+        children: [
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(20),
@@ -31,20 +27,22 @@ class CalculadoraPage extends GetView<CalculadoraController> {
                 Text(
                   "Calculadora de Notas",
                   style: TextStyle(
-                    fontSize: 24, 
+                    fontSize: 24,
                     fontWeight: FontWeight.w900,
-                    color: colors.onSurface, // Blanco en Dark, Negro en Light
+                    color: colors.onSurface,
                   ),
                 ),
                 Obx(() {
                   final cursosConNotas = controller.cursos
-                      .where((curso) => (curso['notas'] as List?)?.isNotEmpty ?? false)
+                      .where(
+                        (curso) =>
+                            (curso['notas'] as List?)?.isNotEmpty ?? false,
+                      )
                       .length;
                   return Text(
                     "Cursos con notas: $cursosConNotas",
                     style: TextStyle(
-                      // onSurfaceVariant suele ser un gris que se adapta
-                      color: colors.onSurface.withOpacity(0.7), 
+                      color: colors.onSurface.withValues(alpha: 0.7),
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                     ),
@@ -54,11 +52,12 @@ class CalculadoraPage extends GetView<CalculadoraController> {
             ),
           ),
 
-          // Lista de cursos (solo los que tienen notas registradas)
           Expanded(
             child: Obx(() {
               final cursosConNotas = controller.cursos
-                  .where((curso) => (curso['notas'] as List?)?.isNotEmpty ?? false)
+                  .where(
+                    (curso) => (curso['notas'] as List?)?.isNotEmpty ?? false,
+                  )
                   .toList();
 
               if (cursosConNotas.isEmpty) {
@@ -69,14 +68,14 @@ class CalculadoraPage extends GetView<CalculadoraController> {
                       Icon(
                         Icons.assignment_ind,
                         size: 64,
-                        color: colors.onSurface.withOpacity(0.3),
+                        color: colors.onSurface.withValues(alpha: 0.3),
                       ),
                       const SizedBox(height: 16),
                       Text(
                         'No hay notas registradas',
                         style: TextStyle(
                           fontSize: 16,
-                          color: colors.onSurface.withOpacity(0.6),
+                          color: colors.onSurface.withValues(alpha: 0.6),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -85,7 +84,7 @@ class CalculadoraPage extends GetView<CalculadoraController> {
                         'Comienza registrando una nota',
                         style: TextStyle(
                           fontSize: 14,
-                          color: colors.onSurface.withOpacity(0.4),
+                          color: colors.onSurface.withValues(alpha: 0.4),
                         ),
                       ),
                     ],
@@ -94,12 +93,15 @@ class CalculadoraPage extends GetView<CalculadoraController> {
               }
 
               return ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 itemCount: cursosConNotas.length,
                 itemBuilder: (context, index) {
                   final curso = cursosConNotas[index];
                   final notas = curso['notas'] as List;
-                  
+
                   return CursoCard(
                     curso: curso,
                     cursoIndex: controller.cursos.indexOf(curso),
@@ -112,7 +114,6 @@ class CalculadoraPage extends GetView<CalculadoraController> {
             }),
           ),
 
-          // Botón Agregar Nota - Versión mejorada
           Padding(
             padding: const EdgeInsets.all(20),
             child: Obx(() {
@@ -120,14 +121,10 @@ class CalculadoraPage extends GetView<CalculadoraController> {
               return ElevatedButton.icon(
                 onPressed: tieneNotas
                     ? () {
-                        // Mostrar diálogo para seleccionar curso si hay múltiples
                         if (controller.cursos.length == 1) {
                           _mostrarModalAgregarNota(context, 0, controller);
                         } else {
-                          _mostrarDialogoSeleccionarCurso(
-                            context,
-                            controller,
-                          );
+                          _mostrarDialogoSeleccionarCurso(context, controller);
                         }
                       }
                     : null,
@@ -140,19 +137,18 @@ class CalculadoraPage extends GetView<CalculadoraController> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  disabledBackgroundColor:
-                      colors.primaryContainer.withOpacity(0.5),
+                  disabledBackgroundColor: colors.primaryContainer.withValues(
+                    alpha: 0.5,
+                  ),
                 ),
               );
             }),
           ),
         ],
       ),
-
     );
   }
 
-  /// Muestra el modal para agregar nota para un curso específico
   void _mostrarModalAgregarNota(
     BuildContext context,
     int cursoIndex,
@@ -173,7 +169,6 @@ class CalculadoraPage extends GetView<CalculadoraController> {
     );
   }
 
-  /// Muestra un diálogo para seleccionar el curso antes de agregar nota
   void _mostrarDialogoSeleccionarCurso(
     BuildContext context,
     CalculadoraController controller,
@@ -201,63 +196,60 @@ class CalculadoraPage extends GetView<CalculadoraController> {
               ),
             ),
             const SizedBox(height: 16),
-            ...List.generate(
-              controller.cursos.length,
-              (index) {
-                // Extraemos los datos de forma segura aquí
-                final curso = controller.cursos[index];
-                final seccion = curso['codigoSeccion']?.toString() ?? 'Sin sección';
-                final nombre = curso['nombre']?.toString() ?? 'Curso desconocido';
+            ...List.generate(controller.cursos.length, (index) {
+              final curso = controller.cursos[index];
+              final seccion =
+                  curso['codigoSeccion']?.toString() ?? 'Sin sección';
+              final nombre = curso['nombre']?.toString() ?? 'Curso desconocido';
 
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(ctx);
-                        _mostrarModalAgregarNota(context, index, controller);
-                      },
-                      borderRadius: BorderRadius.circular(12),
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: colors.primary.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: colors.primary.withOpacity(0.3),
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(ctx);
+                      _mostrarModalAgregarNota(context, index, controller);
+                    },
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: colors.primary.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: colors.primary.withValues(alpha: 0.3),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Sección: $seccion",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: colors.primary,
+                            ),
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Usamos las variables seguras directamente
-                            Text(
-                              "Sección: $seccion", 
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: colors.primary,
-                              ),
+                          Text(
+                            nombre,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: colors.onSurface,
                             ),
-                            Text(
-                              nombre,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: colors.onSurface,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            }),
           ],
         ),
       ),
     );
-  }}
+  }
+}

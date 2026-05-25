@@ -1,12 +1,3 @@
-// lib/pages/login/login_page.dart
-// CU1 – Inicio de sesión.
-// Recrea fielmente el mockup de Figma:
-//   - Fondo naranja institucional en light mode.
-//   - Card centrada con esquinas redondeadas y sombra suave.
-//   - Logo SVG de la Universidad de Lima.
-//   - Inputs minimalistas con sólo línea inferior (sin íconos, sin caja).
-//   - Botón "Entrar" naranja con esquinas redondeadas.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

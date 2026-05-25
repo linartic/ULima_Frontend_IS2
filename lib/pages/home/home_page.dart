@@ -10,7 +10,6 @@ import 'package:ulima_plus/pages/malla/malla_page.dart';
 import 'package:ulima_plus/services/auth_service.dart';
 import '../perfil/perfil.dart';
 
-
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,5 +1,5 @@
 //DELEGADOS DE UNA SECCION
-class SectionRepresentative{
+class SectionRepresentative {
   final String id;
   final String enrollmentId;
   final String role;
@@ -10,11 +10,11 @@ class SectionRepresentative{
     required this.role,
   });
 
-  factory SectionRepresentative.fromJson(Map<String,dynamic> json){
+  factory SectionRepresentative.fromJson(Map<String, dynamic> json) {
     return SectionRepresentative(
-      id:json['id'].toString(),
-      enrollmentId:json['enrollmentId'].toString(),
-      role:json['role'].toString(),
+      id: json['id'].toString(),
+      enrollmentId: json['enrollmentId'].toString(),
+      role: json['role'].toString(),
     );
   }
 }

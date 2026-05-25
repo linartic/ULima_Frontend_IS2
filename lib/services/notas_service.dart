@@ -11,10 +11,13 @@ class NotasService {
 
   NotasService._internal();
 
-  Future<void> guardarNotas(String idEstudiante, List<Map<String, dynamic>> cursos) async {
+  Future<void> guardarNotas(
+    String idEstudiante,
+    List<Map<String, dynamic>> cursos,
+  ) async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      
+
       final cursosSerializables = cursos.map((curso) {
         return {
           'id': curso['id'],
@@ -37,7 +40,7 @@ class NotasService {
     try {
       final prefs = await SharedPreferences.getInstance();
       final jsonString = prefs.getString('${_notasKey}_$idEstudiante');
-      
+
       if (jsonString == null) {
         print('No hay notas guardadas para: $idEstudiante');
         return [];

@@ -12,15 +12,15 @@ class DescripCursosPage extends StatelessWidget {
   final DescripCursosController control = Get.put(DescripCursosController());
 
   DescripCursosPage({super.key, required this.idSeccion}) {
-    // LLAMADA CLAVE: Aseguramos que el controlador cargue los datos al abrir
     control.cargarDatosCurso(idSeccion);
   }
 
-  // --- Tus métodos de color ---
-  Color _sectionBackground(ColorScheme colors) => MaterialTheme.bloqueSeccion(colors.brightness);
-  Color _attendanceBackground(ColorScheme colors) => MaterialTheme.bloqueAsistencia(colors.brightness);
-  Color _attendanceDivider(ColorScheme colors) => MaterialTheme.bloqueAsistenciaLinea(colors.brightness);
-
+  Color _sectionBackground(ColorScheme colors) =>
+      MaterialTheme.bloqueSeccion(colors.brightness);
+  Color _attendanceBackground(ColorScheme colors) =>
+      MaterialTheme.bloqueAsistencia(colors.brightness);
+  Color _attendanceDivider(ColorScheme colors) =>
+      MaterialTheme.bloqueAsistenciaLinea(colors.brightness);
 
   Widget _courseTitle(BuildContext context, Seccion seccion) {
     ColorScheme colors = Theme.of(context).colorScheme;
@@ -236,14 +236,29 @@ class DescripCursosPage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 12),
             decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: isSelected ? colors.primary : Colors.transparent, width: 2)),
+              border: Border(
+                bottom: BorderSide(
+                  color: isSelected ? colors.primary : Colors.transparent,
+                  width: 2,
+                ),
+              ),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(icon, size: 22, color: isSelected ? colors.primary : Colors.grey),
+                Icon(
+                  icon,
+                  size: 22,
+                  color: isSelected ? colors.primary : Colors.grey,
+                ),
                 const SizedBox(height: 4),
-                Text(text, style: TextStyle(fontSize: 12, color: isSelected ? colors.primary : Colors.grey)),
+                Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: isSelected ? colors.primary : Colors.grey,
+                  ),
+                ),
               ],
             ),
           ),
@@ -258,9 +273,24 @@ class DescripCursosPage extends StatelessWidget {
       color: colors.surface,
       child: Row(
         children: [
-          _tabItem(context: context, icon: Icons.notifications_none, text: 'Anuncios', index: 0),
-          _tabItem(context: context, icon: Icons.bookmark_border, text: 'Asesorías', index: 1),
-          _tabItem(context: context, icon: Icons.people_outline, text: 'Contactos', index: 2),
+          _tabItem(
+            context: context,
+            icon: Icons.notifications_none,
+            text: 'Anuncios',
+            index: 0,
+          ),
+          _tabItem(
+            context: context,
+            icon: Icons.bookmark_border,
+            text: 'Asesorías',
+            index: 1,
+          ),
+          _tabItem(
+            context: context,
+            icon: Icons.people_outline,
+            text: 'Contactos',
+            index: 2,
+          ),
         ],
       ),
     );
@@ -272,13 +302,16 @@ class DescripCursosPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 12),
         child: Obx(() {
-        // AQUÍ PASAMOS EL ID A LAS TABS PARA QUE PUEDAN FILTRAR SUS DATOS
-        switch (control.selectedTab.value) {
-          case 0: return AnunciosTab(idSeccion: idSeccion);
-          case 1: return AsesoriasTab(idSeccion: idSeccion);
-          case 2: return ContactosTab(idSeccion: idSeccion);
-          default: return AnunciosTab(idSeccion: idSeccion);
-        }
+          switch (control.selectedTab.value) {
+            case 0:
+              return AnunciosTab(idSeccion: idSeccion);
+            case 1:
+              return AsesoriasTab(idSeccion: idSeccion);
+            case 2:
+              return ContactosTab(idSeccion: idSeccion);
+            default:
+              return AnunciosTab(idSeccion: idSeccion);
+          }
         }),
       ),
     );
@@ -291,7 +324,11 @@ class DescripCursosPage extends StatelessWidget {
 
       if (seccion == null) {
         return Scaffold(
-          body: Center(child: CircularProgressIndicator(color: Theme.of(context).colorScheme.primary)),
+          body: Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
         );
       }
 

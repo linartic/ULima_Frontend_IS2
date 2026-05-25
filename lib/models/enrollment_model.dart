@@ -1,5 +1,5 @@
 // ALUMNOS MATRICULADOS EN UNA SECCION
-class Enrollment{
+class Enrollment {
   final String id;
   final String studentCode;
   final String idCurso;
@@ -12,12 +12,12 @@ class Enrollment{
     required this.idSeccion,
   });
 
-  factory Enrollment.fromJson(Map<String,dynamic> json){
+  factory Enrollment.fromJson(Map<String, dynamic> json) {
     return Enrollment(
-      id:json['id'].toString(),
-      studentCode:json['studentCode'].toString(),
-      idCurso:json['idCurso'].toString(),
-      idSeccion:json['idSeccion'].toString(),
+      id: json['id'].toString(),
+      studentCode: json['studentCode'].toString(),
+      idCurso: json['idCurso'].toString(),
+      idSeccion: json['idSeccion'].toString(),
     );
   }
 }

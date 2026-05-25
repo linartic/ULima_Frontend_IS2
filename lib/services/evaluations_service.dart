@@ -29,7 +29,9 @@ class EvaluationSyllabusService {
       final cursosList = jsonData['cursos'] as List<dynamic>? ?? [];
 
       _syllabusData = cursosList
-          .map((curso) => CourseSyllabus.fromJson(curso as Map<String, dynamic>))
+          .map(
+            (curso) => CourseSyllabus.fromJson(curso as Map<String, dynamic>),
+          )
           .toList();
 
       _isLoaded = true;
@@ -43,7 +45,9 @@ class EvaluationSyllabusService {
   /// Obtiene el sílabo de un curso específico por su ID
   CourseSyllabus? getSyllabusByCourseId(String cursoId) {
     try {
-      return _syllabusData.firstWhere((syllabus) => syllabus.cursoId == cursoId);
+      return _syllabusData.firstWhere(
+        (syllabus) => syllabus.cursoId == cursoId,
+      );
     } catch (e) {
       return null;
     }

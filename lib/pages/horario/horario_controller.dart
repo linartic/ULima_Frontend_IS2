@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -45,19 +46,20 @@ class HorarioController extends GetxController {
       final idx = daysList.indexWhere((d) => d.dayName == 'Viernes');
       currentDayIndex.value = idx != -1 ? idx : 0;
     } catch (e) {
-      print('Error al cargar días: $e');
+      debugPrint('Error al cargar dias: $e');
     }
   }
 
-  // Carga el archivo secciones.json que contiene el horario detallado
   Future<void> _loadSecciones() async {
     try {
-      final jsonString = await rootBundle.loadString('assets/data/secciones.json');
+      final jsonString = await rootBundle.loadString(
+        'assets/data/secciones.json',
+      );
       final Map<String, dynamic> data = jsonDecode(jsonString);
       _todasLasSecciones = List<Map<String, dynamic>>.from(data['secciones']);
-      update(); // Notifica a la UI que los datos están listos
+      update();
     } catch (e) {
-      print('Error al cargar secciones: $e');
+      debugPrint('Error al cargar secciones: $e');
     }
   }
 
@@ -68,28 +70,25 @@ class HorarioController extends GetxController {
     final activeDay = currentDay;
     if (activeDay == null || _todasLasSecciones.isEmpty) return const [];
 
-    // 1. Obtener los IDs de las secciones donde el usuario está inscrito
     final user = AuthService.to.currentUser;
     final List<dynamic> inscritas = user?.courseProgress?.currentCourses ?? [];
-    
-    // Extraemos solo los IDs de sección para comparar rápidamente
-    final List<String> idsInscritos = inscritas
+
+    final idsInscritos = inscritas
         .map((i) => (i['idSeccion'] as String? ?? ''))
         .where((id) => id.isNotEmpty)
         .toList();
 
-    // 2. Filtrar secciones: deben coincidir con el día y estar en los inscritos del usuario
     final currentDayName = activeDay.dayName.toLowerCase();
 
     return _todasLasSecciones.where((s) {
       final courseDay = (s['dia'] as String? ?? '').toLowerCase();
       final esMismoDia = courseDay == currentDayName;
       final estaInscrito = idsInscritos.contains(s['idSeccion']);
-      
+
       return esMismoDia && estaInscrito;
     }).toList();
   }
-  
+
   void previousDay() {
     if (daysList.isEmpty) return;
     if (currentDayIndex.value > 0) {
@@ -107,6 +106,4 @@ class HorarioController extends GetxController {
       currentDayIndex.value = 0;
     }
   }
-
-  
 }

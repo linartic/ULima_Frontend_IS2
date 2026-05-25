@@ -18,12 +18,12 @@ class NotaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: colors.tertiaryContainer, 
+        color: colors.tertiaryContainer,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(color: colors.outline.withOpacity(0.2)),
       ),
@@ -38,19 +38,22 @@ class NotaTile extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
-                    color: colors.onTertiaryContainer, 
+                    color: colors.onTertiaryContainer,
                   ),
                 ),
                 const SizedBox(height: 4),
                 RichText(
                   text: TextSpan(
-                    style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant.withOpacity(0.6)),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: colors.onSurfaceVariant.withOpacity(0.6),
+                    ),
                     children: [
                       TextSpan(text: "Peso: $peso%  •  "),
                       TextSpan(
                         text: "Nota: ${nota.toStringAsFixed(1)}/20",
                         style: TextStyle(
-                          color: colors.primary, 
+                          color: colors.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -61,11 +64,7 @@ class NotaTile extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Icon(
-              Icons.delete_outline,
-              color: colors.error, 
-              size: 22,
-            ),
+            icon: Icon(Icons.delete_outline, color: colors.error, size: 22),
             onPressed: () {
               Get.defaultDialog(
                 title: "Eliminar Nota",
