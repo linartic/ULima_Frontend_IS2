@@ -3,7 +3,7 @@
     "id": 1,
     "carrera_id": 1,
     "name": "Ingeniería de Software",
-    "description": "Este diploma permite al egresado demostrar la comprensión de los procesos críticos relacionados con la creación de aplicaciones que respondan a las expectativas empresariales basadas en las mejores prácticas de la ingeniería de software. Los estudiantes aprenderán y aplicarán los conceptos de diseño de programas, estructuras de datos, programación, resolución de problemas, lógica de programación, técnicas fundamentales de diseño, arquitectura de software y aseguramiento de calidad del software en todo su ciclo de vida.",
+    "description": "Enfocada en el diseño, desarrollo, pruebas y mantenimiento de sistemas de software de alta calidad y rendimiento.",
     "display_order": 1,
     "is_active": true
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "carrera_id": 1,
     "name": "Sistemas de Información",
-    "description": "Este diploma demuestra en los egresados la comprensión del uso eficaz y eficiente de la información para lograr una ventaja competitiva en las empresas. Además, certifica su capacidad para examinar el impacto actual y potencial de la información y la tecnología al reconocer que los sistemas de información son vitales para la identificación de problemas, los análisis históricos o predictivos y la toma de decisiones. Esta especialización permitirá a los estudiantes una comprensión del uso de las tecnologías de la información para crear nuevos modelos de negocios y operaciones internas de las organizaciones.",
+    "description": "Este diploma demuestra en los egresados la comprensión del uso eficaz y eficiente de la información para lograr una ventaja competitiva en las empresas.",
     "display_order": 2,
     "is_active": true
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "carrera_id": 1,
     "name": "Tecnologías de la Información",
-    "description": "Este diploma permite al egresado acreditar sus conocimientos y competencias profesionales para afrontar con éxito el desarrollo de soluciones de negocio, mediante la utilización de las plataformas de TI más adecuadas (a nivel de equipamiento, conectividad, procesamiento, almacenamiento de datos, provisión de servicios de TI, etcétera), que contribuyan al logro de los objetivos organizacionales.",
+    "description": "Este diploma permite al egresado acreditar sus conocimientos y competencias profesionales para afrontar con éxito el desarrollo de soluciones de negocio, mediante la utilización de las plataformas de TI más adecuadas que contribuyan al logro de los objetivos.",
     "display_order": 3,
     "is_active": true
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "carrera_id": 1,
     "name": "Desarrollo de Videojuegos",
-    "description": "Este diploma permite al egresado mejorar sus habilidades artísticas creativas, de programación y de diseño, a través de asignaturas de la especialidad de Videojuegos de la Facultad de Comunicación y de asignaturas especializadas de la Carrera de Ingeniería de Sistemas, con apoyo de las diferentes herramientas y softwares vigentes globalmente. Esta especialización permitirá a los estudiantes lograr competencias de programación de juegos por computadora, de diseño artístico de la historia y de un mundo de fantasía y gráficos por computadora (2D y 3D), que le darán la posibilidad de desempeñarse en el desarrollo de videojuegos en dicha industria.",
+    "description": "Esta especialización permitirá a los estudiantes lograr competencias de programación de juegos por computadora, de diseño artístico de la historia y de un mundo de fantasía y gráficos por computadora (2D y 3D), que le darán la posibilidad de desempeñarse en el desarrollo de videojuegos en dicha industria.",
     "display_order": 4,
     "is_active": true
   },

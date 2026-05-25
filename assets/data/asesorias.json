@@ -14,6 +14,21 @@
       "fin": "12:00",
       "aula": "I2 piso 2 ITLAB",
       "zoom": "https://www.figma.com/make/lhEnbMNLzpo7c57QibfDW2/ULIMA-Mobile-App-Design?p=f&t=bCsJTKQTX9Ifce6z-0"
+    },
+    {
+      "id": "2",
+      "cursoId": "PM-854",
+      "curso": "Programación Móvil",
+      "docente": {
+        "code": "D02",
+        "firstName": "Pepe",
+        "lastName": "Valdivia"
+      },
+      "dia": "Lunes",
+      "inicio": "10:00",
+      "fin": "13:00",
+      "aula": "I2 piso 2 ITLAB",
+      "zoom": "https://www.figma.com/make/lhEnbMNLzpo7c57QibfDW2/ULIMA-Mobile-App-Design?p=f&t=bCsJTKQTX9Ifce6z-0"
     }
   ]
 }

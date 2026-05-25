@@ -74,7 +74,7 @@
             "idSeccion": "PM-854"
           },
           {
-            "idCurso": "4",
+            "idCurso": "2",
             "idSeccion": "ML-753"
           }
         ]
@@ -110,6 +110,10 @@
           {
             "idCurso": "4",
             "idSeccion": "PM-854"
+          },
+          {
+            "idCurso": "2",
+            "idSeccion": "ML-753"
           }
         ]
       }
@@ -250,6 +254,34 @@
       }
     },
     {
+      "code": "20225158",
+      "password": "ulima123",
+      "firstName": "Hans",
+      "lastName": "Quispe",
+      "email": "20225158@aloe.ulima.edu.pe",
+      "role": "estudiante",
+      "career_id": 1,
+      "especialidades": [
+        1
+      ],
+      "currentCycle": "2026-1",
+      "setupComplete": true,
+      "courseProgress": {
+        "approvedLevels": [
+          1,
+          2,
+          3
+        ],
+        "approvedElectives": [],
+        "currentCourses": [
+          {
+            "idCurso": "4",
+            "idSeccion": "PM-854"
+          }
+        ]
+      }
+    },
+    {
       "code": "20221234",
       "password": "ulima123",
       "firstName": "María",
@@ -258,7 +290,7 @@
       "role": "estudiante",
       "career_id": 1,
       "especialidades": [
-        3
+        2
       ],
       "currentCycle": "2026-1",
       "setupComplete": true,
@@ -349,7 +381,7 @@
       "role": "subdelegado",
       "career_id": 1,
       "especialidades": [
-        2
+        3
       ],
       "currentCycle": "2026-1",
       "setupComplete": true,

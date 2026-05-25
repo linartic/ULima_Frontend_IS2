@@ -16,9 +16,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton.icon(
             onPressed: () {
-              // 1. Ejecutamos el cierre de sesión
               AuthService.to.logout();
-              // 2. Redirigimos al usuario a la pantalla de Login y limpiamos la ruta
               Get.offAll(() => const LoginPage());
             },
             icon: const Icon(Icons.logout),
