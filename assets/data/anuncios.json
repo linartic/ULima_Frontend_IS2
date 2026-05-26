@@ -1,92 +1,36 @@
 {
-  "anuncios": [
+  "anuncios":[
     {
-      "id": "1",
-      "idSeccion": "ingenieria_de_software_ii_856",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Luna Moran Franco Antonio / subdelegado: Salazar Torres Julio Gabriel",
-      "fecha": "2026-05-25",
-      "autorCode": "20233916"
+      "id":"1",
+      "idSeccion":"IS-856",
+      "titulo":"Cambio de Aula",
+      "mensaje":"La clase del jueves se realizará en el aula I2-104.",
+      "fecha":"18-05-2026",
+      "autorCode":"20235218"
     },
     {
-      "id": "2",
-      "idSeccion": "sistemas_erp_851",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Revilla Robles Manuel Jesus / subdelegado: Solorzano Ormeño Gonzalo Sebastian",
-      "fecha": "2026-05-25",
-      "autorCode": "20214076"
+      "id":"2",
+      "idSeccion":"IS-856",
+      "titulo":"Entrega de Laboratorio",
+      "mensaje":"Se amplió la fecha límite del laboratorio 3 hasta el domingo a las 11:59 PM.",
+      "fecha":"20-05-2026",
+      "autorCode":"20232548"
     },
     {
-      "id": "3",
-      "idSeccion": "programacion_movil_854",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Tejada Montesinos Martin Rodrigo / subdelegado: Gonzales Villar Jose Joaquin",
-      "fecha": "2026-05-25",
-      "autorCode": "20232907"
+      "id":"3",
+      "idSeccion":"PM-854",
+      "titulo":"Avance Proyecto",
+      "mensaje":"La entrega del avance 2 será el próximo martes durante el horario de clase habitual.",
+      "fecha":"21-05-2026",
+      "autorCode":"20232907"
     },
     {
-      "id": "4",
-      "idSeccion": "auditoria_y_control_de_sistemas_851",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Garay Salinas Gabriela Nicole / subdelegado: Sanchez Palacios Jefferson Angelo",
-      "fecha": "2026-05-25",
-      "autorCode": "20233903"
-    },
-    {
-      "id": "5",
-      "idSeccion": "propuesta_de_investigacion_855",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Sanchez Palacios Jefferson Angelo / subdelegado: Zavalaga Trujillo Jesus Augusto",
-      "fecha": "2026-05-25",
-      "autorCode": "20235218"
-    },
-    {
-      "id": "6",
-      "idSeccion": "topicos_avanzados_en_ciberseguridad_852",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Gomez Zegarra Kevin Edson / subdelegado: Gutierrez Hurtado Piero Alejandro",
-      "fecha": "2026-05-25",
-      "autorCode": "20202988"
-    },
-    {
-      "id": "7",
-      "idSeccion": "gestion_de_operaciones_752",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Gianella Pazos Matias Danilo / subdelegado: Rojas Andamayo Leonardo Angel De Jesus",
-      "fecha": "2026-05-25",
-      "autorCode": "20236236"
-    },
-    {
-      "id": "8",
-      "idSeccion": "analitica_con_big_data_852",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Diaz Vallejos Walter Andres / subdelegado: Garay Salinas Gabriela Nicole",
-      "fecha": "2026-05-25",
-      "autorCode": "20213505"
-    },
-    {
-      "id": "9",
-      "idSeccion": "ingenieria_de_software_i_752",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Garay Salinas Gabriela Nicole / subdelegado: Solorzano Ormeño Gonzalo Sebastian",
-      "fecha": "2026-05-25",
-      "autorCode": "20233903"
-    },
-    {
-      "id": "10",
-      "idSeccion": "ingenieria_del_conocimiento_751",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Castañeda Arregui Ricardo Fabricio / subdelegado: Gonzales Olivera Anthony David",
-      "fecha": "2026-05-25",
-      "autorCode": "20200446"
-    },
-    {
-      "id": "11",
-      "idSeccion": "sistemas_distribuidos_853",
-      "titulo": "Representantes de sección registrados",
-      "mensaje": "delegado: Huaman Salhuana Neil Nelson / subdelegado: Garay Salinas Gabriela Nicole",
-      "fecha": "2026-05-25",
-      "autorCode": "20221252"
+      "id":"4",
+      "idSeccion":"PM-854",
+      "titulo":"Material Complementario",
+      "mensaje":"El docente subió ejercicios adicionales de repaso al Aula Virtual.",
+      "fecha":"22-05-2026",
+      "autorCode":"20232637"
     }
   ]
 }

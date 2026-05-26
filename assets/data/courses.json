@@ -2,478 +2,295 @@
   "cursos": [
     {
       "id": "1",
-      "code": "1327",
-      "mallaCourseId": "ingenieria_software_ii",
       "nombre": "INGENIERÍA DE SOFTWARE II",
-      "name": "Ingeniería De Software II",
       "default_credit": 4,
       "is_active": true,
       "ciclo": "2026-1",
-      "level": 8,
-      "category": "required",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "ingenieria_de_software_ii_856",
-          "codigoSeccion": "856"
-        }
+        { "idSeccion": "IS-856", "codigoSeccion": "856" }
       ]
     },
     {
       "id": "2",
-      "code": "650028",
-      "mallaCourseId": "sistemas_erp",
-      "nombre": "SISTEMAS ERP",
-      "name": "Sistemas ERP",
+      "nombre": "APRENDIZAJE DE MÁQUINA/MACHINE LEARNING",
       "default_credit": 3,
-      "is_active": true,
+      "is_active": false,
       "ciclo": "2026-1",
-      "level": 8,
-      "category": "required",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "sistemas_erp_851",
-          "codigoSeccion": "851"
-        }
+        { "idSeccion": "ML-753", "codigoSeccion": "753" }
       ]
     },
     {
       "id": "3",
-      "code": "650030",
-      "mallaCourseId": "programacion_movil",
-      "nombre": "PROGRAMACIÓN MÓVIL",
-      "name": "Programación Móvil",
+      "nombre": "GESTIÓN DE OPERACIONES",
       "default_credit": 3,
-      "is_active": true,
+      "is_active": false,
       "ciclo": "2026-1",
-      "level": 8,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "programacion_movil_854",
-          "codigoSeccion": "854"
-        }
+        { "idSeccion": "GDO-754", "codigoSeccion": "754" },
+        { "idSeccion": "GDO-755", "codigoSeccion": "755" }
       ]
     },
     {
       "id": "4",
-      "code": "650040",
-      "mallaCourseId": "auditoria_control_sistemas",
-      "nombre": "AUDITORÍA Y CONTROL DE SISTEMAS",
-      "name": "Auditoría Y Control De Sistemas",
-      "default_credit": 3,
-      "is_active": true,
-      "ciclo": "2026-1",
-      "level": 10,
-      "category": "required",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
+      "nombre": "PROGRAMACIÓN MÓVIL",
+      "default_credit": 4,
+      "is_active": false,
       "secciones": [
-        {
-          "idSeccion": "auditoria_y_control_de_sistemas_851",
-          "codigoSeccion": "851"
-        }
+        { "idSeccion": "PM-854", "codigoSeccion": "854" }
       ]
     },
     {
       "id": "5",
-      "code": "650042",
-      "mallaCourseId": "propuesta_investigacion",
-      "nombre": "PROPUESTA DE INVESTIGACIÓN",
-      "name": "Propuesta De Investigación",
-      "default_credit": 3,
-      "is_active": true,
+      "nombre": "SISTEMAS DE INTELIGENCIA EMPRESARIAL",
+      "default_credit": 4,
+      "is_active": false,
       "ciclo": "2026-1",
-      "level": 8,
-      "category": "required",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "propuesta_de_investigacion_855",
-          "codigoSeccion": "855"
-        }
+        { "idSeccion": "SIE-755", "codigoSeccion": "755" }
       ]
     },
     {
       "id": "6",
-      "code": "650076",
-      "mallaCourseId": "topicos_avanzados_ciberseguridad",
-      "nombre": "TÓPICOS AVANZADOS EN CIBERSEGURIDAD",
-      "name": "Tópicos Avanzados En Ciberseguridad",
+      "nombre": "PROGRAMACIÓN WEB",
       "default_credit": 3,
       "is_active": true,
       "ciclo": "2026-1",
-      "level": 8,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "topicos_avanzados_en_ciberseguridad_852",
-          "codigoSeccion": "852"
-        }
+        { "idSeccion": "PW-855", "codigoSeccion": "855" }
       ]
     },
     {
       "id": "7",
-      "code": "650019",
-      "mallaCourseId": "gestion_operaciones",
-      "nombre": "GESTIÓN DE OPERACIONES",
-      "name": "Gestión De Operaciones",
+      "nombre": "GESTIÓN DE PROYECTOS",
+      "name": "GESTIÓN DE PROYECTOS",
       "default_credit": 3,
       "is_active": true,
       "ciclo": "2026-1",
-      "level": 7,
-      "category": "required",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "gestion_de_operaciones_752",
-          "codigoSeccion": "752"
-        }
+        { "idSeccion": "GP-802", "codigoSeccion": "802" },
+        { "idSeccion": "GP-804", "codigoSeccion": "804" }
       ]
     },
     {
       "id": "8",
-      "code": "650044",
-      "mallaCourseId": "analitica_big_data",
-      "nombre": "ANALÍTICA CON BIG DATA",
-      "name": "Analítica Con Big Data",
+      "nombre": "CÁLCULO III",
+      "name": "CÁLCULO III",
       "default_credit": 3,
       "is_active": true,
       "ciclo": "2026-1",
-      "level": 10,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
       "secciones": [
-        {
-          "idSeccion": "analitica_con_big_data_852",
-          "codigoSeccion": "852"
-        }
+        { "idSeccion": "CALCIII-403", "codigoSeccion": "403" }
       ]
     },
     {
       "id": "9",
-      "code": "650063",
-      "mallaCourseId": "ingenieria_software_i",
-      "nombre": "INGENIERÍA DE SOFTWARE I",
-      "name": "Ingeniería De Software I",
-      "default_credit": 4,
-      "is_active": true,
-      "ciclo": "2026-1",
-      "level": 7,
-      "category": "required",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
+      "nombre": "COMPUTACIÓN EN LA NUBE / CLOUD COMPUTING",
+      "name": "CLOUD COMPUTING",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
       "secciones": [
-        {
-          "idSeccion": "ingenieria_de_software_i_752",
-          "codigoSeccion": "752"
-        }
+        { "idSeccion": "CND-TBD", "codigoSeccion": "TBD" }
       ]
     },
     {
       "id": "10",
-      "code": "650074",
-      "mallaCourseId": "ingenieria_del_conocimiento",
-      "nombre": "INGENIERÍA DEL CONOCIMIENTO",
-      "name": "Ingeniería Del Conocimiento",
-      "default_credit": 3,
-      "is_active": true,
-      "ciclo": "2026-1",
-      "level": 7,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
+      "nombre": "SEMINARIO DE INVESTIGACIÓN II",
+      "name": "SEMINARIO INV. II",
+      "default_credit": 4,
+      "is_active": false,
+      "ciclo": "2025-1",
       "secciones": [
-        {
-          "idSeccion": "ingenieria_del_conocimiento_751",
-          "codigoSeccion": "751"
-        }
+        { "idSeccion": "SINV2-TBD", "codigoSeccion": "TBD" }
       ]
     },
     {
       "id": "11",
-      "code": "650077",
-      "mallaCourseId": "sistemas_distribuidos",
-      "nombre": "SISTEMAS DISTRIBUIDOS",
-      "name": "Sistemas Distribuidos",
-      "default_credit": 3,
-      "is_active": true,
-      "ciclo": "2026-1",
-      "level": 8,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
+      "nombre": "SEMINARIO DE INVESTIGACIÓN I",
+      "name": "SEMINARIO INV. I",
+      "default_credit": 4,
+      "is_active": false,
+      "ciclo": "2025-1",
       "secciones": [
-        {
-          "idSeccion": "sistemas_distribuidos_853",
-          "codigoSeccion": "853"
-        }
+        { "idSeccion": "SINV1-TBD", "codigoSeccion": "TBD" }
       ]
     },
     {
       "id": "12",
-      "code": "650012",
-      "mallaCourseId": "internet_de_las_cosas",
-      "nombre": "INTERNET DE LAS COSAS / INTERNET OF THINGS",
-      "name": "Internet De Las Cosas / Internet Of Things",
-      "default_credit": 3,
+      "nombre": "GESTIÓN DE SERVICIOS DIGITALES",
+      "name": "GEST. SERV. DIGITALES",
+      "default_credit": 4,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 6,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "GSD-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "13",
-      "code": "650070",
-      "mallaCourseId": "paradigmas_programacion",
-      "nombre": "PARADIGMAS DE PROGRAMACIÓN",
-      "name": "Paradigmas De Programación",
+      "nombre": "SISTEMAS ERP",
+      "name": "SISTEMAS ERP",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 6,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "ERP-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "14",
-      "code": "650071",
-      "mallaCourseId": "gestion_base_de_datos",
-      "nombre": "GESTIÓN DE BASE DE DATOS",
-      "name": "Gestión De Base De Datos",
+      "nombre": "INTERNET DE LAS COSAS / INTERNET OF THINGS",
+      "name": "IoT",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 6,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "IOT-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "15",
-      "code": "650072",
-      "mallaCourseId": "analisis_diseno_algoritmos",
-      "nombre": "ANÁLISIS Y DISEÑO DE ALGORITMOS",
-      "name": "Análisis Y Diseño De Algoritmos",
-      "default_credit": 3,
+      "nombre": "SEGURIDAD DE SISTEMAS",
+      "name": "SEG. DE SISTEMAS",
+      "default_credit": 4,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 7,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "SS-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "16",
-      "code": "650073",
-      "mallaCourseId": "redes_avanzadas",
-      "nombre": "REDES AVANZADAS",
-      "name": "Redes Avanzadas",
+      "nombre": "GESTIÓN DE BASE DE DATOS",
+      "name": "GEST. BASE DATOS",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 7,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "GBD-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "17",
-      "code": "650075",
-      "mallaCourseId": "deep_learning",
-      "nombre": "DEEP LEARNING",
-      "name": "Deep Learning",
+      "nombre": "ARQUITECTURA DE SOFTWARE",
+      "name": "ARQ. SOFTWARE",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 8,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "AS-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "18",
-      "code": "650078",
-      "mallaCourseId": "analitica_negocios",
-      "nombre": "ANALÍTICA DE NEGOCIOS",
-      "name": "Analítica De Negocios",
+      "nombre": "ARQUITECTURA EMPRESARIAL",
+      "name": "ARQ. EMPRESARIAL",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 8,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "AE-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "19",
-      "code": "650079",
-      "mallaCourseId": "proyecto_desarrollo_software",
-      "nombre": "PROYECTO DE DESARROLLO DE SOFTWARE",
-      "name": "Proyecto De Desarrollo De Software",
+      "nombre": "INGENIERÍA DEL CONOCIMIENTO",
+      "name": "ING. CONOCIMIENTO",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 9,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "IK-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "20",
-      "code": "650081",
-      "mallaCourseId": "proyecto_videojuegos",
-      "nombre": "PROYECTO DE VIDEOJUEGOS",
-      "name": "Proyecto De Videojuegos",
+      "nombre": "INTERACCIÓN HUMANO COMPUTADORA / HUMAN COMPUTER INTERACTION",
+      "name": "IHC",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 9,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "IHC-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
       "id": "21",
-      "code": "650080",
-      "mallaCourseId": "innovacion_digital",
-      "nombre": "INNOVACIÓN DIGITAL",
-      "name": "Innovación Digital",
-      "default_credit": 3,
-      "is_active": false,
-      "ciclo": "2026-1",
-      "level": 9,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
-    },
-    {
-      "id": "22",
-      "code": "650025",
-      "mallaCourseId": "computacion_nube",
-      "nombre": "COMPUTACIÓN EN LA NUBE / CLOUD COMPUTING",
-      "name": "Computación En La Nube / Cloud Computing",
-      "default_credit": 3,
-      "is_active": false,
-      "ciclo": "2026-1",
-      "level": 9,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
-    },
-    {
-      "id": "23",
-      "code": "650085",
-      "mallaCourseId": "arquitectura_software",
-      "nombre": "ARQUITECTURA DE SOFTWARE",
-      "name": "Arquitectura De Software",
-      "default_credit": 3,
-      "is_active": false,
-      "ciclo": "2026-1",
-      "level": 10,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
-    },
-    {
-      "id": "24",
-      "code": "650011",
-      "mallaCourseId": "interaccion_humano_computadora",
-      "nombre": "INTERACCIÓN HUMANO COMPUTADOR / HUMAN COMPUTER INTERACTION",
-      "name": "Interacción Humano Computador / Human Computer Interaction",
-      "default_credit": 3,
-      "is_active": false,
-      "ciclo": "2026-1",
-      "level": 10,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
-    },
-    {
-      "id": "25",
-      "code": "650082",
-      "mallaCourseId": "arquitectura_empresarial",
-      "nombre": "ARQUITECTURA EMPRESARIAL",
-      "name": "Arquitectura Empresarial",
-      "default_credit": 3,
-      "is_active": false,
-      "ciclo": "2026-1",
-      "level": 10,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
-    },
-    {
-      "id": "26",
-      "code": "650083",
-      "mallaCourseId": "arquitectura_tecnologias_informacion",
-      "nombre": "ARQUITECTURA DE TECNOLOGÍAS DE LA INFORMACIÓN",
-      "name": "Arquitectura De Tecnologías De La Información",
-      "default_credit": 3,
-      "is_active": false,
-      "ciclo": "2026-1",
-      "level": 10,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
-    },
-    {
-      "id": "27",
-      "code": "650084",
-      "mallaCourseId": "devops",
       "nombre": "DEVOPS",
       "name": "DEVOPS",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 10,
-      "category": "elective",
-      "origin_faculty": "Facultad de Ingeniería",
-      "career": "Ingeniería de Sistemas",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "DO-TBD", "codigoSeccion": "TBD" }
+      ]
     },
     {
-      "id": "28",
-      "code": "520074",
-      "mallaCourseId": "seguridad_salud_ocupacional",
-      "nombre": "Seguridad, Salud Ocupacional y Bienestar Organizacional",
-      "name": "Seguridad, Salud Ocupacional Y Bienestar Organizacional",
+      "id": "22",
+      "nombre": "PLANEAMIENTO ESTRATÉGICO",
+      "name": "PLAN. ESTRATÉGICO",
       "default_credit": 3,
       "is_active": false,
-      "ciclo": "2026-1",
-      "level": 9,
-      "category": "external_elective_or_reference",
-      "origin_faculty": "Facultad de Ciencias Empresariales",
-      "career": "Administración",
-      "secciones": []
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "PE-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "23",
+      "nombre": "ANALÍTICA CON BIG DATA",
+      "name": "BIG DATA",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "BDA-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "24",
+      "nombre": "ARQUITECTURA DE TECNOLOGÍAS DE LA INFORMACIÓN",
+      "name": "ARQ. TI",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "ATI-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "25",
+      "nombre": "ANÁLISIS Y DISEÑO DE ALGORITMOS",
+      "name": "DISEÑO ALGORITMOS",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "ADA-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "26",
+      "nombre": "PROPUESTA DE INVESTIGACIÓN",
+      "name": "PROP. INVESTIGACIÓN",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "PI-TBD", "codigoSeccion": "TBD" }
+      ]
+    },
+    {
+      "id": "27",
+      "nombre": "SISTEMAS DISTRIBUIDOS",
+      "name": "SIST. DISTRIBUIDOS",
+      "default_credit": 3,
+      "is_active": false,
+      "ciclo": "2025-1",
+      "secciones": [
+        { "idSeccion": "SD-TBD", "codigoSeccion": "TBD" }
+      ]
     }
   ]
 }
