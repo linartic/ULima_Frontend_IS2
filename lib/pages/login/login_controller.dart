@@ -10,6 +10,7 @@ class LoginController extends GetxController {
   final passwordController = TextEditingController();
   final errorMessage = RxnString();
   final submitting = false.obs;
+  final passwordVisible = false.obs;
 
   AuthService get _auth => AuthService.to;
 

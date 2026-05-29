@@ -18,7 +18,6 @@ class AuthService extends GetxService {
   final RxList<Map<String, dynamic>> _especialidades =
       <Map<String, dynamic>>[].obs;
   final RxBool _loading = false.obs;
-  final ApiClient _api = ApiClient();
 
   UserModel? get currentUser => _currentUser.value;
   Rx<UserModel?> get currentUserRx => _currentUser;
