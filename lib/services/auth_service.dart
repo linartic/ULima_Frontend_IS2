@@ -113,6 +113,16 @@ class AuthService extends GetxService {
   }) async {
     final u = _currentUser.value;
     if (u == null) return;
+
+    try {
+      await _api.putJson('/academic-profile/me/specialties', {
+        'primarySpecialtyId': especialidadPrincipal,
+        'interestSpecialtyIds': especialidadesInteres,
+      });
+    } catch (e) {
+      print("Error guardando especialidades en servidor: $e");
+    }
+
     u.careerId = careerId;
     u.especialidadPrincipal = especialidadPrincipal;
     u.especialidadesInteres = List.of(especialidadesInteres);

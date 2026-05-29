@@ -28,10 +28,12 @@ class MallaService extends GetxService {
 
   final RxList<CourseNode> _courses = <CourseNode>[].obs;
   final RxList<String> _specialties = <String>[].obs;
+  final RxMap<String, String> _simulation = <String, String>{}.obs;
   final ApiClient _api = ApiClient();
 
   List<CourseNode> get courses => _courses;
   List<String> get availableSpecialties => _specialties;
+  Map<String, String> get simulation => _simulation;
 
   /// Carga el catálogo desde el backend (idempotente).
   Future<void> load() async {
@@ -48,6 +50,13 @@ class MallaService extends GetxService {
     _specialties.assignAll(
       ((decoded['specialties'] as List?) ?? const []).cast<String>(),
     );
+    if (decoded.containsKey('simulation')) {
+      final simMap = <String, String>{};
+      for (final s in (decoded['simulation'] as List)) {
+        simMap[s['curriculumCourseId'].toString()] = s['status'].toString();
+      }
+      _simulation.assignAll(simMap);
+    }
   }
 
   /// Cantidad máxima de filas observadas en un mismo nivel (para sizing del canvas).

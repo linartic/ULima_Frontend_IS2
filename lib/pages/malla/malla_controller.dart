@@ -81,14 +81,28 @@ class MallaController extends GetxController {
     try {
       await _malla.load();
       final code = user?.code;
+
+      final backendStatuses = <String, CourseStatus>{};
+      _malla.simulation.forEach((courseId, simStatus) {
+        if (simStatus == 'planned') {
+          backendStatuses[courseId] = CourseStatus.current;
+        } else if (simStatus == 'simulated_completed') {
+          backendStatuses[courseId] = CourseStatus.approved;
+        }
+      });
+
       final userSaved = code == null
           ? null
           : StorageService.to.savedStatusesFor(code);
       final sessionSaved = StorageService.to.savedStatuses;
       final saved = userSaved ?? sessionSaved;
-      if (saved != null) {
+
+      if (backendStatuses.isNotEmpty) {
+        statuses.assignAll(backendStatuses);
+      } else if (saved != null) {
         statuses.assignAll(_knownCourseStatuses(saved));
       }
+
       _refresh(preserveCurrentStatuses: true);
       if (code != null && userSaved == null && sessionSaved != null) {
         StorageService.to.saveStatuses(statuses, code: code);
@@ -262,7 +276,17 @@ class MallaController extends GetxController {
 
   // ── Ciclo de estado ─────────────────────────────────────────────────────────
 
+  bool _isRealProgress(String courseId) {
+    final u = user;
+    if (u == null) return false;
+    final computed = _malla.computeStatuses(u);
+    final status = computed[courseId];
+    return status == CourseStatus.approved || status == CourseStatus.current;
+  }
+
   void cycleStatus(String courseId) {
+    if (_isRealProgress(courseId)) return;
+    
     final current = statuses[courseId] ?? CourseStatus.locked;
     if (current == CourseStatus.locked) return;
     CourseStatus next;
@@ -282,6 +306,27 @@ class MallaController extends GetxController {
     statuses[courseId] = next;
     _recomputeDerivedAvailability();
     StorageService.to.saveStatuses(statuses, code: user?.code);
+
+    final api = ApiClient();
+    if (next == CourseStatus.current) {
+      api.putJson('/curriculum/me/simulation', {
+        'curriculumCourseId': int.parse(courseId),
+        'status': 'planned',
+      }).catchError((e) {
+        print("Error al guardar la simulación: $e");
+      });
+    } else if (next == CourseStatus.approved) {
+      api.putJson('/curriculum/me/simulation', {
+        'curriculumCourseId': int.parse(courseId),
+        'status': 'simulated_completed',
+      }).catchError((e) {
+        print("Error al guardar la simulación: $e");
+      });
+    } else if (next == CourseStatus.unlocked) {
+      api.deleteJson('/curriculum/me/simulation/$courseId').catchError((e) {
+        print("Error al eliminar la simulación: $e");
+      });
+    }
   }
 
   // ── Métricas de progreso ────────────────────────────────────────────────────
