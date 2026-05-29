@@ -22,9 +22,10 @@ class MallaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = Get.put(MallaController());
     final colors = Theme.of(context).colorScheme;
+    final brightness = Theme.of(context).brightness;
 
     return Container(
-      color: const Color(0xFFF8FAFC),
+      color: MaterialTheme.pageBg(brightness),
       child: Column(
         children: [
           _ProgressBar(controller: c, colors: colors),
@@ -54,11 +55,12 @@ class _ProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Obx(() {
       return Container(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: MaterialTheme.cardBg(brightness),
           border: Border(
             bottom: BorderSide(color: colors.outline.withValues(alpha: 0.5)),
           ),
@@ -93,15 +95,15 @@ class _ProgressBar extends StatelessWidget {
               child: LinearProgressIndicator(
                 value: controller.approvedRatio,
                 minHeight: 6,
-                backgroundColor: const Color(0xFFE2E8F0),
+                backgroundColor: MaterialTheme.progressBg(brightness),
                 color: MaterialTheme.primaryColor,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               'Avance: ${controller.approvedCount} / ${controller.totalVisible} cursos',
-              style: const TextStyle(
-                color: Color(0xFF64748B),
+              style: TextStyle(
+                color: MaterialTheme.textMuted(brightness),
                 fontSize: 11,
                 fontWeight: FontWeight.w700,
               ),
@@ -121,6 +123,7 @@ class _Chip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -153,8 +156,8 @@ class _Chip extends StatelessWidget {
                   Text(
                     label,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Color(0xFF334155),
+                    style: TextStyle(
+                      color: MaterialTheme.textSecondary(brightness),
                       fontSize: 10,
                       fontWeight: FontWeight.w700,
                     ),
@@ -176,8 +179,9 @@ class _ZoomToolbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Container(
-      color: Colors.white,
+      color: MaterialTheme.cardBg(brightness),
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
       child: Row(
         children: [
@@ -189,8 +193,8 @@ class _ZoomToolbar extends StatelessWidget {
               child: Text(
                 '${(controller.zoom.value * 100).round()}%',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0xFF334155),
+                style: TextStyle(
+                  color: MaterialTheme.textSecondary(brightness),
                   fontWeight: FontWeight.w900,
                   fontSize: 13,
                 ),
@@ -212,15 +216,15 @@ class _ZoomToolbar extends StatelessWidget {
                 width: 18,
                 height: 2.5,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF64748B),
+                  color: MaterialTheme.textMuted(brightness),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
               const SizedBox(width: 5),
-              const Text(
+              Text(
                 'Obligatorio',
                 style: TextStyle(
-                  color: Color(0xFF475569),
+                  color: MaterialTheme.textDimmed(brightness),
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
                 ),
@@ -238,7 +242,7 @@ class _ZoomToolbar extends StatelessWidget {
                     width: 5,
                     height: 2.5,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF64748B),
+                      color: MaterialTheme.textMuted(brightness),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -247,7 +251,7 @@ class _ZoomToolbar extends StatelessWidget {
                     width: 5,
                     height: 2.5,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF64748B),
+                      color: MaterialTheme.textMuted(brightness),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -256,17 +260,17 @@ class _ZoomToolbar extends StatelessWidget {
                     width: 5,
                     height: 2.5,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF64748B),
+                      color: MaterialTheme.textMuted(brightness),
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
                 ],
               ),
               const SizedBox(width: 5),
-              const Text(
+              Text(
                 'Electivo',
                 style: TextStyle(
-                  color: Color(0xFF475569),
+                  color: MaterialTheme.textDimmed(brightness),
                   fontSize: 10,
                   fontWeight: FontWeight.w700,
                 ),
@@ -286,8 +290,9 @@ class _IconBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Material(
-      color: const Color(0xFFF1F5F9),
+      color: MaterialTheme.iconBtnBg(brightness),
       borderRadius: BorderRadius.circular(8),
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
@@ -296,7 +301,7 @@ class _IconBtn extends StatelessWidget {
           width: 32,
           height: 32,
           child: Center(
-            child: Icon(icon, size: 18, color: const Color(0xFF334155)),
+            child: Icon(icon, size: 18, color: MaterialTheme.textSecondary(brightness)),
           ),
         ),
       ),
@@ -634,6 +639,7 @@ class _MallaCanvasState extends State<_MallaCanvas> {
     required double yOffset,
   }) {
     if (cards.isEmpty) return const [];
+    final brightness = Theme.of(context).brightness;
     final levels = cards.map((c) => c.level).toSet().toList()..sort();
     return [
       for (final lvl in levels)
@@ -649,8 +655,8 @@ class _MallaCanvasState extends State<_MallaCanvas> {
             child: Center(
               child: Text(
                 'NIVEL $lvl',
-                style: const TextStyle(
-                  color: Color(0xFF334155),
+                style: TextStyle(
+                  color: MaterialTheme.textSecondary(brightness),
                   fontSize: 11,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 1.2,
@@ -667,10 +673,11 @@ class _MallaCanvasState extends State<_MallaCanvas> {
     CourseNode course,
     Map<String, CourseStatus> statuses,
   ) {
+    final brightness = Theme.of(context).brightness;
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.white,
+      backgroundColor: MaterialTheme.sheetBg(brightness),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -687,6 +694,8 @@ class _PoolDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
+    final divColor = MaterialTheme.dividerMalla(brightness);
     return SizedBox(
       width: width,
       height: 36,
@@ -696,12 +705,12 @@ class _PoolDivider extends StatelessWidget {
           Expanded(
             child: Container(
               height: 1.5,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0x00CBD5E1),
-                    Color(0xFFCBD5E1),
-                    Color(0x00CBD5E1),
+                    divColor.withValues(alpha: 0),
+                    divColor,
+                    divColor.withValues(alpha: 0),
                   ],
                 ),
               ),
@@ -722,15 +731,16 @@ class _SectionLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 13, color: const Color(0xFF64748B)),
+        Icon(icon, size: 13, color: MaterialTheme.textMuted(brightness)),
         const SizedBox(width: 5),
         Text(
           text,
-          style: const TextStyle(
-            color: Color(0xFF64748B),
+          style: TextStyle(
+            color: MaterialTheme.textMuted(brightness),
             fontSize: 11,
             fontWeight: FontWeight.w900,
             letterSpacing: 1.4,
@@ -751,6 +761,7 @@ class _CourseDetailSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<MallaController>();
     final currentStatus = statuses[course.id] ?? CourseStatus.locked;
+    final brightness = Theme.of(context).brightness;
     return Padding(
       padding: EdgeInsets.fromLTRB(
         20,
@@ -767,7 +778,7 @@ class _CourseDetailSheet extends StatelessWidget {
               width: 40,
               height: 4,
               decoration: BoxDecoration(
-                color: const Color(0xFFE2E8F0),
+                color: MaterialTheme.sheetHandle(brightness),
                 borderRadius: BorderRadius.circular(99),
               ),
             ),
@@ -800,13 +811,13 @@ class _CourseDetailSheet extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF0F4FF),
+                    color: MaterialTheme.externalBadgeBg(brightness),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
                     course.externalFaculty!,
-                    style: const TextStyle(
-                      color: Color(0xFF4B5563),
+                    style: TextStyle(
+                      color: MaterialTheme.textDimmed(brightness),
                       fontWeight: FontWeight.w800,
                       fontSize: 11,
                     ),
@@ -818,8 +829,8 @@ class _CourseDetailSheet extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             course.name,
-            style: const TextStyle(
-              color: Color(0xFF0F172A),
+            style: TextStyle(
+              color: MaterialTheme.textPrimary(brightness),
               fontSize: 18,
               fontWeight: FontWeight.w900,
             ),
@@ -842,10 +853,10 @@ class _CourseDetailSheet extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'Prerrequisitos',
             style: TextStyle(
-              color: Color(0xFF334155),
+              color: MaterialTheme.textSecondary(brightness),
               fontSize: 13,
               fontWeight: FontWeight.w900,
               letterSpacing: 0.4,
@@ -855,10 +866,10 @@ class _CourseDetailSheet extends StatelessWidget {
           _PrereqList(course: course, statuses: statuses),
           if (course.isElective && course.specialties.isNotEmpty) ...[
             const SizedBox(height: 12),
-            const Text(
+            Text(
               'Forma parte de los diplomas',
               style: TextStyle(
-                color: Color(0xFF334155),
+                color: MaterialTheme.textSecondary(brightness),
                 fontSize: 13,
                 fontWeight: FontWeight.w900,
                 letterSpacing: 0.4,
@@ -876,7 +887,7 @@ class _CourseDetailSheet extends StatelessWidget {
                         vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFFE8DC),
+                        color: MaterialTheme.specialtyBg(brightness),
                         borderRadius: BorderRadius.circular(99),
                       ),
                       child: Text(
@@ -917,18 +928,18 @@ class _CourseDetailSheet extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: const Color(0xFFF1F5F9),
+                color: MaterialTheme.lockedBg(brightness),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.lock_outline, size: 16, color: Color(0xFF64748B)),
-                  SizedBox(width: 8),
+                  Icon(Icons.lock_outline, size: 16, color: MaterialTheme.textMuted(brightness)),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       'Este curso está bloqueado hasta que cumplas sus prerrequisitos.',
                       style: TextStyle(
-                        color: Color(0xFF475569),
+                        color: MaterialTheme.textDimmed(brightness),
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
                       ),
@@ -963,6 +974,7 @@ class _PrereqList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     final mallaController = Get.find<MallaController>();
     final byId = {for (final c in mallaController.cards) c.id: c};
     final concrete = course.coursePrerequisites;
@@ -972,10 +984,10 @@ class _PrereqList extends StatelessWidget {
         : mallaController.hasCompletedMandatoryCycles(cycleReq, statuses);
 
     if (concrete.isEmpty && cycleReq == null) {
-      return const Text(
+      return Text(
         'Este curso no tiene prerrequisitos.',
         style: TextStyle(
-          color: Color(0xFF64748B),
+          color: MaterialTheme.textMuted(brightness),
           fontSize: 12,
           fontWeight: FontWeight.w600,
         ),
@@ -1013,6 +1025,7 @@ class _PrereqRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     final color = ok ? const Color(0xFF10B981) : const Color(0xFFEF4444);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3),
@@ -1023,8 +1036,8 @@ class _PrereqRow extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: const TextStyle(
-                color: Color(0xFF334155),
+              style: TextStyle(
+                color: MaterialTheme.textSecondary(brightness),
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
               ),
@@ -1043,21 +1056,22 @@ class _InfoTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: const Color(0xFFF1F5F9),
+        color: MaterialTheme.tagBg(brightness),
         borderRadius: BorderRadius.circular(99),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 13, color: const Color(0xFF334155)),
+          Icon(icon, size: 13, color: MaterialTheme.textSecondary(brightness)),
           const SizedBox(width: 5),
           Text(
             text,
-            style: const TextStyle(
-              color: Color(0xFF334155),
+            style: TextStyle(
+              color: MaterialTheme.textSecondary(brightness),
               fontSize: 11,
               fontWeight: FontWeight.w800,
             ),
@@ -1102,21 +1116,26 @@ class _SilaboLink extends StatelessWidget {
     final url = EvaluationSyllabusService().getSilaboUrl(courseId);
     if (url == null) return const SizedBox.shrink();
 
+    final brightness = Theme.of(context).brightness;
+    final linkColor = brightness == Brightness.light
+        ? const Color(0xFF0369A1)
+        : const Color(0xFF38BDF8);
+
     return GestureDetector(
       onTap: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: const [
-          Icon(Icons.open_in_new, size: 14, color: Color(0xFF0369A1)),
-          SizedBox(width: 5),
+        children: [
+          Icon(Icons.open_in_new, size: 14, color: linkColor),
+          const SizedBox(width: 5),
           Text(
             'Ver Sílabo',
             style: TextStyle(
-              color: Color(0xFF0369A1),
+              color: linkColor,
               fontSize: 13,
               fontWeight: FontWeight.w700,
               decoration: TextDecoration.underline,
-              decorationColor: Color(0xFF0369A1),
+              decorationColor: linkColor,
             ),
           ),
         ],

@@ -49,6 +49,112 @@ class MaterialTheme {
         : const Color(0xFFFFB088);
   }
 
+  // ── Helpers para Malla y Perfil (dark mode) ──────────────────────────────
+
+  /// Fondo principal del canvas / página.
+  static Color pageBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF8FAFC) : const Color(0xFF16161C);
+
+  /// Fondo de tarjetas / barras.
+  static Color cardBg(Brightness b) =>
+      b == Brightness.light ? Colors.white : const Color(0xFF1E1E24);
+
+  /// Texto primario fuerte (títulos, nombres).
+  static Color textPrimary(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF0F172A) : const Color(0xFFEDEDF3);
+
+  /// Texto secundario (subtítulos, labels).
+  static Color textSecondary(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF334155) : const Color(0xFFA0A0B0);
+
+  /// Texto terciario / muted (hints, caption).
+  static Color textMuted(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF64748B) : const Color(0xFF787890);
+
+  /// Texto dimmed (aún más sutil).
+  static Color textDimmed(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF475569) : const Color(0xFF8888A0);
+
+  /// Borde de tarjetas y separadores.
+  static Color borderColor(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFE5E5E5) : const Color(0xFF2E2E38);
+
+  /// Fondo de tags / badges.
+  static Color tagBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF1F5F9) : const Color(0xFF28283A);
+
+  /// Fondo de botones icon.
+  static Color iconBtnBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF1F5F9) : const Color(0xFF28283A);
+
+  /// Progress bar background.
+  static Color progressBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFE2E8F0) : const Color(0xFF2A2A36);
+
+  /// Fondo de info locked message.
+  static Color lockedBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF1F5F9) : const Color(0xFF22222C);
+
+  /// Fondo de especialidad principal.
+  static Color espPrincipalBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFFFF1EA) : const Color(0xFF3A2A22);
+
+  /// Fondo de interes chip.
+  static Color espInteresBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF0F7FF) : const Color(0xFF1A2A3A);
+
+  /// Fondo de chip disabled.
+  static Color chipDisabledBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF5F5F5) : const Color(0xFF22222C);
+
+  /// Borde de chip disabled.
+  static Color chipDisabledBorder(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFE0E0E0) : const Color(0xFF3A3A44);
+
+  /// Texto disabled.
+  static Color chipDisabledText(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFCCCCCC) : const Color(0xFF555566);
+
+  /// Texto chip inactive.
+  static Color chipInactiveText(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF555555) : const Color(0xFF9999AA);
+
+  /// Fondo de bottom sheet.
+  static Color sheetBg(Brightness b) =>
+      b == Brightness.light ? Colors.white : const Color(0xFF1E1E24);
+
+  /// Handle del bottom sheet.
+  static Color sheetHandle(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFDDDDDD) : const Color(0xFF444450);
+
+  /// Fondo de row no seleccionado en sheet.
+  static Color sheetRowBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFFAFAFA) : const Color(0xFF22222C);
+
+  /// Texto label "Carrera", "Principal", etc.
+  static Color labelColor(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF777777) : const Color(0xFF9090A0);
+
+  /// Fondo de external faculty badge en detail sheet.
+  static Color externalBadgeBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFF0F4FF) : const Color(0xFF1E2A3A);
+
+  /// Color del separador de malla.
+  static Color dividerMalla(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFCBD5E1) : const Color(0xFF3A3A48);
+
+  /// Color del specialty badge en detail sheet.
+  static Color specialtyBg(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFFFE8DC) : const Color(0xFF3A2A22);
+
+  /// Texto no seleccionado / sin especialización.
+  static Color placeholderText(Brightness b) =>
+      b == Brightness.light ? const Color(0xFFAAAAAA) : const Color(0xFF606070);
+
+  /// Texto description en sheet.
+  static Color descText(Brightness b) =>
+      b == Brightness.light ? const Color(0xFF888888) : const Color(0xFF7A7A8A);
+
   // LIGHT SCHEME
   static ColorScheme lightScheme() {
     return const ColorScheme(

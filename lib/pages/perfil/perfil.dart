@@ -13,8 +13,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F7F8),
+      backgroundColor: MaterialTheme.pageBg(brightness),
       body: SafeArea(
         child: Column(
           children: [
@@ -47,6 +48,7 @@ class _ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = AuthService.to.currentUser;
+    final brightness = Theme.of(context).brightness;
     final initials =
         ((user?.firstName.isNotEmpty == true ? user!.firstName[0] : '') +
                 (user?.lastName.isNotEmpty == true ? user!.lastName[0] : ''))
@@ -54,9 +56,9 @@ class _ProfileHeader extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
-      decoration: const BoxDecoration(
-        color: MaterialTheme.primaryColor,
-        boxShadow: [
+      decoration: BoxDecoration(
+        color: MaterialTheme.headerColor(brightness),
+        boxShadow: const [
           BoxShadow(
             color: Color(0x22000000),
             blurRadius: 16,
@@ -123,13 +125,14 @@ class _CarreraCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = AuthService.to;
     final carreraName = auth.getCareerName(auth.currentUser?.careerId);
+    final brightness = Theme.of(context).brightness;
 
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: MaterialTheme.cardBg(brightness),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFE5E5E5)),
+        border: Border.all(color: MaterialTheme.borderColor(brightness)),
       ),
       child: Row(
         children: [
@@ -137,7 +140,7 @@ class _CarreraCard extends StatelessWidget {
             width: 42,
             height: 42,
             decoration: BoxDecoration(
-              color: const Color(0xFFFFE8DC),
+              color: MaterialTheme.espPrincipalBg(brightness),
               borderRadius: BorderRadius.circular(12),
             ),
             alignment: Alignment.center,
@@ -152,10 +155,10 @@ class _CarreraCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Carrera',
                   style: TextStyle(
-                    color: Color(0xFF777777),
+                    color: MaterialTheme.labelColor(brightness),
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
                   ),
@@ -163,8 +166,8 @@ class _CarreraCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   carreraName.isNotEmpty ? carreraName : '—',
-                  style: const TextStyle(
-                    color: Color(0xFF1A1A1A),
+                  style: TextStyle(
+                    color: MaterialTheme.textPrimary(brightness),
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                   ),
@@ -175,18 +178,18 @@ class _CarreraCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
             decoration: BoxDecoration(
-              color: const Color(0xFFF2F2F2),
+              color: MaterialTheme.tagBg(brightness),
               borderRadius: BorderRadius.circular(999),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.lock_outline, size: 13, color: Color(0xFF777777)),
-                SizedBox(width: 4),
+                Icon(Icons.lock_outline, size: 13, color: MaterialTheme.labelColor(brightness)),
+                const SizedBox(width: 4),
                 Text(
                   'Fija',
                   style: TextStyle(
-                    color: Color(0xFF777777),
+                    color: MaterialTheme.labelColor(brightness),
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
                   ),
@@ -207,15 +210,16 @@ class _ConfigAcademicaSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 2, bottom: 10),
+        Padding(
+          padding: const EdgeInsets.only(left: 2, bottom: 10),
           child: Text(
             'Configuración académica',
             style: TextStyle(
-              color: Color(0xFF1A1A1A),
+              color: MaterialTheme.textPrimary(brightness),
               fontSize: 13,
               fontWeight: FontWeight.w800,
               letterSpacing: 0.2,
@@ -245,13 +249,14 @@ class _EspecialidadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = AuthService.to;
+    final brightness = Theme.of(context).brightness;
 
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: MaterialTheme.cardBg(brightness),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFE5E5E5)),
+        border: Border.all(color: MaterialTheme.borderColor(brightness)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,7 +267,7 @@ class _EspecialidadCard extends StatelessWidget {
                 width: 42,
                 height: 42,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFE8DC),
+                  color: MaterialTheme.espPrincipalBg(brightness),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 alignment: Alignment.center,
@@ -273,11 +278,11 @@ class _EspecialidadCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              const Expanded(
+              Expanded(
                 child: Text(
                   'Especialización',
                   style: TextStyle(
-                    color: Color(0xFF1A1A1A),
+                    color: MaterialTheme.textPrimary(brightness),
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                   ),
@@ -291,7 +296,7 @@ class _EspecialidadCard extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFF1EA),
+                    color: MaterialTheme.espPrincipalBg(brightness),
                     borderRadius: BorderRadius.circular(999),
                     border: Border.all(
                       color: MaterialTheme.primaryColor.withValues(alpha: 0.4),
@@ -327,10 +332,10 @@ class _EspecialidadCard extends StatelessWidget {
             final interes = user?.especialidadesInteres ?? [];
 
             if (principal == null && interes.isEmpty) {
-              return const Text(
+              return Text(
                 'Sin especialización seleccionada',
                 style: TextStyle(
-                  color: Color(0xFFAAAAAA),
+                  color: MaterialTheme.placeholderText(brightness),
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
@@ -341,10 +346,10 @@ class _EspecialidadCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (principal != null) ...[
-                  const Text(
+                  Text(
                     'Principal',
                     style: TextStyle(
-                      color: Color(0xFF777777),
+                      color: MaterialTheme.labelColor(brightness),
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
                     ),
@@ -354,10 +359,10 @@ class _EspecialidadCard extends StatelessWidget {
                   if (interes.isNotEmpty) const SizedBox(height: 12),
                 ],
                 if (interes.isNotEmpty) ...[
-                  const Text(
+                  Text(
                     'También me interesa',
                     style: TextStyle(
-                      color: Color(0xFF777777),
+                      color: MaterialTheme.labelColor(brightness),
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
                     ),
@@ -405,11 +410,12 @@ class _PrincipalChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final name = AuthService.to.getEspecialidadName(espId);
     final pending = _pendingCount(espId);
+    final brightness = Theme.of(context).brightness;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFFFFF1EA),
+        color: MaterialTheme.espPrincipalBg(brightness),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: MaterialTheme.primaryColor.withValues(alpha: 0.6),
@@ -464,10 +470,11 @@ class _InteresChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final name = AuthService.to.getEspecialidadName(espId);
+    final brightness = Theme.of(context).brightness;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0F7FF),
+        color: MaterialTheme.espInteresBg(brightness),
         borderRadius: BorderRadius.circular(999),
         border: Border.all(
           color: const Color(0xFF0EA5E9).withValues(alpha: 0.5),
@@ -480,8 +487,10 @@ class _InteresChip extends StatelessWidget {
           const SizedBox(width: 5),
           Text(
             name,
-            style: const TextStyle(
-              color: Color(0xFF0369A1),
+            style: TextStyle(
+              color: brightness == Brightness.light
+                  ? const Color(0xFF0369A1)
+                  : const Color(0xFF38BDF8),
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),
@@ -565,11 +574,12 @@ class _EspecialidadSheetState extends State<_EspecialidadSheet> {
   @override
   Widget build(BuildContext context) {
     final opciones = _opciones;
+    final brightness = Theme.of(context).brightness;
 
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      decoration: BoxDecoration(
+        color: MaterialTheme.sheetBg(brightness),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom + 24,
@@ -587,7 +597,7 @@ class _EspecialidadSheetState extends State<_EspecialidadSheet> {
                     width: 40,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFDDDDDD),
+                      color: MaterialTheme.sheetHandle(brightness),
                       borderRadius: BorderRadius.circular(999),
                     ),
                   ),
@@ -599,7 +609,7 @@ class _EspecialidadSheetState extends State<_EspecialidadSheet> {
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFFE8DC),
+                        color: MaterialTheme.espPrincipalBg(brightness),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       alignment: Alignment.center,
@@ -610,14 +620,14 @@ class _EspecialidadSheetState extends State<_EspecialidadSheet> {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    const Expanded(
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Especialización',
                             style: TextStyle(
-                              color: Color(0xFF1A1A1A),
+                              color: MaterialTheme.textPrimary(brightness),
                               fontSize: 15,
                               fontWeight: FontWeight.w800,
                             ),
@@ -625,7 +635,7 @@ class _EspecialidadSheetState extends State<_EspecialidadSheet> {
                           Text(
                             'Elige principal, intereses o ninguna.',
                             style: TextStyle(
-                              color: Color(0xFF777777),
+                              color: MaterialTheme.labelColor(brightness),
                               fontSize: 12,
                             ),
                           ),
@@ -640,12 +650,12 @@ class _EspecialidadSheetState extends State<_EspecialidadSheet> {
             ),
           ),
           if (opciones.isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(24),
+            Padding(
+              padding: const EdgeInsets.all(24),
               child: Text(
                 'No hay especializaciones disponibles para tu carrera.',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xFFAAAAAA), fontSize: 13),
+                style: TextStyle(color: MaterialTheme.placeholderText(brightness), fontSize: 13),
               ),
             )
           else
@@ -733,22 +743,23 @@ class _SheetEspecialidadRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 140),
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 10),
       decoration: BoxDecoration(
         color: isPrincipal
-            ? const Color(0xFFFFF1EA)
+            ? MaterialTheme.espPrincipalBg(brightness)
             : isInteres
-            ? const Color(0xFFF0F7FF)
-            : const Color(0xFFFAFAFA),
+            ? MaterialTheme.espInteresBg(brightness)
+            : MaterialTheme.sheetRowBg(brightness),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color: isPrincipal
               ? MaterialTheme.primaryColor
               : isInteres
               ? const Color(0xFF0EA5E9)
-              : const Color(0xFFE5E5E5),
+              : MaterialTheme.borderColor(brightness),
           width: (isPrincipal || isInteres) ? 1.5 : 1,
         ),
       ),
@@ -766,7 +777,7 @@ class _SheetEspecialidadRow extends StatelessWidget {
                       style: TextStyle(
                         color: isPrincipal
                             ? MaterialTheme.primaryDark
-                            : const Color(0xFF1A1A1A),
+                            : MaterialTheme.textPrimary(brightness),
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
@@ -801,8 +812,8 @@ class _SheetEspecialidadRow extends StatelessWidget {
                 desc,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Color(0xFF888888),
+                style: TextStyle(
+                  color: MaterialTheme.descText(brightness),
                   fontSize: 11,
                   height: 1.4,
                 ),
@@ -857,23 +868,24 @@ class _SheetChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final disabled = onTap == null;
+    final brightness = Theme.of(context).brightness;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 7),
         decoration: BoxDecoration(
           color: disabled
-              ? const Color(0xFFF5F5F5)
+              ? MaterialTheme.chipDisabledBg(brightness)
               : active
               ? color.withValues(alpha: 0.12)
-              : const Color(0xFFF5F5F5),
+              : MaterialTheme.chipDisabledBg(brightness),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: disabled
-                ? const Color(0xFFE0E0E0)
+                ? MaterialTheme.chipDisabledBorder(brightness)
                 : active
                 ? color.withValues(alpha: 0.5)
-                : const Color(0xFFE0E0E0),
+                : MaterialTheme.chipDisabledBorder(brightness),
           ),
         ),
         child: Row(
@@ -883,10 +895,10 @@ class _SheetChip extends StatelessWidget {
               icon,
               size: 13,
               color: disabled
-                  ? const Color(0xFFCCCCCC)
+                  ? MaterialTheme.chipDisabledText(brightness)
                   : active
                   ? color
-                  : const Color(0xFF888888),
+                  : MaterialTheme.chipInactiveText(brightness),
             ),
             const SizedBox(width: 5),
             Flexible(
@@ -896,10 +908,10 @@ class _SheetChip extends StatelessWidget {
                   fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: disabled
-                      ? const Color(0xFFCCCCCC)
+                      ? MaterialTheme.chipDisabledText(brightness)
                       : active
                       ? color
-                      : const Color(0xFF555555),
+                      : MaterialTheme.chipInactiveText(brightness),
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
