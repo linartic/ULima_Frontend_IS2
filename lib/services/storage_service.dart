@@ -2,6 +2,7 @@
 // Persistencia simple de sesión via SharedPreferences (localStorage en web).
 
 import 'dart:convert';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,7 +12,9 @@ class StorageService extends GetxService {
   static StorageService get to => Get.find();
 
   late SharedPreferences _prefs;
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
+  static const _kToken = 'session_token';
   static const _kCode = 'session_code';
   static const _kCareerId = 'session_career_id';
   static const _kLegacyCareer = 'session_career';
@@ -31,6 +34,13 @@ class StorageService extends GetxService {
   }
 
   // ── Sesión (código del alumno) ──────────────────────────────────────────────
+
+  Future<String?> get savedToken => _secureStorage.read(key: _kToken);
+
+  Future<void> saveToken(String token) =>
+      _secureStorage.write(key: _kToken, value: token);
+
+  Future<void> clearToken() => _secureStorage.delete(key: _kToken);
 
   String? get savedCode => _prefs.getString(_kCode);
 
@@ -194,6 +204,7 @@ class StorageService extends GetxService {
   // ── Limpieza ────────────────────────────────────────────────────────────────
 
   Future<void> clearSession() async {
+    await clearToken();
     await _prefs.remove(_kCode);
     await _prefs.remove(_kCareerId);
     await _prefs.remove(_kLegacyCareer);

@@ -921,8 +921,8 @@ class _LogoutButton extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: OutlinedButton.icon(
-        onPressed: () {
-          AuthService.to.logout();
+        onPressed: () async {
+          await AuthService.to.logout();
           Get.offAll(() => const LoginPage());
         },
         icon: const Icon(LucideIcons.logOut, size: 18),

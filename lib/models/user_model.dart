@@ -8,7 +8,9 @@ class UserModel {
   final String firstName;
   final String lastName;
   final String email;
-  final String role; // estudiante | delegado | subdelegado
+
+  /// student/delegate/subdelegate o legado estudiante/delegado/subdelegado.
+  final String role;
   int? careerId;
 
   /// Especialidad elegida como mención principal (diploma).
@@ -37,7 +39,11 @@ class UserModel {
 
   String get fullName => '$firstName $lastName';
 
-  bool get isDelegate => role == 'delegado' || role == 'subdelegado';
+  bool get isDelegate =>
+      role == 'delegado' ||
+      role == 'subdelegado' ||
+      role == 'delegate' ||
+      role == 'subdelegate';
 
   /// Lista combinada para código que no distingue principal/interés (MallaService, etc.).
   List<int> get especialidades => [
@@ -46,22 +52,54 @@ class UserModel {
   ];
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
-    // Migración: si vienen como lista plana antigua, el primero pasa a interés.
-    final legacyList =
-        (json['especialidades'] as List?)?.cast<int>() ?? <int>[];
+    final fullName = json['fullName']?.toString();
+    final nameParts = (fullName ?? '').trim().split(RegExp(r'\s+'));
+    final firstNameFromFullName = nameParts.length > 1
+        ? nameParts.sublist(0, nameParts.length - 1).join(' ')
+        : fullName;
+    final lastNameFromFullName = nameParts.length > 1 ? nameParts.last : '';
+
+    final specialtyRows = (json['specialties'] as List?) ?? const [];
+    final primaryFromSpecialties = specialtyRows
+        .whereType<Map>()
+        .where((s) => s['selectionType']?.toString() == 'primary')
+        .map((s) => _parseInt(s['specialtyId']))
+        .whereType<int>()
+        .firstOrNull;
+    final interestFromSpecialties = specialtyRows
+        .whereType<Map>()
+        .where((s) => s['selectionType']?.toString() == 'interest')
+        .map((s) => _parseInt(s['specialtyId']))
+        .whereType<int>()
+        .toList();
+
+    // Migración: si viene lista plana antigua, se mantiene como interés.
+    final legacyList = _parseIntList(json['especialidades']);
+    final interest = _parseIntList(json['especialidades_interes']);
 
     return UserModel(
-      code: json['code'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
-      email: json['email'] as String,
+      code: json['code'].toString(),
+      firstName:
+          json['firstName']?.toString() ?? firstNameFromFullName ?? 'Alumno',
+      lastName: json['lastName']?.toString() ?? lastNameFromFullName,
+      email:
+          json['email']?.toString() ??
+          json['institutionalEmail']?.toString() ??
+          '',
       role: json['role'] as String? ?? 'estudiante',
-      careerId: json['career_id'] as int?,
-      especialidadPrincipal: json['especialidad_principal'] as int?,
-      especialidadesInteres:
-          (json['especialidades_interes'] as List?)?.cast<int>() ?? legacyList,
+      careerId: _parseInt(json['career_id'] ?? json['careerId']),
+      especialidadPrincipal:
+          _parseInt(json['especialidad_principal']) ?? primaryFromSpecialties,
+      especialidadesInteres: interest.isNotEmpty
+          ? interest
+          : (interestFromSpecialties.isNotEmpty
+                ? interestFromSpecialties
+                : legacyList),
       currentCycle: json['currentCycle'] as String? ?? '2026-1',
-      setupComplete: json['setupComplete'] as bool? ?? false,
+      setupComplete:
+          json['setupComplete'] as bool? ??
+          json['specialtySetupCompleted'] as bool? ??
+          false,
       courseProgress: CourseProgress.fromJson(
         json['courseProgress'] as Map<String, dynamic>?,
       ),
@@ -80,4 +118,15 @@ class UserModel {
     'currentCycle': currentCycle,
     'setupComplete': setupComplete,
   };
+
+  static int? _parseInt(dynamic value) {
+    if (value is int) return value;
+    if (value is num) return value.toInt();
+    return int.tryParse(value?.toString() ?? '');
+  }
+
+  static List<int> _parseIntList(dynamic value) {
+    if (value is! List) return const [];
+    return value.map(_parseInt).whereType<int>().toList();
+  }
 }
