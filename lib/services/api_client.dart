@@ -22,11 +22,22 @@ class ApiException implements Exception {
 }
 
 class ApiClient {
-  static const _configuredBaseUrl = String.fromEnvironment('API_BASE_URL');
+  ApiClient({String? configuredBaseUrl})
+    : _configuredBaseUrl = configuredBaseUrl ?? _defaultConfiguredBaseUrl;
+
+  static const _defaultConfiguredBaseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+  );
+  final String _configuredBaseUrl;
 
   String get baseUrl {
     if (_configuredBaseUrl.trim().isNotEmpty) {
-      return _configuredBaseUrl.trim().replaceFirst(RegExp(r'/$'), '');
+      return _sanitizeBaseUrl(_configuredBaseUrl);
+    }
+    if (kReleaseMode) {
+      throw StateError(
+        'API_BASE_URL debe definirse en builds release con --dart-define.',
+      );
     }
     if (kIsWeb) return 'http://localhost:3000';
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -109,6 +120,10 @@ class ApiClient {
       }
     } catch (_) {}
     return headers;
+  }
+
+  String _sanitizeBaseUrl(String rawBaseUrl) {
+    return rawBaseUrl.trim().replaceFirst(RegExp(r'/$'), '');
   }
 
   Map<String, dynamic> _decode(http.Response response) {

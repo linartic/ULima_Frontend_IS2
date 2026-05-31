@@ -4,6 +4,7 @@ This index connects real user stories, product requirements, Flutter files, mock
 
 | Priority | Feature | Spec | User Stories | Requirements | Flutter target | Status |
 | --- | --- | --- | --- | --- | --- | --- |
+| 0 | Platform Runtime | `specs/features/platform-runtime/platform-runtime.spec.md` | Infra | Runtime config | `lib/services/api_client.dart` | Active |
 | 1 | Auth | `specs/features/auth/auth.spec.md` | US01, US02 | R1, R2, RNF7 | `lib/pages/login`, `lib/services/auth_service.dart` | Rewrite first |
 | 2 | Academic Profile | `specs/features/academic-profile/academic-profile.spec.md` | US05 | R12, R13 | `lib/pages/setup_carrera` | Rewrite second |
 | 3 | Curriculum | `specs/features/curriculum/curriculum.spec.md` | US03, US04 | R4, R5, R10, R11 | `lib/pages/malla` | Rewrite third |
@@ -21,6 +22,7 @@ This index connects real user stories, product requirements, Flutter files, mock
 4. Implement within existing `lib/` folders; do not restructure frontend directories unless explicitly approved.
 5. Add widget/service tests and link them from the spec using `[@test]`.
 6. Review UI behavior against the feature spec and mockups.
+7. Runtime/build changes that affect deployed connectivity should live in `specs/features/platform-runtime/platform-runtime.spec.md`.
 
 ## Data Rules
 

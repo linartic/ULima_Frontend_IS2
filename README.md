@@ -106,6 +106,25 @@ flutter test
 
 Si se modifica `pubspec.yaml`, ejecutar `flutter pub get`.
 
+## Android APK
+
+Para compilar la APK contra el backend desplegado:
+
+```bash
+flutter build apk --dart-define=API_BASE_URL=https://u-lima-backend-is-2-tau.vercel.app
+```
+
+Para probar localmente la app Android contra el mismo backend:
+
+```bash
+flutter run --dart-define=API_BASE_URL=https://u-lima-backend-is-2-tau.vercel.app
+```
+
+Notas:
+
+- `API_BASE_URL` es obligatoria en builds release.
+- Si no se inyecta en desarrollo, `ApiClient` mantiene los fallbacks locales actuales.
+
 ## Mockups
 
 Los mockups siguen disponibles como referencia visual:
