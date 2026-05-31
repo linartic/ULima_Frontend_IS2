@@ -1,7 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+import '../pages/login/login_page.dart';
 import 'storage_service.dart';
 
 class ApiException implements Exception {
@@ -91,6 +94,13 @@ class ApiClient {
 
     final streamed = await request.send();
     final resolved = await http.Response.fromStream(streamed);
+
+    if (resolved.statusCode == 401 && !path.contains('/auth/login')) {
+      await StorageService.to.clearSession();
+      Get.offAll(() => const LoginPage());
+      Get.snackbar('Sesión expirada', 'Tu sesión caducó o iniciaste sesión en otro dispositivo.');
+    }
+
     return _decode(resolved);
   }
 

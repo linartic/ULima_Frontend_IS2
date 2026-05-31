@@ -96,11 +96,16 @@ targets:
 ### BR-AUTH-F-07: ApiClient auth header
 - `ApiClient` debe exponer un método o setter para configurar el token JWT.
 - Todas las requests que no sean `POST /auth/login` deben incluir `Authorization: Bearer <token>`.
-- Si una request autenticada recibe `401`, se debe propagar el error para que el caller decida si cerrar sesión.
+- Si una request autenticada recibe un error `401 Unauthorized`, el Frontend debe interceptarlo globalmente, limpiar los datos locales (`StorageService.clearSession()`) y redirigir forzosamente a `/login` (previniendo un estado inválido por sesiones concurrentes en otros dispositivos).
 
 ### BR-AUTH-F-08: Loading state
 - Durante el login, el botón "Entrar" muestra un `CircularProgressIndicator` y está deshabilitado.
 - Esto ya está implementado en `login_page.dart` vía `controller.submitting.value`.
+
+### BR-AUTH-F-09: Single Active Session (Concurrency)
+- El sistema **no permite sesiones concurrentes** para evitar incongruencias de datos (ej. un usuario modificando su perfil desde celular y web simultáneamente).
+- El Backend implementará "Token Versioning" u otro mecanismo para asegurar que al generar un nuevo JWT por un Login, los tokens anteriores del mismo usuario queden invalidados.
+- Si un usuario inicia sesión en un dispositivo nuevo, el dispositivo antiguo recibirá un error HTTP `401`. Esto desencadenará el flujo descrito en la regla BR-AUTH-F-07, expulsando al usuario del dispositivo antiguo de forma segura.
 
 ## UI Behavior
 
