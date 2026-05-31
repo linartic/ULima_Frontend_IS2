@@ -116,11 +116,12 @@ class MallaService extends GetxService {
   }
 
   /// Recalcula sólo los estados derivados (`locked` / `unlocked`) usando los
-  /// cursos aprobados manualmente en la pantalla. Los estados explícitos
-  /// (`current` / `approved`) se conservan porque son decisión del alumno.
+  /// cursos aprobados manualmente en la pantalla. Los estados explícitos de
+  /// simulación se conservan porque son decisión del alumno.
   Map<String, CourseStatus> recomputeDerivedAvailability({
     required Iterable<CourseNode> visibleCourses,
     required Map<String, CourseStatus> currentStatuses,
+    Set<String> fixedStatusCourseIds = const <String>{},
   }) {
     final byId = <String, CourseNode>{for (final c in _courses) c.id: c};
     final approved = currentStatuses.entries
@@ -131,7 +132,8 @@ class MallaService extends GetxService {
     final result = <String, CourseStatus>{};
     for (final c in visibleCourses) {
       final existing = currentStatuses[c.id];
-      if (existing == CourseStatus.approved ||
+      if ((existing != null && fixedStatusCourseIds.contains(c.id)) ||
+          existing == CourseStatus.approved ||
           existing == CourseStatus.current) {
         result[c.id] = existing!;
         continue;
