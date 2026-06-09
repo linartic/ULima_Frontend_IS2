@@ -100,6 +100,26 @@ class _LoginCard extends StatelessWidget {
               _ErrorMessage(controller: controller, palette: palette),
               const SizedBox(height: 28),
               _EntrarButton(controller: controller, palette: palette),
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  Expanded(child: Divider(color: palette.fieldLine)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text(
+                      'O inicia sesión con',
+                      style: TextStyle(
+                        color: palette.fieldHint,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Expanded(child: Divider(color: palette.fieldLine)),
+                ],
+              ),
+              const SizedBox(height: 24),
+              _GoogleButton(controller: controller, palette: palette),
             ],
           ),
         ),
@@ -237,6 +257,51 @@ class _EntrarButton extends StatelessWidget {
                     letterSpacing: 0.3,
                   ),
                 ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GoogleButton extends StatelessWidget {
+  const _GoogleButton({required this.controller, required this.palette});
+  final LoginController controller;
+  final _LoginPalette palette;
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => SizedBox(
+        height: 50,
+        child: OutlinedButton(
+          onPressed: controller.submitting.value ? null : controller.loginWithGoogle,
+          style: OutlinedButton.styleFrom(
+            backgroundColor: palette.card,
+            foregroundColor: palette.fieldText,
+            side: BorderSide(color: palette.fieldLine),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/images/Universidad_de_Lima_logo.svg', // Idealmente cambiar a logo de Google
+                width: 20,
+                height: 20,
+                colorMapper: palette.logoColorMapper,
+              ),
+              const SizedBox(width: 12),
+              Text(
+                'Google',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

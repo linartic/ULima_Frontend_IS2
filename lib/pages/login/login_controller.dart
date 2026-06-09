@@ -39,6 +39,23 @@ class LoginController extends GetxController {
     Get.offAllNamed(user.setupComplete ? '/home' : '/setup-carrera');
   }
 
+  Future<void> loginWithGoogle() async {
+    errorMessage.value = null;
+    submitting.value = true;
+
+    final error = await _auth.loginWithGoogle();
+
+    submitting.value = false;
+
+    if (error != null) {
+      errorMessage.value = error;
+      return;
+    }
+
+    final user = _auth.currentUser!;
+    Get.offAllNamed(user.setupComplete ? '/home' : '/setup-carrera');
+  }
+
   @override
   void onClose() {
     codeController.dispose();

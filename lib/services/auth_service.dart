@@ -2,6 +2,7 @@
 // Autenticación real contra el backend + persistencia segura del JWT.
 
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../models/user_model.dart';
 import 'api_client.dart';
@@ -91,8 +92,56 @@ class AuthService extends GetxService {
         return 'No tienes una matrícula activa.';
       }
       return e.message;
-    } catch (_) {
       return 'No se pudo conectar con el servidor.';
+    } finally {
+      _loading.value = false;
+    }
+  }
+
+  Future<String?> loginWithGoogle() async {
+    _loading.value = true;
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn(
+        scopes: ['email'],
+      );
+      final GoogleSignInAccount? account = await googleSignIn.signIn();
+      if (account == null) {
+        return null; // El usuario canceló el popup
+      }
+
+      final GoogleSignInAuthentication auth = await account.authentication;
+      final String? idToken = auth.idToken;
+
+      if (idToken == null || idToken.isEmpty) {
+        return 'No se obtuvo información de Google.';
+      }
+
+      final response = await _api.postJson(
+        '/auth/google',
+        body: {'idToken': idToken},
+      );
+
+      final token = response['token']?.toString();
+      if (token == null || token.isEmpty) {
+        return 'No se recibió token de sesión.';
+      }
+
+      final user = UserModel.fromJson(_mapFrom(response['user']));
+      await _storage.saveToken(token);
+      await _storage.saveCode(user.code);
+      await _loadCatalogs(token: token, careerId: user.careerId);
+      _currentUser.value = user;
+      return null;
+    } on ApiException catch (e) {
+      if (e.code == 'INVALID_DOMAIN') {
+        return 'Debes usar tu correo @aloe.ulima.edu.pe.';
+      }
+      if (e.code == 'USER_NOT_FOUND') {
+        return 'Tu correo no está registrado en el sistema.';
+      }
+      return e.message;
+    } catch (_) {
+      return 'No se pudo iniciar sesión con Google.';
     } finally {
       _loading.value = false;
     }
@@ -159,6 +208,9 @@ class AuthService extends GetxService {
     MallaService.to.clear();
     _currentUser.value = null;
     await _storage.clearSession();
+    try {
+      await GoogleSignIn().signOut();
+    } catch (_) {}
   }
 
   Future<void> _loadCatalogs({required String token, int? careerId}) async {
